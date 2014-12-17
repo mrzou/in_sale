@@ -1,0 +1,54 @@
+* {
+    font-size:16x;
+    margin:1;
+    padding:0;
+}
+
+fieldset {
+    background: white;
+    padding:10px;
+    margin:10px;
+    color:#0000FF;
+    border:#06c dashed 1px;
+    text-align: -webkit-center;
+    line-height: 200%;
+    position:absolute;
+  	left:350px;
+  	top:100px;
+	width: 637px;
+	height: 280px;
+}
+
+legend {
+    color:#06c;
+    font-weight:600;
+    background:#fff;
+    border:#b6b6b6 solid 1px;
+    padding: 20px;
+    width:200px;
+    height:1px;
+}
+
+input {
+	width: 200px;
+	height: 20px;
+}
+
+input[type="submit"],input[type="reset"], input[type="button"]{
+	width:49px;
+	height:27px;
+	font-size:15px;
+}
+
+td {
+	text-align: right;
+}
+
+span.validate{
+	color:red;
+}
+
+legend span{
+	position:relative;
+	top: -15px;
+}
