@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC
       "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+<<<<<<< HEAD
       "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping package="domain">
 	<class name="User">
+=======
+      "http://hibernat.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="class_project/zou">
+	<class name="User" table="user">
+>>>>>>> ea4a46978067e88f2a6acf1f5f7954abcc4ce607
 		<id name="id">
 			<generator class="native"/>
 		</id>
 		<property name="name"/>
 		<property name="email"/>
 		<property name="password"/>
+<<<<<<< HEAD
 	</class>
 </hibernate-mapping>
+=======
+		<property name="validate" not-null="true"/>
+	</class>
+</hibernate-mapping>
+>>>>>>> ea4a46978067e88f2a6acf1f5f7954abcc4ce607

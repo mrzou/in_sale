@@ -80,7 +80,5 @@ public class SignupValidate implements ServletRequestAware{
 			e.printStackTrace();
 		}
 		session.setAttribute("checkCode", new String(rands));
-		/*return "SUCCESS";*/
 	}
-	
 }

@@ -5,9 +5,9 @@ $(document).ready(function(){
 		/*event.stopPropagation();*/
 		window.event.returnValue = false;
 	});
+	
 	$("input[type='submit']").click(function(event){
 		$("input.validate").each(function(index, element){
-			console.log(index);
 			var data = $(this).val();
 			if(this.name == "email"){
 				dealEmailInput(data, event);

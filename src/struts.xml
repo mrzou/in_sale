@@ -4,9 +4,9 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 	<struts>
 		<package name="default" namespace="/" extends="struts-default">
-			<action name="signupValidate.action" class="class_project.zou.servlet.SignupValidate">
+			<action name="signupValidate" class="class_project.zou.servlet.SignupValidate">
 			</action>
-			<action name="signupUser.action" class="class_project.zou.servlet.SignupUser">
+			<action name="signupUser" class="class_project.zou.servlet.SignupUser">
 				<result name="home">/jsp/home.jsp</result>
 			</action>
 		</package>
