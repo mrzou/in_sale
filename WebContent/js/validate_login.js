@@ -26,7 +26,7 @@ $(document).ready(function(){
 	});
 	/*验证密码长度*/
 	$("input[name='user.password']").blur(function(){
-		if(this.value.length<2){
+		if(this.value.length<6){
 			$("#password").html("密码长度要大于6").show();
 		}else{
 			$("#password").hide();
