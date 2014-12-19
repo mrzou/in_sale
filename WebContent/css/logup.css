@@ -47,6 +47,10 @@ td {
 td[colspan="2"] {
 	text-align: center;
 }
+
+td.alert {
+	text-align: left;
+}
 span.validate{
 	color:red;
 	display: none;

@@ -1,6 +1,20 @@
 $(document).ready(function(){
 	$("img#checkCode").click(function(event){
 		$(this).attr("src","/class_project/signupValidate?t=" + +Math.random());
+		/*$.ajax({
+            type: 'GET',
+            contentType: "application/json; charset=utf-8",
+            url: '/class_project/getValidateCode',
+            dataType: 'json',
+            success: function (msg, status) {
+                console.log(msg);
+                console.log("hello");
+            },
+            error: function (xhr, desc, err) {
+                console.log(xhr);
+                console.log("Details: " + desc + "\nError:" + err);
+            }
+        });*/
 		/*event.stopPropagation();*/
 		window.event.returnValue = false;
 	});
@@ -14,7 +28,7 @@ $(document).ready(function(){
 				dealOtherInput(data, index+1, event);
 			}
 		});
-	})
+	});
 	/*密码验证是否相同的标签*/
 	$("input[name='password_confirm']").blur(function(){
 		var password = $("input[name='user.password']")[0].value;
@@ -23,7 +37,22 @@ $(document).ready(function(){
 		}else{
 			$("#pass_confirm").hide();
 		}
-	})
+	});
+	/*验证密码长度*/
+	$("input[name='user.password']").blur(function(){
+		console.log(this.value.length);
+		if(this.value.length<2){
+			$("#password").html("密码长度要大于6").show();
+		}else{
+			$("#password").hide();
+		}
+	});
+	/*重置全部隐藏提示*/
+	$("input[type='reset']").click(function(){
+		$("span.validate").hide();
+	});
+	/*获取后台的验证码到前台*/
+	$("#validateCode")
 });
 
 function dealEmailInput(data, event){

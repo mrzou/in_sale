@@ -15,7 +15,6 @@ public class GetDelSession {
 		configurate.configure();
 		sessionFactory = configurate.buildSessionFactory();
 		}catch(Exception e){
-			System.out.println("error");
 			e.printStackTrace();
 		}
 	}

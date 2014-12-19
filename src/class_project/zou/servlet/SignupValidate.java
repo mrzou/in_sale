@@ -81,4 +81,8 @@ public class SignupValidate implements ServletRequestAware{
 		}
 		session.setAttribute("checkCode", new String(rands));
 	}
+	/*public String getValidateCode(){
+		System.out.println((String)(session.getAttribute("checkCode")));
+		return (String)(session.getAttribute("checkCode"));
+	}*/
 }

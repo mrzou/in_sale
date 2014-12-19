@@ -34,12 +34,13 @@ public class SignupUser implements ServletRequestAware {
 	public String execute() {
 		String checkCode_1 = (String) session.getAttribute("checkCode");
 		String checkCode_2 = request.getParameter("check_code");
+		System.out.println(checkCode_1+checkCode_2);
 		if(checkCode_1.equals(checkCode_2)){
 			UserSignupDao userDao = new UserSignupDao();
 			userDao.signupUser(user);
 			return "home";
 		}else{
-			return "";
+			return "home";
 		}
 	}
 }
