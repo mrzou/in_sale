@@ -36,9 +36,10 @@
 			</tr>
 			<tr>
 				<td>验证码:</td>
-				<td><input type="text" name="check_code" class="validate"/></td>
-				<td class="alert"><a href=""><img border=0 src="signupValidate" name="checkCodeImage" id="checkCode" /></a><span class="validate">验证码不正确</span></td>
-				<td id="validateCode"><%= session.getAttribute("checkCode") %></td>
+				<td><input type="text" name="check_code" class="validate" placeholder="输入验证码"/></td>
+				<td class="alert"><a href=""><img border=0 src="signupValidate" name="checkCodeImage" id="checkCode" /></a>
+				<span class="validate" id="Validatespan">验证码不正确</span></td>
+				<td id="validateCode" style="display:none"></td>
 			</tr>
 			<tr><td colspan="2">
 				<input type="submit" value="保存"/>&nbsp;&nbsp; 

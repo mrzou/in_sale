@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
@@ -68,21 +70,26 @@ public class SignupValidate implements ServletRequestAware{
 		g.drawString(""+rands[3], 46, 16);
 		g.dispose();
 		try{
-		ServletOutputStream sos = response.getOutputStream();
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		ImageIO.write(image, "JPEG", baos);
-		byte[] buffer = baos.toByteArray();
-		response.setContentLength(buffer.length);
-		sos.write(buffer);
-		baos.close();
-		sos.close();
+			ServletOutputStream sos = response.getOutputStream();
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(image, "JPEG", baos);
+			byte[] buffer = baos.toByteArray();
+			response.setContentLength(buffer.length);
+			sos.write(buffer);
+			baos.close();
+			sos.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		session.setAttribute("checkCode", new String(rands));
 	}
-	public String getValidateCode(){
-		System.out.println((String)(session.getAttribute("checkCode")));
-		return (String)(session.getAttribute("checkCode"));
+	public void getValidateCode(){
+		try {
+			PrintWriter out = response.getWriter();
+			out.print((String)(session.getAttribute("checkCode")));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
