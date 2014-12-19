@@ -44,8 +44,12 @@ td {
 	text-align: right;
 }
 
+td[colspan="2"] {
+	text-align: center;
+}
 span.validate{
 	color:red;
+	display: none;
 }
 
 legend span{
