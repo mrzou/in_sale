@@ -6,6 +6,8 @@
 		<package name="default" namespace="/" extends="struts-default">
 			<action name="signupValidate" class="class_project.zou.servlet.SignupValidate">
 			</action>
+			<action name="getValidateCode" class="class_project.zou.servlet.SignupValidate" method="getValidateCode">
+			</action>
 			<action name="signupUser" class="class_project.zou.servlet.SignupUser">
 				<result name="home">/jsp/home.jsp</result>
 			</action>

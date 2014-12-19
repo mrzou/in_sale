@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$("img#checkCode").click(function(event){
 		$(this).attr("src","/class_project/signupValidate?t=" + +Math.random());
-		/*$.ajax({
+		$.ajax({
             type: 'GET',
             contentType: "application/json; charset=utf-8",
             url: '/class_project/getValidateCode',
@@ -14,7 +14,7 @@ $(document).ready(function(){
                 console.log(xhr);
                 console.log("Details: " + desc + "\nError:" + err);
             }
-        });*/
+        });
 		/*event.stopPropagation();*/
 		window.event.returnValue = false;
 	});
