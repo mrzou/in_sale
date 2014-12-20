@@ -4,14 +4,16 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class UserSignupDao {
-	public void signupUser(User user){
+	public int signupUser(User user){
+		int i;
 		try{
 			Session session = GetDelSession.getThreadLocalSession();
 			Transaction transaction = session.beginTransaction();
-			session.save(user);
+			i = (Integer) session.save(user);
 			transaction.commit();
 		}finally{
 			GetDelSession.closeSession();
 		}
+		return i; 
 	}
 }

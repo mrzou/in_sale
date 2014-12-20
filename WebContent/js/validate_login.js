@@ -42,8 +42,18 @@ $(document).ready(function(){
 	$("input[name='check_code']").blur(function(){
 		if(this.value != validateCode.responseText){
 			$("#Validatespan").show();
+			$("input[type='submit']").attr("disabled","disable");
+			/*监听再次的输入*/
+			$(this).bind('input propertychange', function() {
+				if(this.value==validateCode.responseText){
+					$("#Validatespan").hide();
+				}else{
+					$("#Validatespan").show();
+				}
+			});
 		}else{
 			$("#Validatespan").hide();
+			$("input[type='submit']").removeAttr("disabled");
 		}
 	});
 });

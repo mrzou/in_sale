@@ -42,7 +42,7 @@
 				<td id="validateCode" style="display:none"></td>
 			</tr>
 			<tr><td colspan="2">
-				<input type="submit" value="保存"/>&nbsp;&nbsp; 
+				<input type="submit" value="注册"/>&nbsp;&nbsp; 
 				<input type="reset" value="重置"></td>
 			</tr>
 			</table>
