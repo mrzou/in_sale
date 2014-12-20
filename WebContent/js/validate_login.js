@@ -4,6 +4,11 @@ $(document).ready(function(){
 		/*event.stopPropagation();*/
 		window.event.returnValue = false;
 	});
+	$("img#checkCode").mouseup(function() {
+		setTimeout(function() {
+			clickValidateCode();
+		}, 100);
+	});
 	/*提交时的验证form标签的内容*/
 	$("input[type='submit']").click(function(event){
 		$("input.validate").each(function(index, element){
@@ -37,14 +42,14 @@ $(document).ready(function(){
 		$("span.validate").hide();
 	});
 	/*获取后台的验证码到前台*/
-	var validateCode = $.ajax({url:"/class_project/getValidateCode",async:false});
-	$("#validateCode").html(validateCode.responseText);
 	$("input[name='check_code']").blur(function(){
+		var validateCode = clickValidateCode();
 		if(this.value != validateCode.responseText){
 			$("#Validatespan").show();
 			$("input[type='submit']").attr("disabled","disable");
 			/*监听再次的输入*/
 			$(this).bind('input propertychange', function() {
+				validateCode = $("#validateCode").html();
 				if(this.value==validateCode.responseText){
 					$("#Validatespan").hide();
 				}else{
@@ -57,7 +62,12 @@ $(document).ready(function(){
 		}
 	});
 });
-
+/*点击图片更新验证码*/
+function clickValidateCode(){
+	var validateCode = $.ajax({url:"/class_project/getValidateCode",async:false});
+	$("#validateCode").html(validateCode.responseText);
+	return validateCode;
+}
 function dealEmailInput(data, event){
 	if(valid_email(data)){
 		$("span#email").hide();
