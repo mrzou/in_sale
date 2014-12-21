@@ -12,7 +12,7 @@ fieldset {
     border:#06c dashed 1px;
     text-align: -webkit-center;
     line-height: 200%;
-    position:absolute;
+    position:relative;
   	left:350px;
   	top:100px;
 	width: 637px;
@@ -34,6 +34,10 @@ input {
 	height: 20px;
 }
 
+input:focus{
+    border: thin blue solid;
+    padding: 2px;
+}
 input[type="submit"],input[type="reset"], input[type="button"]{
 	width:49px;
 	height:27px;
@@ -42,14 +46,17 @@ input[type="submit"],input[type="reset"], input[type="button"]{
 
 td {
 	text-align: right;
+	color: black;
 }
 
 td[colspan="2"] {
 	text-align: center;
+	
 }
 
-td.alert {
+td.alert, td.alertPic {
 	text-align: left;
+	width
 }
 span.validate{
 	color:red;
@@ -59,4 +66,29 @@ span.validate{
 legend span{
 	position:relative;
 	top: -15px;
+}
+
+img.checkPic{
+	width: 17px;
+	height: 17px;
+	/* display: none; */
+}
+
+.inputRight{
+	background:url(../images/tick-circle.png) no-repeat;
+}
+
+.inputWrong{
+	background: url(../images/wrong.png) no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.error {
+	border: thin red solid;
+}
+
+div.inputWrong {
+	width: 16px;
+	height: 16px;
 }

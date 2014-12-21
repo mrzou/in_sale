@@ -1,5 +1,6 @@
 package class_project.zou.servlet;
 
+import java.io.PrintWriter;
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -13,7 +14,9 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import class_project.zou.User;
@@ -21,10 +24,14 @@ import class_project.zou.UserSignupDao;
 
 public class SignupUser implements ServletRequestAware {
 	private User user;
+	private HttpServletResponse response;
+	HttpServletRequest request;
 	
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		// TODO Auto-generated method stub
+		this.response = ServletActionContext.getResponse();
+		this.request = request;
 	}
 	public User getUser() {
 		return user;
@@ -87,18 +94,17 @@ public class SignupUser implements ServletRequestAware {
 			BodyPart mdp=new MimeBodyPart();
 			//给BodyPart对象设置内容和格式/编码方式
 			mdp.setContent("hello","text/html;charset=gb2312");
-			String mailContent = "&nbsp;&nbsp;亲爱的"+user.getName()+"用户 <span style=\"color:red\"> "
-	                + user.getName()
-	                + "</span> ,您好！<p>&nbsp;&nbsp;感谢您注册zou_blog,请确认您的邮箱帐号为 <span style=\"font-weight: bold\">"
+			String mailContent = "亲爱的"+user.getName()+"用户"
+	                + ",您好！感谢您注册zou_blog,请确认您的邮箱帐号为"
 	                + user.getEmail()
-	                + " </span> </p><p>&nbsp;&nbsp;请点击下面的链接即可完成激活。</p><p>&nbsp;&nbsp;"
-	                + "<a>http://localhost:8080/class_project/confirm_email"
-	                + "</p><p>&nbsp;&nbsp;(如果链接无法点击，请将它拷贝到浏览器的地址栏中)"
-	                + "</p><p>&nbsp;&nbsp;"+"http://localhost:8080/class_project/confirm_email+"+";<p>此为自动发送邮件，请勿直接回复！</p>";
+	                + "请点击下面的链接即可完成激活。\n"
+	                + "http://localhost:8080/class_project/confirm_email\n"
+	                + "如果链接无法点击，请将它拷贝到浏览器的地址栏中"
+	                + "http://localhost:8080/class_project/confirm_email\n此为自动发送邮件，请勿直接回复";
 			mdp.setText(mailContent);
 			//将含有信件内容的BodyPart加入到MimeMultipart对象中
 			mtp.addBodyPart(mdp);
-                            
+			
 			//把mtp作为消息对象的内容
 			msg.setContent(mtp);
                             
@@ -114,6 +120,20 @@ public class SignupUser implements ServletRequestAware {
 			trans.close();
 		}catch(Exception e){
 			e.getStackTrace();
+		}
+	}
+	public void validateUniqueName(){
+		UserSignupDao userDao = new UserSignupDao();
+		int ifExist = userDao.ifExistUser(request.getParameter("name"));
+		try{
+			PrintWriter out = response.getWriter();
+			if(ifExist>=1 ){
+				out.print("exist");
+			}else{
+				out.print("notExit");
+			}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
 }
