@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>Home Page</h1>
+<h1>Something may be wrong</h1>
 </body>
 </html>

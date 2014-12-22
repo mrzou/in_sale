@@ -10,6 +10,7 @@
 		<property name="name"/>
 		<property name="email"/>
 		<property name="password"/>
+		<property name="validateCode"/>
 		<property name="validate" not-null="true"/>
 	</class>
 </hibernate-mapping>

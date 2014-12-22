@@ -61,24 +61,13 @@ public class SignupUser implements ServletRequestAware {
 			//创建一个程序与邮件服务器的通信
 			Session mailConnection=Session.getInstance(props,null);
 			Message msg=new MimeMessage(mailConnection);
-                            
-			//创建一个要输入用户名和指令的
-			//Session mailConnection=Session.getInstance(props,new MailAuthenticator());
-                            
-                            
+           
+			//加密生成一个验证码
+			String validateCode = user.getValidateCode();
 			//设置发送人和接受人
 			Address sender=new InternetAddress("15018633076@163.com");
 			Address receiver=new InternetAddress(user.getEmail());
                             
-			/*
-			 * 群发邮件的方法
-			 * StringBuffer buffer=new StringBuffer();
-			 * buffer.append("11@163.com,")
-			 * buffer.append("22@163.com")
-			 * String all=buffer.toString();
-			 * Address[] allre=InternetAddress.parse(all);
-			 * msg.setRecipient(Message.RecipientType.TO, allre);
-			 */
 			msg.setFrom(sender);
 			msg.setRecipient(Message.RecipientType.TO, receiver);
 			msg.setSubject("欢迎注册zou_blog");
@@ -98,7 +87,7 @@ public class SignupUser implements ServletRequestAware {
 	                + ",您好！感谢您注册zou_blog,请确认您的邮箱帐号为"
 	                + user.getEmail()
 	                + "请点击下面的链接即可完成激活。\n"
-	                + "http://localhost:8080/class_project/confirm_email\n"
+	                + "http://localhost:8080/class_project/confirm_email?id="+user.getId()+"&action="+validateCode+"\n"
 	                + "如果链接无法点击，请将它拷贝到浏览器的地址栏中"
 	                + "http://localhost:8080/class_project/confirm_email\n此为自动发送邮件，请勿直接回复";
 			mdp.setText(mailContent);
@@ -124,7 +113,7 @@ public class SignupUser implements ServletRequestAware {
 	}
 	public void validateUniqueName(){
 		UserSignupDao userDao = new UserSignupDao();
-		int ifExist = userDao.ifExistUser(request.getParameter("name"));
+		int ifExist = userDao.ifExistUser("name", request.getParameter("name"));
 		try{
 			PrintWriter out = response.getWriter();
 			if(ifExist>=1 ){
@@ -134,6 +123,19 @@ public class SignupUser implements ServletRequestAware {
 			}
 		}catch(Exception e){
 			e.printStackTrace();
+		}
+	}
+	
+	public String confirmEmail(){
+		String validateEmail = request.getParameter("action");
+		UserSignupDao userDao = new UserSignupDao();
+		int ifExist = userDao.ifExistUser("validateCode", validateEmail);
+		System.out.println(validateEmail);
+		if(ifExist<=0){
+			return "error";
+		}else{
+			UserSignupDao.updateUserSignup(Integer.parseInt(request.getParameter("id")));
+			return "home";
 		}
 	}
 }

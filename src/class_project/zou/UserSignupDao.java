@@ -20,14 +20,25 @@ public class UserSignupDao {
 		}
 		return i; 
 	}
-	public int ifExistUser(String userName){
+	public int ifExistUser(String column, String userName){
 		Query exitUser;
 		Session session = GetDelSession.getThreadLocalSession();
-		String queryString = "FROM User user where user.name=?";
+		String queryString = "FROM User user where user."+column+"=?";
 		exitUser = session.createQuery(queryString);
 		@SuppressWarnings("unchecked")
 		List<User> user = exitUser.setParameter(0, userName).list();
-		System.out.println(user.size());
 		return user.size();
+	}
+	public static void updateUserSignup(int id){
+		try{
+			Session session = GetDelSession.getThreadLocalSession();
+			Transaction transaction = session.beginTransaction();
+			User user = (User) session.get(User.class, id);
+			user.setValidate(1);
+			session.save(user);
+			transaction.commit();
+		}finally{
+			GetDelSession.closeSession();
+		}
 	}
 }
