@@ -25,6 +25,7 @@ public class UserSignupDao {
 		Session session = GetDelSession.getThreadLocalSession();
 		String queryString = "FROM User user where user."+column+"=?";
 		exitUser = session.createQuery(queryString);
+		System.out.println("hello");
 		@SuppressWarnings("unchecked")
 		List<User> user = exitUser.setParameter(0, userName).list();
 		return user.size();
@@ -33,12 +34,23 @@ public class UserSignupDao {
 		try{
 			Session session = GetDelSession.getThreadLocalSession();
 			Transaction transaction = session.beginTransaction();
-			User user = (User) session.get(User.class, id);
+			NewUser user = (NewUser) session.get(NewUser.class, id);
 			user.setValidate(1);
-			session.save(user);
+			session.update(user);
 			transaction.commit();
 		}finally{
 			GetDelSession.closeSession();
 		}
+	}
+	public static NewUser checkLoginUser(String userEmail){
+		Query exitUser;
+		NewUser backUser;
+		Session session = GetDelSession.getThreadLocalSession();
+		String queryString = "FROM NewUser user where user.email=?";
+		exitUser = session.createQuery(queryString);
+		@SuppressWarnings("unchecked")
+		List<NewUser> allUser = exitUser.setParameter(0, userEmail).list();
+		backUser = allUser.get(0);
+		return backUser;
 	}
 }

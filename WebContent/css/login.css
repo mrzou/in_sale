@@ -47,7 +47,7 @@ input[type="submit"],input[type="reset"], input[type="button"]{
 td {
 	text-align: right;
 	color: black;
-	height: 60px;
+	height: 55px;
 }
 
 td[colspan="2"] {

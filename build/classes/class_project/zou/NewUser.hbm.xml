@@ -2,8 +2,8 @@
 <!DOCTYPE hibernate-mapping PUBLIC
       "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
       "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
-<hibernate-mapping package="class_project.zou" >
-	<class name="User" table="user"  dynamic-update="true">
+<hibernate-mapping package="class_project.zou">
+	<class name="NewUser" table="user">
 		<id name="id">
 			<generator class="native"/>
 		</id>
@@ -12,6 +12,5 @@
 		<property name="password"/>
 		<property name="validateCode"/>
 		<property name="validate" not-null="true"/>
-		<property name="recordTime" type="java.sql.Date"/>
 	</class>
 </hibernate-mapping>

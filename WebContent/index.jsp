@@ -5,10 +5,11 @@
 <head>
 <link rel="stylesheet" type="text/css" href="css/signup.css">
 <script type="text/javascript" src="js/lib/jquery-1.11.1.js"></script>
-<script type="text/javascript" src="js/validate_login.js"></script>
+<script type="text/javascript" src="js/signup_validate.js"></script>
 <title>注册信息</title>
 </head>
 <body>
+	<div id="error"></div>
 	<div>
 	<form action="signupUser" method="post" name="logupForm" >
 		<fieldset>
@@ -18,7 +19,7 @@
 				<td>*用户名:</td>
 				<td><input type="text" name="user.name" class="validate" /></td>
 				<td><div class="inputWrong"></div></td>
-				<td class="alert"><span class="validate" id="nameSpan">名字不能为空</span></td>
+				<td class="alert"><span class="validate" id="nameSpan">名字要大于五个字符</span></td>
 			</tr>
 			<tr>
 				<td>*邮箱:</td>

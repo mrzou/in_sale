@@ -17,5 +17,12 @@
 				<result name="home">/jsp/home.jsp</result>
 				<result name="error">/jsp/error.jsp</result>
 			</action>
+			<action name="loginUser" class="class_project.zou.servlet.LoginUser" method="loginUser">
+				<result name="successLogin">/jsp/successLogin.jsp</result>
+				<result name="failLogin">/jsp/failLogin.jsp</result>
+				<result name="mailNotConfirm">/jsp/notConfirm.jsp</result>
+			</action>
+			<action name="checkValidateEmail" class="class_project.zou.servlet.LoginUser" method="checkValidateEmail">
+			</action>
 		</package>
 	</struts>

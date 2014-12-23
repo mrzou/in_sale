@@ -1,6 +1,8 @@
 package class_project.zou.servlet;
 
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -25,7 +27,7 @@ import class_project.zou.UserSignupDao;
 public class SignupUser implements ServletRequestAware {
 	private User user;
 	private HttpServletResponse response;
-	HttpServletRequest request;
+	private HttpServletRequest request;
 	
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
@@ -63,14 +65,14 @@ public class SignupUser implements ServletRequestAware {
 			Message msg=new MimeMessage(mailConnection);
            
 			//加密生成一个验证码
-			String validateCode = user.getValidateCode();
+			String validateCode = user.validateCode.replace("+", "%2B");
 			//设置发送人和接受人
 			Address sender=new InternetAddress("15018633076@163.com");
 			Address receiver=new InternetAddress(user.getEmail());
                             
 			msg.setFrom(sender);
 			msg.setRecipient(Message.RecipientType.TO, receiver);
-			msg.setSubject("欢迎注册zou_blog");
+			msg.setSubject("欢迎注册zz_blog");
                             
 			//msg.setContent("Hello", "text/plain");
                             
@@ -89,7 +91,7 @@ public class SignupUser implements ServletRequestAware {
 	                + "请点击下面的链接即可完成激活。\n"
 	                + "http://localhost:8080/class_project/confirm_email?id="+user.getId()+"&action="+validateCode+"\n"
 	                + "如果链接无法点击，请将它拷贝到浏览器的地址栏中"
-	                + "http://localhost:8080/class_project/confirm_email\n此为自动发送邮件，请勿直接回复";
+	                + "http://localhost:8080/class_project/confirm_email?id="+user.getId()+"&action="+validateCode+"\n\n此为自动发送邮件，请勿直接回复";
 			mdp.setText(mailContent);
 			//将含有信件内容的BodyPart加入到MimeMultipart对象中
 			mtp.addBodyPart(mdp);
@@ -111,26 +113,28 @@ public class SignupUser implements ServletRequestAware {
 			e.getStackTrace();
 		}
 	}
+	/*检查名字和邮箱的唯一性*/
 	public void validateUniqueName(){
 		UserSignupDao userDao = new UserSignupDao();
-		int ifExist = userDao.ifExistUser("name", request.getParameter("name"));
+		int ifExist = userDao.ifExistUser(request.getParameter("type"), request.getParameter("name"));
 		try{
 			PrintWriter out = response.getWriter();
 			if(ifExist>=1 ){
+				System.out.println("exist");
 				out.print("exist");
 			}else{
+				System.out.println("notexist");
 				out.print("notExit");
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-	
+	/*确认用户注册的邮箱*/
 	public String confirmEmail(){
 		String validateEmail = request.getParameter("action");
 		UserSignupDao userDao = new UserSignupDao();
 		int ifExist = userDao.ifExistUser("validateCode", validateEmail);
-		System.out.println(validateEmail);
 		if(ifExist<=0){
 			return "error";
 		}else{

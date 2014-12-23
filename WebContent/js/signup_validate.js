@@ -14,18 +14,10 @@ $(document).ready(function(){
 	/*验证名字的唯一性*/
 	$("input[name='user.name']").blur(function(){
 		var userName = this.value;
-		if(userName.length<=0){
+		if(userName.length<=4){
 			inputIfRight(this, "wrong");
 		}else{
-			var uniqueName = $.ajax({
-				url: "/class_project/validateUniqueName?name="+userName,
-				async: false,
-	        });
-			if(uniqueName.responseText=="exist"){
-				inputIfRight(this, "wrong", "名字已经存在")
-			}else{
-				inputIfRight(this, "right")
-			}
+			validateNameAndEmail(this, "name", "名字");
 		}
 	});
 	/*验证邮箱不能为空*/
@@ -36,19 +28,19 @@ $(document).ready(function(){
 			dealEmailInput(this, event);
 		}
 	});
+	/*验证密码长度*/
+	$("input[name='user.password']").blur(function(){
+		if(this.value.length<6){
+			inputIfRight(this, "wrong", "密码长度要大于6");
+		}else{
+			inputIfRight(this, "right");
+		}
+	});
 	/*验证密码是否相同的标签*/
 	$("input[name='password_confirm']").blur(function(){
 		var password = $("input[name='user.password']").val();
 		if(password != this.value ){
 			inputIfRight(this, "wrong", "确认密码不一样");
-		}else{
-			inputIfRight(this, "right");
-		}
-	});
-	/*验证密码长度*/
-	$("input[name='user.password']").blur(function(){
-		if(this.value.length<6){
-			inputIfRight(this, "wrong", "密码长度要大于6");
 		}else{
 			inputIfRight(this, "right");
 		}
@@ -88,6 +80,21 @@ $(document).ready(function(){
 		});
 	});
 });
+/*检验名字和邮箱的唯一性*/
+function validateNameAndEmail(inputSelf, type, other){
+	var uniqueName = $.ajax({
+		url: "/class_project/validateUniqueName?name="+inputSelf.value+"&type="+type,
+		async: false,
+		error: function(msg){
+			$("div#error").html(msg.responseText);
+		}
+    });
+	if(uniqueName.responseText=="exist"){
+		inputIfRight(inputSelf, "wrong", other+"已经存在")
+	}else{
+		inputIfRight(inputSelf, "right")
+	}
+}
 /*验证码的检查*/
 function getValidateCodeTo(inputSelf){
 	var validateCode = $("#validateCode").html();
@@ -132,7 +139,7 @@ function dealEmailInput(inputSelf, event){
 	var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 	var isEmail = pattern.test(inputSelf.value);
 	if(isEmail){
-		inputIfRight(inputSelf, "right");
+		validateNameAndEmail(inputSelf, "email", "邮箱");
 	}else{
 		inputIfRight(inputSelf, "wrong", "邮箱格式不正确");
 		event.preventDefault();

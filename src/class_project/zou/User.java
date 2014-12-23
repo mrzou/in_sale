@@ -2,7 +2,7 @@ package class_project.zou;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import java.sql.Date;
 import sun.misc.BASE64Encoder;
 
 public class User {
@@ -10,15 +10,26 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
-	private String validateCode;
+	private Date recordTime;
+	private int validate=0;
+	public String validateCode;
+	
+	public Date getRecordTime() {
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+		return sqlDate;
+	}
+	public void setRecordTime(Date recordTime) {
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+		this.recordTime = sqlDate;
+	}
 	public String getValidateCode() {
-		return makeTrueCode();
+		return md5SetPassword(String.valueOf(Math.random()));
 	}
 	public void setValidateCode(String validateCode) {
 		this.validateCode = validateCode;
 	}
-	private int validate=0;
-	
 	public String getEmail() {
 		return email;
 	}
@@ -61,12 +72,6 @@ public class User {
 		}catch(NoSuchAlgorithmException e){
 			return null;
 		}
-	}
-	private String makeTrueCode() {
-		// TODO Auto-generated method stub
-		String oldCode = md5SetPassword(this.name);
-		String newCode = oldCode.replace("%2B", "++");
-		return newCode;
 	}
 	public static void updateValidate(String userId) {
 		// TODO Auto-generated method stub
