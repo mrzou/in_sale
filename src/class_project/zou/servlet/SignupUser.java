@@ -134,8 +134,7 @@ public class SignupUser implements ServletRequestAware {
 	public String confirmEmail(){
 		String validateEmail = request.getParameter("action");
 		UserSignupDao userDao = new UserSignupDao();
-		int ifExist = userDao.ifExistUser("validateCode", validateEmail);
-		if(ifExist<=0){
+		int ifExist = userDao.ifExistUser("validateCode", validateEmail); if(ifExist<=0){
 			System.out.println("notExist");
 			return "error";
 		}else{
