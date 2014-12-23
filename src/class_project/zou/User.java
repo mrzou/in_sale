@@ -25,7 +25,7 @@ public class User {
 		this.recordTime = sqlDate;
 	}
 	public String getValidateCode() {
-		return md5SetPassword(String.valueOf(Math.random()));
+		return validateCode==null? md5SetPassword(String.valueOf(Math.random())):validateCode;
 	}
 	public void setValidateCode(String validateCode) {
 		this.validateCode = validateCode;

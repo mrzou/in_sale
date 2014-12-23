@@ -25,7 +25,7 @@ public class UserSignupDao {
 		Session session = GetDelSession.getThreadLocalSession();
 		String queryString = "FROM User user where user."+column+"=?";
 		exitUser = session.createQuery(queryString);
-		System.out.println("hello");
+		System.out.println(userName);
 		@SuppressWarnings("unchecked")
 		List<User> user = exitUser.setParameter(0, userName).list();
 		return user.size();
