@@ -11,14 +11,14 @@
 			<action name="validateUniqueName" class="class_project.zou.servlet.SignupUser" method="validateUniqueName">
 			</action>
 			<action name="signupUser" class="class_project.zou.servlet.SignupUser">
-				<result name="home">/jsp/home.jsp</result>
+				<result name="home">/index.jsp</result>
 			</action>
 			<action name="confirm_email" class="class_project.zou.servlet.SignupUser" method="confirmEmail">
-				<result name="home">/jsp/home.jsp</result>
+				<result name="home">/index.jsp</result>
 				<result name="error">/jsp/error.jsp</result>
 			</action>
 			<action name="loginUser" class="class_project.zou.servlet.LoginUser" method="loginUser">
-				<result name="successLogin">/jsp/successLogin.jsp</result>
+				<result name="successLogin">/index.jsp</result>
 				<result name="failLogin">/jsp/failLogin.jsp</result>
 				<result name="mailNotConfirm">/jsp/notConfirm.jsp</result>
 			</action>
