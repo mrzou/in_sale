@@ -3,6 +3,7 @@ package class_project.zou.javabean;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+
 import sun.misc.BASE64Encoder;
 
 public class User {
@@ -25,7 +26,8 @@ public class User {
 		this.recordTime = sqlDate;
 	}
 	public String getValidateCode() {
-		return md5SetPassword(String.valueOf(Math.random()));
+		System.out.println(validateCode+"hellolllllllll");
+		return this.validateCode==null? md5SetPassword(String.valueOf(Math.random())):this.validateCode;
 	}
 	public void setValidateCode(String validateCode) {
 		this.validateCode = validateCode;

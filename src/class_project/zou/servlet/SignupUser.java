@@ -65,7 +65,7 @@ public class SignupUser implements ServletRequestAware {
 			Message msg=new MimeMessage(mailConnection);
            
 			//加密生成一个验证码
-			String validateCode = user.validateCode.replace("+", "%2B");
+			String validateCode = user.getValidateCode().replace("+", "%2B");
 			//设置发送人和接受人
 			Address sender=new InternetAddress("15018633076@163.com");
 			Address receiver=new InternetAddress(user.getEmail());
@@ -134,10 +134,11 @@ public class SignupUser implements ServletRequestAware {
 	public String confirmEmail(){
 		String validateEmail = request.getParameter("action");
 		UserSignupDao userDao = new UserSignupDao();
-		int ifExist = userDao.ifExistUser("validateCode", validateEmail);
-		if(ifExist<=0){
+		int ifExist = userDao.ifExistUser("validateCode", validateEmail); if(ifExist<=0){
+			System.out.println("notExist");
 			return "error";
 		}else{
+			System.out.println("Exist");
 			UserSignupDao.updateUserSignup(Integer.parseInt(request.getParameter("id")));
 			return "home";
 		}
