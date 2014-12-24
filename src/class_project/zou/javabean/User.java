@@ -1,4 +1,4 @@
-package class_project.zou;
+package class_project.zou.javabean;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

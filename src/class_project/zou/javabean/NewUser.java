@@ -1,4 +1,4 @@
-package class_project.zou;
+package class_project.zou.javabean;
 
 public class NewUser {
 	private int id;

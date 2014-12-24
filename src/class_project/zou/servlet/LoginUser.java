@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-import class_project.zou.NewUser;
-import class_project.zou.User;
-import class_project.zou.UserSignupDao;
+import class_project.zou.javabean.NewUser;
+import class_project.zou.javabean.User;
+import class_project.zou.dao.UserSignupDao;
 public class LoginUser implements ServletRequestAware{
 	private User user;
 	public User getUser() {

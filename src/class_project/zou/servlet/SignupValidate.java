@@ -18,9 +18,6 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-import class_project.zou.User;
-import class_project.zou.UserSignupDao;
-
 public class SignupValidate implements ServletRequestAware{
 	private HttpServletRequest request;
 	private HttpSession session;

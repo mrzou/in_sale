@@ -1,4 +1,4 @@
-package class_project.zou;
+package class_project.zou.dao;
 
 import java.util.List;
 
@@ -6,6 +6,10 @@ import org.apache.struts2.ServletActionContext;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import class_project.zou.javabean.GetDelSession;
+import class_project.zou.javabean.NewUser;
+import class_project.zou.javabean.User;
 
 public class UserSignupDao {
 	public int signupUser(User user){
