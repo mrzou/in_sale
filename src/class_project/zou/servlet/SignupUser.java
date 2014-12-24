@@ -45,8 +45,8 @@ public class SignupUser implements ServletRequestAware {
 	public String execute() {
 		int userId;
 		UserSignupDao userDao = new UserSignupDao();
-		userId = userDao.signupUser(user);
-		sendEmailToConfirm(user);
+		userId = userDao.signupUser(getUser());
+		sendEmailToConfirm(getUser());
 		return "home";
 	}
 
@@ -135,10 +135,8 @@ public class SignupUser implements ServletRequestAware {
 		String validateEmail = request.getParameter("action");
 		UserSignupDao userDao = new UserSignupDao();
 		int ifExist = userDao.ifExistUser("validateCode", validateEmail); if(ifExist<=0){
-			System.out.println("notExist");
 			return "error";
 		}else{
-			System.out.println("Exist");
 			UserSignupDao.updateUserSignup(Integer.parseInt(request.getParameter("id")));
 			return "home";
 		}

@@ -80,6 +80,7 @@ $(document).ready(function(){
 		});
 	});
 });
+
 /*检验名字和邮箱的唯一性*/
 function validateNameAndEmail(inputSelf, type, other){
 	var uniqueName = $.ajax({
