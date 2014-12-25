@@ -168,3 +168,16 @@ label {
 	background: #f96;
 	color: #fff;
 }
+.sign-up-pross-dir {
+	background: #ddd;
+	position: absolute;
+	top: -17px;
+	right: -19px;
+}
+.signup-message{
+	width: 20px;
+	height: 30px;
+	font-size: 20px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 60px;
+}

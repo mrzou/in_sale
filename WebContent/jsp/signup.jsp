@@ -80,42 +80,51 @@
           	<div class="sign-up-pross"><span class="index">3</span>注册成功</div>
         	</div>
 			<form class="form-horizontal signup-place" role="form">
-				<div style="font-size: 20px;border-bottom: 1px solid #ddd; margin-bottom: 60px;">注册账号</div>
+				<div><span class="signup-message">注册账号</span></div>
 				<div class="form-group">
-					 <label for="user.name" class="col-sm-5 control-label">用户名</label>
+					<label for="user.name" class="col-sm-5 control-label">用户名</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" name="user.name" id="user.name" />
 					</div>
 				</div>
 				<div class="form-group">
-					 <label for="user.email" class="col-sm-5 control-label">邮箱</label>
+					<label for="user.email" class="col-sm-5 control-label">邮箱</label>
 					<div class="col-sm-4">
 						<input type="email" class="form-control" name="user.email" id="user.email" />
 					</div>
 				</div>
 				<div class="form-group">
-					 <label for="user.password" class="col-sm-5 control-label">密码</label>
+					<label for="user.password" class="col-sm-5 control-label">密码</label>
 					<div class="col-sm-4">
 						<input type="password" class="form-control" name="user.password" id="user.password" />
 					</div>
 				</div>
 				<div class="form-group">
-					 <label for="password-confirm" class="col-sm-5 control-label">确认密码</label>
+					<label for="password-confirm" class="col-sm-5 control-label">确认密码</label>
 					<div class="col-sm-4">
 						<input type="password" class="form-control" id="password-confirm" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-7 form-group">
-						 <label for="password-confirm" class="col-sm-9 control-label">验证码</label>
+						<label for="password-confirm" class="col-sm-9 control-label">验证码</label>
 						<div class="col-sm-3">
-							<input type="password" class="form-control" id="password-confirm" />
+							<input type="text" class="form-control" id="password-confirm" />
 						</div>
 					</div>
 					<div class="col-md-5">
 						<a href=""><img border=0 src="signupValidate" name="checkCodeImage" id="checkCode" /></a>
 					</div>
 				</div>
+				<div class="form-group">
+			      <div class="col-sm-offset-4 col-sm-11">
+			         <div class="checkbox">
+			            <label>
+			               <input type="checkbox"> 请记住我
+			            </label>
+			         </div>
+			      </div>
+   			    </div>
 				<div class="form-group">
 					<div class="col-sm-offset-5 col-sm-10">
 						 <button type="button" class="btn btn-primary btn-lg next-step">下一步</button>
