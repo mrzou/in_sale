@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="icon" href="。。/images/favicon.jpg">
+<link rel="icon" href="images/favicon.jpg">
 <link rel="stylesheet" type="text/css" href="css/home.css">
 <link rel="stylesheet" type="text/css" href="css/lib/bootstrap.min.css">
 <script type="text/javascript" src="js/lib/jquery-1.11.1.js"></script>
@@ -26,7 +26,6 @@
       </div>
     </div>
     <div class="container">
-
       <div class="blog-header">
         <h1 class="blog-title">The Bootstrap Blog</h1>
         <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
@@ -34,7 +33,7 @@
 
       <div class="row">
 
-        <div class="col-sm-8 blog-main">
+        <div class="col-md-8 blog-main">
 
           <div class="blog-post">
             <h2 class="blog-post-title">Sample blog post</h2>
@@ -71,7 +70,7 @@
 
         </div><!-- /.blog-main -->
 
-        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <div class="col-md-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
             <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>

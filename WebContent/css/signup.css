@@ -77,6 +77,9 @@ img.checkPic{
 	height: 17px;
 	/* display: none; */
 }
+label {
+	font-size: 16px;
+}
 
 .inputRight{
 	width: 16px;
@@ -129,4 +132,39 @@ img.checkPic{
 	border-right: 5px solid transparent;
 	border-bottom: 5px solid;
 	border-left: 5px solid transparent;
+}
+.signup-otherplace {
+	background-color: #f8f8f8;
+}
+.signup-place{
+	margin-top: 40px;
+	background-color: #fefefe;
+	height: 500px;
+	width: 900px;
+	border: 1px solid #ddd;
+	padding: 16px 7px 59px 16px;
+}
+.next-step{
+	width: 250px;
+	height: 38px;
+	font-size: 20px;
+}
+.sign-process {
+	margin-top: 40px
+}
+.sign-up-pross {
+	position: relative;
+	background: #ddd;
+	float: left;
+	width: 300px;
+	height: 35px;
+	line-height: 35px;
+	color: #666;
+	font-size: 15px;
+	padding-left: 10px;
+	overflow: hidden;
+}
+.sign-up-ok {
+	background: #f96;
+	color: #fff;
 }

@@ -3,6 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="icon" href="../images/favicon.jpg">
 <link rel="stylesheet" type="text/css" href="../css/signup.css">
 <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap.min.css">
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
@@ -10,7 +11,7 @@
 <script type="text/javascript" src="../js/signup_validate.js"></script>
 <title>注册信息</title>
 </head>
-<body>
+<body class="signup-otherplace">
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
@@ -24,7 +25,7 @@
     </div>
 
 	<div id="error"></div>
-	<div>
+	<!-- <div>
 	<form action="signupUser" method="post" name="logupForm" >
 		<fieldset>
 			<legend align="center"><span>注册</span></legend>
@@ -68,6 +69,61 @@
 			</table>
         </fieldset>
 	</form>
-    </div>
+    </div> -->
+    <div class="container signup-location">
+	<div class="row clearfix">
+		<div class="col-md-12 column col-sm-offset-1">
+			<div class="sign-process register-progress clearfix hidden-xs hidden-sm">
+			<div class="sign-up-pross sign-up-ok"><span class="index">1</span>填写注册信息
+            <div class="sign-up-pross-dir"><span class="outside"></span><span class="inside"></span></div></div>
+          	<div class="sign-up-pross"><span class="index">2</span>邮箱激活<div class="pross-dir"><span class="outside"></span><span class="inside"></span></div></div>
+          	<div class="sign-up-pross"><span class="index">3</span>注册成功</div>
+        	</div>
+			<form class="form-horizontal signup-place" role="form">
+				<div style="font-size: 20px;border-bottom: 1px solid #ddd; margin-bottom: 60px;">注册账号</div>
+				<div class="form-group">
+					 <label for="user.name" class="col-sm-5 control-label">用户名</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" name="user.name" id="user.name" />
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="user.email" class="col-sm-5 control-label">邮箱</label>
+					<div class="col-sm-4">
+						<input type="email" class="form-control" name="user.email" id="user.email" />
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="user.password" class="col-sm-5 control-label">密码</label>
+					<div class="col-sm-4">
+						<input type="password" class="form-control" name="user.password" id="user.password" />
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="password-confirm" class="col-sm-5 control-label">确认密码</label>
+					<div class="col-sm-4">
+						<input type="password" class="form-control" id="password-confirm" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-7 form-group">
+						 <label for="password-confirm" class="col-sm-9 control-label">验证码</label>
+						<div class="col-sm-3">
+							<input type="password" class="form-control" id="password-confirm" />
+						</div>
+					</div>
+					<div class="col-md-5">
+						<a href=""><img border=0 src="signupValidate" name="checkCodeImage" id="checkCode" /></a>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-5 col-sm-10">
+						 <button type="button" class="btn btn-primary btn-lg next-step">下一步</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
 </body>
 </html>
