@@ -74,13 +74,23 @@
 	<div class="row clearfix">
 		<div class="col-md-12 column col-sm-offset-1">
 			<div class="sign-process register-progress clearfix hidden-xs hidden-sm">
-			<div class="sign-up-pross sign-up-ok"><span class="index">1</span>填写注册信息
-            <div class="sign-up-pross-dir"><span class="outside"></span><span class="inside"></span></div></div>
-          	<div class="sign-up-pross"><span class="index">2</span>邮箱激活<div class="pross-dir"><span class="outside"></span><span class="inside"></span></div></div>
-          	<div class="sign-up-pross"><span class="index">3</span>注册成功</div>
-        	</div>
-			<form class="form-horizontal signup-place" role="form">
-				<div><span class="signup-message">注册账号</span></div>
+				<div class="sign-up-pross sign-up-ok"><span class="index">1</span>填写注册信息
+		            <div class="signup-pross-dir">
+			            <span class="outside"></span>
+			            <span class="inside"></span>
+			        </div>
+			    </div>
+	          	<div class="sign-up-pross"><span class="index">2</span>邮箱激活
+		          	<div class="signup-pross-dir">
+		          		<span class="outside"></span>
+		          		<span class="inside"></span>
+		          	</div>
+	          	</div>
+	          	<div class="sign-up-pross"><span class="index">3</span>注册成功</div>
+	        </div>
+	        <div class="signup-place">
+			<h4><span class="icon"></span>注册帐号</h4>
+			<form class="form-horizontal" role="form">
 				<div class="form-group">
 					<label for="user.name" class="col-sm-5 control-label">用户名</label>
 					<div class="col-sm-4">
@@ -131,6 +141,7 @@
 					</div>
 				</div>
 			</form>
+			</div>
 		</div>
 	</div>
 </div>

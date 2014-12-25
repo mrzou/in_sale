@@ -168,16 +168,46 @@ label {
 	background: #f96;
 	color: #fff;
 }
-.sign-up-pross-dir {
-	background: #ddd;
-	position: absolute;
-	top: -17px;
-	right: -19px;
-}
+
 .signup-message{
 	width: 20px;
 	height: 30px;
 	font-size: 20px;
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 60px;
+}
+.icon {
+	display: inline-block;
+	background: url("../images/019.png") no-repeat;
+	margin-right: 5px;
+	width: 16px;
+	height: 25px;
+	vertical-align: middle;
+}
+.sign-up-pross .index {
+	background: #999;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+	color: #fff;
+	text-align: center;
+	margin-right: 10px;
+}
+.signup-pross-dir{
+	background: #ddd;
+	position: absolute;
+	top: -17px;
+	right: -19px;
+}
+.signup-pross-dir .outside, .signup-pross-dir .inside{
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 35px 19px;
+}
 }
