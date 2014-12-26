@@ -1,6 +1,5 @@
 $(document).ready(function(){
 	clickValidateCode();
-	$("div.inputWrong").hide();
 	$("img#checkCode").click(function(event){
 		$(this).attr("src","/class_project/signupValidate?t=" + +Math.random());
 		/*event.stopPropagation();*/
@@ -15,7 +14,7 @@ $(document).ready(function(){
 	$("input[name='user.name']").blur(function(){
 		var userName = this.value;
 		if(userName.length<=4){
-			inputIfRight(this, "wrong");
+			inputIfRight(this, "wrong", "用户名要长于5个字符");
 		}else{
 			validateNameAndEmail(this, "name", "名字");
 		}
@@ -46,16 +45,20 @@ $(document).ready(function(){
 		}
 	});
 	/*获取后台的验证码到前台*/
-	$("input[name='check_code']").blur(function(){
-		getValidateCodeTo(this);
+	$("input[name='validateCode']").blur(function(){
+		if(this.value.length==""){
+			$(this).parent().siblings().last().show();
+		}else{
+			getValidateCodeTo(this);
+		}
 	});
 	/*重置全部隐藏提示*/
 	$("input[type='reset']").click(function(){
 		$("span.validate, div.inputWrong, div.inputRight").hide();
 	});
 	/*提交时的验证form标签的内容*/
-	$("input[type='submit']").click(function(event){
-		$("input.validate").each(function(index, element){
+	$(".next-step").click(function(event){
+		$(".form-group .form-control").each(function(index, element){
 			var data = $(this).val();
 			if(data.length<=0){
 				inputIfRight(this, "wrong");
@@ -68,7 +71,6 @@ $(document).ready(function(){
 				}else{
 					dealOtherInput(data, this, event);
 					if($("input[name='check_code']").val().length<=0){
-						console.log("hello");
 						$(this).parent().siblings().eq(2).children().removeClass("inputRight").addClass("inputWrong").show();
 						$("#Validatespan").show();
 						event.preventDefault();
@@ -100,28 +102,33 @@ function validateNameAndEmail(inputSelf, type, other){
 function getValidateCodeTo(inputSelf){
 	var validateCode = $("#validateCode").html();
 	if(inputSelf.value != validateCode){
-		$(inputSelf).parent().siblings().eq(2).children().show();
-		$("#Validatespan").show().html("验证码不正确");
-		$("input[type='submit']").attr("disabled","disable");
+		validateCodeFail(inputSelf)
 		/*监听再次的输入*/
 		inputValidateEvent(inputSelf)
 	}else{
-		$("#Validatespan").hide();
-		$("input[type='submit']").removeAttr("disabled");
-		$(inputSelf).parent().siblings().eq(2).children().removeClass("inputWrong").addClass("inputRight").show();
+		validateCodeSuccess(inputSelf)
 	}
 }
-
+/*验证码监听事件的处理*/
+function validateCodeSuccess(inputSelf){
+	$(inputSelf).parent().siblings().eq(4).hide();
+	$(inputSelf).parent().siblings().eq(2).show();
+	$("button[type='submit']").removeAttr("disabled");
+}
+function validateCodeFail(inputSelf){
+	$(inputSelf).parent().siblings().eq(2).hide();
+	$(inputSelf).parent().siblings().eq(4).show();
+	$(inputSelf).parent().siblings().eq(4).children().last().html("验证码不正确");
+	$("button[type='submit']").attr("disabled","disable");
+}
 /*输入验证码时添加事件*/
 function inputValidateEvent(inputSelf){
 	$(inputSelf).bind('input propertychange', function() {
 		validateCode = $("#validateCode").html();
 		if(inputSelf.value==validateCode){
-			$("#Validatespan").hide();
-			$(inputSelf).parent().siblings().eq(2).children().removeClass("inputWrong").addClass("inputRight");
+			validateCodeSuccess(inputSelf);
 		}else{
-			$(inputSelf).parent().siblings().eq(2).children().show().removeClass("inputRight").addClass("inputWrong");
-			$("#Validatespan").show().html("验证码不正确");
+			validateCodeFail(inputSelf);
 		}
 	});
 }
@@ -160,15 +167,15 @@ message: 要显示的提示信息
 inputSelf: this
 type: 类型是显示错误还是正确*/
 function inputIfRight(inputSelf, type, message){
-	var alertPic = $(inputSelf).parent().next().children();
-	var alertSpan = $(inputSelf).parent().siblings().last().children();
+	var inputDiv = $(inputSelf).parent();
+	var alertSpan = inputDiv.siblings().last().children().last();
 	var newMessage = message == null? alertSpan.html():message;
 	if(type=="wrong"){
-		alertPic.removeClass("inputRight").addClass("inputWrong").show();
-		alertSpan.show().html(newMessage);
+		inputDiv.next().hide();
+		inputDiv.siblings().last().show();
+		alertSpan.html(message).show();
 	}else{
-		alertPic.show();
-		alertPic.removeClass("inputWrong").addClass("inputRight");
-		alertSpan.hide();
+		inputDiv.siblings().last().hide();
+		inputDiv.next().show();
 	}
 }

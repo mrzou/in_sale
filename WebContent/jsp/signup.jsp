@@ -23,54 +23,8 @@
         </nav>
       </div>
     </div>
-
 	<div id="error"></div>
-	<!-- <div>
-	<form action="signupUser" method="post" name="logupForm" >
-		<fieldset>
-			<legend align="center"><span>注册</span></legend>
-			<table>
-			<tr>
-				<td>*用户名:</td>
-				<td><input type="text" name="user.name" class="validate" /></td>
-				<td><div class="inputWrong"></div></td>
-				<td class="alert"><span class="validate" id="nameSpan">名字要大于五个字符</span></td>
-			</tr>
-			<tr>
-				<td>*邮箱:</td>
-				<td><input type="text" name="user.email" class="validate" /></td>
-				<td><div class="inputWrong"></div></td>
-				<td class="alert"><span class="validate" id="email">邮箱不能为空</span></td>
-			</tr>
-			<tr>
-				<td>*登陆密码:</td>
-				<td><input type="password" name="user.password" class="validate" placeholder="大于6位字符"/></td>
-				<td><div class="inputWrong" id="s"></div></td>
-				<td class="alert"><span class="validate" id="password">密码不能为空</span></td>
-			</tr>
-			<tr>
-				<td>确认密码:</td>
-				<td><input type="password" name="password_confirm" class="validate"/></td>
-				<td><div class="inputWrong"></div></td>
-				<td class="alert"><span class="validate" id="pass_confirm">确认密码不能为空</span></td>
-			</tr>
-			<tr>
-				<td>*验证码:</td>
-				<td><input type="text" name="check_code" class="validate" placeholder="输入验证码"/></td>
-				<td class="alert"><a href=""><img border=0 src="signupValidate" name="checkCodeImage" id="checkCode" /></a>
-				<td><div class="inputWrong"></div></td>
-				<td><span class="validate" id="Validatespan">验证码不能为空</span></td>
-				<td id="validateCode" style="display:none"></td>
-			</tr>
-			<tr><td colspan="2">
-				<input type="submit" value="注册"/>&nbsp;&nbsp; 
-				<input type="reset" value="重置"></td>
-			</tr>
-			</table>
-        </fieldset>
-	</form>
-    </div> -->
-    <div class="container signup-location">
+	<div class="container signup-location">
 	<div class="row clearfix">
 		<div class="col-md-12 column col-sm-offset-1">
 			<div class="sign-process register-progress clearfix hidden-xs hidden-sm">
@@ -90,54 +44,72 @@
 	        </div>
 	        <div class="signup-place">
 			<h4><span class="icon"></span>注册帐号</h4>
-			<form class="form-horizontal" role="form">
+			<form class="form-horizontal" role="form" action="/class_project/signupUser" method="post">
 				<div class="form-group">
-					<label for="user.name" class="col-sm-5 control-label">用户名</label>
+					<label for="user.name" class="col-sm-4 control-label">用户名</label>
 					<div class="col-sm-4">
-						<input type="text" class="form-control" name="user.name" id="user.name" />
+						<input type="text" class="form-control signup-form" name="user.name"/>
+					</div>
+					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
+					<div class="name-tool-tip-info col-sm-4">
+						<span class="icon-border"></span>
+						<span class="state"></span>
+						<span class="alert-name">用户名不能为空</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="user.email" class="col-sm-5 control-label">邮箱</label>
+					<label for="user.email" class="col-sm-4 control-label">邮箱</label>
 					<div class="col-sm-4">
-						<input type="email" class="form-control" name="user.email" id="user.email" />
+						<input type="email" class="form-control signup-form" name="user.email" />
+					</div>
+					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
+					<div class="name-tool-tip-info col-sm-4">
+						<span class="icon-border"></span>
+						<span class="state"></span>
+						<span class="alert-name">邮箱不能为空</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="user.password" class="col-sm-5 control-label">密码</label>
+					<label for="user.password" class="col-sm-4 control-label">密码</label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" name="user.password" id="user.password" />
+						<input type="password" class="form-control signup-form" name="user.password" />
+					</div>
+					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
+					<div class="name-tool-tip-info col-sm-4">
+						<span class="icon-border"></span>
+						<span class="state"></span>
+						<span class="alert-name">密码不能为空</span>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="password-confirm" class="col-sm-5 control-label">确认密码</label>
+					<label for="password-confirm" class="col-sm-4 control-label">确认密码</label>
 					<div class="col-sm-4">
-						<input type="password" class="form-control" id="password-confirm" />
+						<input type="password" class="form-control signup-form" name="password_confirm"/>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-7 form-group">
-						<label for="password-confirm" class="col-sm-9 control-label">验证码</label>
-						<div class="col-sm-3">
-							<input type="text" class="form-control" id="password-confirm" />
-						</div>
-					</div>
-					<div class="col-md-5">
-						<a href=""><img border=0 src="signupValidate" name="checkCodeImage" id="checkCode" /></a>
+					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
+					<div class="name-tool-tip-info col-sm-4">
+						<span class="icon-border"></span>
+						<span class="state"></span>
+						<span class="alert-name">确认密码不能为空</span>
 					</div>
 				</div>
 				<div class="form-group">
-			      <div class="col-sm-offset-4 col-sm-11">
-			         <div class="checkbox">
-			            <label>
-			               <input type="checkbox"> 请记住我
-			            </label>
-			         </div>
-			      </div>
-   			    </div>
+					<label for="password-confirm" class="col-sm-4 control-label">验证码</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control signup-form" name="validateCode"/>
+					</div>
+					<div class="col-sm-2"><a href=""><img border=0 src="signupValidate" name="checkCodeImage" id="checkCode" /></a></div>
+					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
+					<div class="col-sm-1" style="display: none" id="validateCode"></div>
+					<div class="name-tool-tip-info col-sm-4">
+						<span class="icon-border"></span>
+						<span class="state"></span>
+						<span class="alert-name">验证不能为空</span>
+					</div>
+				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-5 col-sm-10">
-						 <button type="button" class="btn btn-primary btn-lg next-step">下一步</button>
+					<div class="col-sm-offset-4 col-sm-10">
+						 <button type="submit" class="btn btn-primary btn-lg next-step">下一步</button>
 					</div>
 				</div>
 			</form>

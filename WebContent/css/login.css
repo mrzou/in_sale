@@ -3,90 +3,193 @@
     margin:1;
     padding:0;
 }
-
-fieldset {
-    background: white;
-    padding:10px;
-    margin:10px;
-    color:#0000FF;
-    border:#06c dashed 1px;
-    text-align: -webkit-center;
-    line-height: 200%;
-    position:relative;
-  	left:350px;
-  	top:100px;
-	width: 637px;
-	height: 280px;
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
 }
-
-legend {
-    color:#06c;
-    font-weight:600;
-    background:#fff;
-    border:#b6b6b6 solid 1px;
-    padding: 20px;
-    width:200px;
-    height:1px;
-}
-
-input {
-	width: 200px;
-	height: 20px;
-}
-
-/* input:focus{
-    border: thin blue solid;
-    padding: 1px;
-} */
-input[type="submit"],input[type="reset"], input[type="button"]{
-	width:49px;
-	height:27px;
-	font-size:15px;
-}
-
-td {
-	text-align: right;
-	color: black;
-	height: 55px;
-}
-
-td[colspan="2"] {
-	text-align: center;
-	
-}
-
-td.alert, td.alertPic {
-	text-align: left;
-	width
-}
-span.validate{
-	color:red;
-	display: none;
-}
-
-legend span{
-	position:relative;
-	top: -15px;
-}
-
 img.checkPic{
 	width: 17px;
 	height: 17px;
 	/* display: none; */
 }
-
-.inputRight{
-	width: 16px;
-	height: 16px;
-	background: url(../images/tick-circle.png) no-repeat;
-}
-
-.inputWrong{
-	width: 16px;
-	height: 16px;
-	background: url(../images/wrong.png) no-repeat;
-}
-
 .error {
 	border: thin red solid;
+}
+.blog-masthead {
+    background-color: #428bca;
+    -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+    box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+}
+
+/* Nav links */
+.blog-nav-item {
+	position: relative;
+	display: inline-block;
+	padding: 10px;
+	font-weight: 500;
+	color: #cdddeb;
+}
+.blog-nav-item:hover,
+.blog-nav-item:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Active state gets a caret at the bottom */
+.blog-nav .active {
+    color: #fff;
+}
+.blog-nav .active:after {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	margin-left: -5px;
+	vertical-align: middle;
+	content: " ";
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid;
+	border-left: 5px solid transparent;
+}
+.signup-otherplace {
+	background-color: #f8f8f8;
+}
+.signup-place{
+	margin-top: 40px;
+	background-color: #fefefe;
+	height: 500px;
+	width: 900px;
+	border: 1px solid #ddd;
+	padding: 16px 7px 59px 16px;
+}
+.next-step{
+	margin-top:40px;
+	width: 250px;
+	height: 38px;
+	font-size: 20px;
+}
+.sign-process {
+	margin-top: 40px
+}
+.sign-up-pross {
+	position: relative;
+	background: #ddd;
+	float: left;
+	width: 300px;
+	height: 35px;
+	line-height: 35px;
+	color: #666;
+	font-size: 15px;
+	padding-left: 10px;
+	overflow: hidden;
+}
+.sign-up-ok {
+	background: #f96;
+	color: #fff;
+}
+
+.signup-message{
+	width: 20px;
+	height: 30px;
+	font-size: 20px;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 60px;
+}
+.icon {
+	display: inline-block;
+	background: url("../images/signup_019.png") no-repeat;
+	margin-right: 5px;
+	width: 16px;
+	height: 25px;
+	vertical-align: middle;
+}
+.sign-up-pross .index {
+	background: #999;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	line-height: 18px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+	color: #fff;
+	text-align: center;
+	margin-right: 10px;
+}
+.signup-pross-dir{
+	background: #ddd;
+	position: absolute;
+	top: -17px;
+	right: -19px;
+}
+.signup-pross-dir .outside, .signup-pross-dir .inside{
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 35px 19px;
+}
+.sign-up-pross .signup-pross-dir .outside {
+  border-color: transparent transparent transparent #f8f8f8;
+}
+.sign-up-pross .signup-pross-dir .inside {
+  border-color: transparent transparent transparent #ddd;
+  margin-left: -46px;
+}
+.sign-up-ok .signup-pross-dir .outside {
+  border-color: transparent transparent transparent #f8f8f8;
+}
+.sign-up-ok .signup-pross-dir .inside {
+  border-color: transparent transparent transparent #f96;
+  margin-left: -46px;
+}
+.name-tool-tip-info {
+	display: none;
+	position: absolute;
+	max-width: 204px;
+	height: 32px;
+	_width: 204px;
+	background-color: #fff;
+	border: 2px solid #ddd;
+	/* padding: 8px; */
+	color: #666;
+}
+.name-tool-tip-info .icon-border {
+	position: absolute;
+	border-style: solid;
+	border-width: 8px;
+	height: 0;
+	width: 0;
+	top: 8px;
+}
+.name-tool-tip-info .icon-border {
+	border-color: transparent #ddd transparent transparent;
+	left: -17px;
+}
+.name-tool-tip-info .state{
+	background-image: url("../images/wrong.png");
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+	margin-left: -7px;
+	margin-top: 6px;
+}
+.name-tool-tip-info .alert-name {
+	margin-left:15px;
+	position: absolute;
+	top: 4px;
+	color: red;
+}
+.input-right {
+	display: none;
+	width: 16px;
+	height: 16px;
+	margin-left: -17px;
+	margin-top: 10px;
+	display: inline-block;
+	background: url("../images/tick-circle.png") no-repeat;
+	
 }
