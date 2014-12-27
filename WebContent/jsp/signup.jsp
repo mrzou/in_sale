@@ -43,7 +43,7 @@
 	          	<div class="sign-up-pross"><span class="index">3</span>注册成功</div>
 	        </div>
 	        <div class="signup-place">
-			<h4><span class="icon"></span>注册帐号</h4>
+			<h4 style="border-bottom: 1px solid #C0C0C0"><span class="icon"></span>注册帐号</h4>
 			<form class="form-horizontal" role="form" action="/class_project/signupUser" method="post">
 				<div class="form-group">
 					<label for="user.name" class="col-sm-4 control-label">用户名</label>
@@ -108,9 +108,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-4 col-sm-10">
+					<div class="col-sm-offset-4 col-sm-5">
 						 <button type="submit" class="btn btn-primary btn-lg next-step">下一步</button>
 					</div>
+					<div class="col-sm-3 signup-link">已注册?&nbsp;&nbsp;<a href="/class_project/jsp/login.jsp">现在去登陆</a></div>
 				</div>
 			</form>
 			</div>

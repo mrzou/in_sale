@@ -10,15 +10,6 @@ $(document).ready(function(){
 			clickValidateCode();
 		}, 100);
 	});
-	/*验证名字的唯一性*/
-	$("input[name='user.name']").blur(function(){
-		var userName = this.value;
-		if(userName.length<=4){
-			inputIfRight(this, "wrong", "用户名要长于5个字符");
-		}else{
-			validateNameAndEmail(this, "name", "名字");
-		}
-	});
 	/*验证邮箱不能为空*/
 	$("input[name='user.email']").blur(function(event){
 		if(this.value.length<=0){
@@ -27,34 +18,14 @@ $(document).ready(function(){
 			dealEmailInput(this, event);
 		}
 	});
-	/*验证密码长度*/
-	$("input[name='user.password']").blur(function(){
-		if(this.value.length<6){
-			inputIfRight(this, "wrong", "密码长度要大于6");
-		}else{
-			inputIfRight(this, "right");
-		}
-	});
-	/*验证密码是否相同的标签*/
-	$("input[name='password_confirm']").blur(function(){
-		var password = $("input[name='user.password']").val();
-		if(password != this.value ){
-			inputIfRight(this, "wrong", "确认密码不一样");
-		}else{
-			inputIfRight(this, "right");
-		}
-	});
 	/*获取后台的验证码到前台*/
 	$("input[name='validateCode']").blur(function(){
 		if(this.value.length==""){
+			$(this).parent().addClass("has-error");
 			$(this).parent().siblings().last().show();
 		}else{
 			getValidateCodeTo(this);
 		}
-	});
-	/*重置全部隐藏提示*/
-	$("input[type='reset']").click(function(){
-		$("span.validate, div.inputWrong, div.inputRight").hide();
 	});
 	/*提交时的验证form标签的内容*/
 	$(".next-step").click(function(event){
@@ -82,22 +53,6 @@ $(document).ready(function(){
 		});
 	});
 });
-
-/*检验名字和邮箱的唯一性*/
-function validateNameAndEmail(inputSelf, type, other){
-	var uniqueName = $.ajax({
-		url: "/class_project/validateUniqueName?name="+inputSelf.value+"&type="+type,
-		async: false,
-		error: function(msg){
-			$("div#error").html(msg.responseText);
-		}
-    });
-	if(uniqueName.responseText=="exist"){
-		inputIfRight(inputSelf, "wrong", other+"已经存在")
-	}else{
-		inputIfRight(inputSelf, "right")
-	}
-}
 /*验证码的检查*/
 function getValidateCodeTo(inputSelf){
 	var validateCode = $("#validateCode").html();
@@ -111,11 +66,13 @@ function getValidateCodeTo(inputSelf){
 }
 /*验证码监听事件的处理*/
 function validateCodeSuccess(inputSelf){
+	$(inputSelf).parent().removeClass("has-error")
 	$(inputSelf).parent().siblings().eq(4).hide();
 	$(inputSelf).parent().siblings().eq(2).show();
 	$("button[type='submit']").removeAttr("disabled");
 }
 function validateCodeFail(inputSelf){
+	$(inputSelf).parent().addClass("has-error");
 	$(inputSelf).parent().siblings().eq(2).hide();
 	$(inputSelf).parent().siblings().eq(4).show();
 	$(inputSelf).parent().siblings().eq(4).children().last().html("验证码不正确");
@@ -146,11 +103,11 @@ data: email;*/
 function dealEmailInput(inputSelf, event){
 	var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
 	var isEmail = pattern.test(inputSelf.value);
-	if(isEmail){
-		validateNameAndEmail(inputSelf, "email", "邮箱");
-	}else{
+	if(!isEmail){
 		inputIfRight(inputSelf, "wrong", "邮箱格式不正确");
 		event.preventDefault();
+	}else{
+		inputIfRight(inputSelf, "right");
 	}
 };
 
@@ -171,10 +128,12 @@ function inputIfRight(inputSelf, type, message){
 	var alertSpan = inputDiv.siblings().last().children().last();
 	var newMessage = message == null? alertSpan.html():message;
 	if(type=="wrong"){
+		$(inputSelf).parent().addClass("has-error");
 		inputDiv.next().hide();
 		inputDiv.siblings().last().show();
 		alertSpan.html(message).show();
 	}else{
+		$(inputSelf).parent().removeClass("has-error");
 		inputDiv.siblings().last().hide();
 		inputDiv.next().show();
 	}

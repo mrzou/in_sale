@@ -56,45 +56,19 @@ img.checkPic{
 	background-color: #f8f8f8;
 }
 .signup-place{
-	margin-top: 40px;
 	background-color: #fefefe;
-	height: 500px;
-	width: 900px;
+	height: 340px;
+	width: 580px;
 	border: 1px solid #ddd;
-	padding: 16px 7px 59px 16px;
+	padding: 23px 7px 59px 18px;
+	margin-top: 108px;
+	margin-left: 400px;
 }
 .next-step{
-	margin-top:40px;
-	width: 250px;
+	margin-top:20px;
+	width: 180px;
 	height: 38px;
 	font-size: 20px;
-}
-.sign-process {
-	margin-top: 40px
-}
-.sign-up-pross {
-	position: relative;
-	background: #ddd;
-	float: left;
-	width: 300px;
-	height: 35px;
-	line-height: 35px;
-	color: #666;
-	font-size: 15px;
-	padding-left: 10px;
-	overflow: hidden;
-}
-.sign-up-ok {
-	background: #f96;
-	color: #fff;
-}
-
-.signup-message{
-	width: 20px;
-	height: 30px;
-	font-size: 20px;
-	border-bottom: 1px solid #ddd;
-	margin-bottom: 60px;
 }
 .icon {
 	display: inline-block;
@@ -104,50 +78,10 @@ img.checkPic{
 	height: 25px;
 	vertical-align: middle;
 }
-.sign-up-pross .index {
-	background: #999;
-	display: inline-block;
-	width: 18px;
-	height: 18px;
-	line-height: 18px;
-	-webkit-border-radius: 18px;
-	-moz-border-radius: 18px;
-	border-radius: 18px;
-	color: #fff;
-	text-align: center;
-	margin-right: 10px;
-}
-.signup-pross-dir{
-	background: #ddd;
-	position: absolute;
-	top: -17px;
-	right: -19px;
-}
-.signup-pross-dir .outside, .signup-pross-dir .inside{
-	display: inline-block;
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 35px 19px;
-}
-.sign-up-pross .signup-pross-dir .outside {
-  border-color: transparent transparent transparent #f8f8f8;
-}
-.sign-up-pross .signup-pross-dir .inside {
-  border-color: transparent transparent transparent #ddd;
-  margin-left: -46px;
-}
-.sign-up-ok .signup-pross-dir .outside {
-  border-color: transparent transparent transparent #f8f8f8;
-}
-.sign-up-ok .signup-pross-dir .inside {
-  border-color: transparent transparent transparent #f96;
-  margin-left: -46px;
-}
 .name-tool-tip-info {
 	display: none;
 	position: absolute;
-	max-width: 204px;
+	max-width: 174px;
 	height: 32px;
 	_width: 204px;
 	background-color: #fff;
@@ -192,4 +126,9 @@ img.checkPic{
 	display: inline-block;
 	background: url("../images/tick-circle.png") no-repeat;
 	
+}
+.signup-link {
+	font-size: 15px;
+	margin-top: 31px;
+	margin-left: -30px;
 }

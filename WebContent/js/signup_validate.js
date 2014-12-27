@@ -48,6 +48,7 @@ $(document).ready(function(){
 	$("input[name='validateCode']").blur(function(){
 		if(this.value.length==""){
 			$(this).parent().siblings().last().show();
+			$(this).parent().addClass("has-error");
 		}else{
 			getValidateCodeTo(this);
 		}
@@ -111,11 +112,13 @@ function getValidateCodeTo(inputSelf){
 }
 /*验证码监听事件的处理*/
 function validateCodeSuccess(inputSelf){
+	$(inputSelf).parent().removeClass("has-error");
 	$(inputSelf).parent().siblings().eq(4).hide();
 	$(inputSelf).parent().siblings().eq(2).show();
 	$("button[type='submit']").removeAttr("disabled");
 }
 function validateCodeFail(inputSelf){
+	$(inputSelf).parent().addClass("has-error");
 	$(inputSelf).parent().siblings().eq(2).hide();
 	$(inputSelf).parent().siblings().eq(4).show();
 	$(inputSelf).parent().siblings().eq(4).children().last().html("验证码不正确");
@@ -171,10 +174,12 @@ function inputIfRight(inputSelf, type, message){
 	var alertSpan = inputDiv.siblings().last().children().last();
 	var newMessage = message == null? alertSpan.html():message;
 	if(type=="wrong"){
+		$(inputSelf).parent().addClass("has-error");
 		inputDiv.next().hide();
 		inputDiv.siblings().last().show();
 		alertSpan.html(message).show();
 	}else{
+		$(inputSelf).parent().removeClass("has-error");
 		inputDiv.siblings().last().hide();
 		inputDiv.next().show();
 	}

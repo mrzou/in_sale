@@ -193,3 +193,8 @@ img.checkPic{
 	background: url("../images/tick-circle.png") no-repeat;
 	
 }
+.signup-link {
+	font-size: 15px;
+	margin-top: 55px;
+	margin-left: -100px;
+}

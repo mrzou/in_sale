@@ -1,5 +1,6 @@
 package class_project.zou.servlet;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,8 +16,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -28,12 +31,14 @@ public class SignupUser implements ServletRequestAware {
 	private User user;
 	private HttpServletResponse response;
 	private HttpServletRequest request;
+	private HttpSession session;
 	
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		this.response = ServletActionContext.getResponse();
 		this.request = request;
+		this.session = request.getSession();
 	}
 	public User getUser() {
 		return user;
@@ -42,12 +47,12 @@ public class SignupUser implements ServletRequestAware {
 		this.user = user;
 	}
 	
-	public String execute() {
-		int userId;
+	public String signupUser() {
 		UserSignupDao userDao = new UserSignupDao();
-		userId = userDao.signupUser(getUser());
+		int userId = userDao.signupUser(getUser());
 		sendEmailToConfirm(getUser());
-		return "home";
+		session.setAttribute("email", user.getEmail());
+		return "validateEmail";
 	}
 
 	public void sendEmailToConfirm(User user) {

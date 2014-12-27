@@ -16,39 +16,12 @@
 	<div class="container signup-location">
 	<div class="row clearfix">
 		<div class="col-md-12 column col-sm-offset-1">
-			<div class="sign-process register-progress clearfix hidden-xs hidden-sm">
-				<div class="sign-up-pross sign-up-ok"><span class="index">1</span>填写注册信息
-		            <div class="signup-pross-dir">
-			            <span class="outside"></span>
-			            <span class="inside"></span>
-			        </div>
-			    </div>
-	          	<div class="sign-up-pross"><span class="index">2</span>邮箱激活
-		          	<div class="signup-pross-dir">
-		          		<span class="outside"></span>
-		          		<span class="inside"></span>
-		          	</div>
-	          	</div>
-	          	<div class="sign-up-pross"><span class="index">3</span>注册成功</div>
-	        </div>
 	        <div class="signup-place">
-			<h4><span class="icon"></span>注册帐号</h4>
-			<form class="form-horizontal" role="form" action="/class_project/signupUser" method="post">
+			<h4><span class="icon"></span>用户登陆</h4>
+			<form class="form-horizontal" role="form" action="/class_project/loginUser" method="post">
 				<div class="form-group">
-					<label for="user.name" class="col-sm-4 control-label">用户名</label>
-					<div class="col-sm-4">
-						<input type="text" class="form-control signup-form" name="user.name"/>
-					</div>
-					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
-					<div class="name-tool-tip-info col-sm-4">
-						<span class="icon-border"></span>
-						<span class="state"></span>
-						<span class="alert-name">用户名不能为空</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="user.email" class="col-sm-4 control-label">邮箱</label>
-					<div class="col-sm-4">
+					<label for="user.email" class="col-sm-3 control-label">邮箱</label>
+					<div class="col-sm-5">
 						<input type="email" class="form-control signup-form" name="user.email" />
 					</div>
 					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
@@ -59,8 +32,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="user.password" class="col-sm-4 control-label">密码</label>
-					<div class="col-sm-4">
+					<label for="user.password" class="col-sm-3 control-label">密码</label>
+					<div class="col-sm-5">
 						<input type="password" class="form-control signup-form" name="user.password" />
 					</div>
 					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
@@ -71,20 +44,8 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="password-confirm" class="col-sm-4 control-label">确认密码</label>
-					<div class="col-sm-4">
-						<input type="password" class="form-control signup-form" name="password_confirm"/>
-					</div>
-					<div class="col-sm-1" style="display: none"><span class="input-right"></span></div>
-					<div class="name-tool-tip-info col-sm-4">
-						<span class="icon-border"></span>
-						<span class="state"></span>
-						<span class="alert-name">确认密码不能为空</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="password-confirm" class="col-sm-4 control-label">验证码</label>
-					<div class="col-sm-2">
+					<label for="password-confirm" class="col-sm-3 control-label">验证码</label>
+					<div class="col-sm-3">
 						<input type="text" class="form-control signup-form" name="validateCode"/>
 					</div>
 					<div class="col-sm-2"><a href=""><img border=0 src="signupValidate" name="checkCodeImage" id="checkCode" /></a></div>
@@ -97,9 +58,19 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-4 col-sm-10">
-						 <button type="submit" class="btn btn-primary btn-lg next-step">下一步</button>
+                    <div class="col-sm-offset-3 col-sm-11">
+                       <div class="checkbox">
+                          <label>
+                             <input type="checkbox"> 请记住我
+                          </label>
+                       </div>
+                    </div>
+                </div>
+				<div class="form-group">
+					<div class="col-sm-offset-3 col-sm-5">
+						 <button type="submit" class="btn btn-primary btn-lg next-step">登陆</button>
 					</div>
+					<div class="col-sm-4 signup-link">还没注册?&nbsp;&nbsp;<a href="/class_project/jsp/signup.jsp">现在去注册</a></div>
 				</div>
 			</form>
 			</div>
