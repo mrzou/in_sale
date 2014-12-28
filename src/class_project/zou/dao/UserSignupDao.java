@@ -31,6 +31,7 @@ public class UserSignupDao {
 		exitUser = session.createQuery(queryString);
 		@SuppressWarnings("unchecked")
 		List<User> user = exitUser.setParameter(0, userName).list();
+		System.out.println(user.size());
 		return user.size();
 	}
 	public static void updateUserSignup(int id){

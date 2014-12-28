@@ -47,7 +47,7 @@
 				<div class="col-sm-4"><span class="validateEmailIcon"></span></div>
 				<div class="col-sm-8 col-sm-offset-6"><span class="alert-message">请在24小时内点击邮件中的链接继续完成注册</span></div>
 				<div class="col-sm-8 col-sm-offset-6">
-					<span class="another-message">邮件已经发到邮箱</span><a href="#">${email}</a>
+					<span class="another-message">邮件已经发到邮箱</span><a href="#" id="email">${email}</a>
 				</div>
 			</div>
 		</div>
@@ -78,6 +78,9 @@
 	display: inline-block;
 	margin-left: 200px;
 	margin-top: 100px;
+}
+a#email {
+	margin-left: -254px;
 }
 </style>
 </html>

@@ -31,7 +31,7 @@
 	<div class="row clearfix">
 		<div style="width:100px; height: 100px"><p id="blog"></p> </div>
 		<div class="col-md-12 column" style="margin-left: 150px">
-			<form method="post">
+			<form method="post" action="/class_project/addBlog">
 				<div class="row"  style="margin-top:20px">
 					<div class="col-sm-10"><span>文章标题</span></div>
 				    <div class="col-sm-3">
@@ -46,19 +46,17 @@
 					      <input name="publish" type="checkbox"> Publish
 					    </label>
 					    <hr/>
-					    <button type="button" class="btn" id="button">Submit</button>
+					    <button type="submit" class="btn" id="button">Submit</button>
 				    </div>
 				</div>
 			</form>
 		</div>
 	</div>
-</div>
+  </div>
 </body>
-<script>
-	$(document).ready(function(){
-		$("#button").click(function(){
-			$("#blog").html($("textarea[name='content']").val())
-		})
-	});
-</script>
+<style>
+textarea {
+	background-color: #ffffff;
+}
+</style>
 </html>

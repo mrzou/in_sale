@@ -77,7 +77,7 @@ public class SignupUser implements ServletRequestAware {
                             
 			msg.setFrom(sender);
 			msg.setRecipient(Message.RecipientType.TO, receiver);
-			msg.setSubject("欢迎注册zz_blog");
+			msg.setSubject("欢迎注册zz_博客");
                             
 			//msg.setContent("Hello", "text/plain");
                             
@@ -139,7 +139,8 @@ public class SignupUser implements ServletRequestAware {
 	public String confirmEmail(){
 		String validateEmail = request.getParameter("action");
 		UserSignupDao userDao = new UserSignupDao();
-		int ifExist = userDao.ifExistUser("validateCode", validateEmail); if(ifExist<=0){
+		int ifExist = userDao.ifExistUser("validateCode", validateEmail);
+		if(ifExist<=0){
 			return "error";
 		}else{
 			UserSignupDao.updateUserSignup(Integer.parseInt(request.getParameter("id")));

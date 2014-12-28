@@ -4,6 +4,10 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 	<struts>
 		<package name="default" namespace="/" extends="struts-default">
+			<interceptors>
+				<interceptor name="rememberUser" class="class_project.zou.interceptor.LoginSignupIntercepter"/>
+			</interceptors>
+			
 			<action name="signupValidate" class="class_project.zou.servlet.SignupValidate">
 			</action>
 			<action name="getValidateCode" class="class_project.zou.servlet.SignupValidate" method="getValidateCode">
@@ -18,11 +22,16 @@
 				<result name="error">/jsp/error.jsp</result>
 			</action>
 			<action name="loginUser" class="class_project.zou.servlet.LoginUser" method="loginUser">
-				<result name="successLogin">/index.jsp</result>
+				<result name="home" type="redirect">/index.jsp</result>
 				<result name="failLogin">/jsp/failLogin.jsp</result>
 				<result name="mailNotConfirm">/jsp/notConfirm.jsp</result>
+				<interceptor-ref name="rememberUser"/>
+				<interceptor-ref name="defaultStack"/>
 			</action>
 			<action name="checkValidateEmail" class="class_project.zou.servlet.LoginUser" method="checkValidateEmail">
+			</action>
+			<action name="addBlog" class="class_project.zou.servlet.BlogManager" method="addBlog">
+				<result name="blogList">/jsp/blogList.jsp</result>
 			</action>
 		</package>
 	</struts>
