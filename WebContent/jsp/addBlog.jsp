@@ -14,19 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <div class="blog-masthead">
-    <div class="container">
-      <nav class="blog-nav">
-        <a class="blog-nav-item active" href="/class_project">首页</a>
-        <a class="blog-nav-item" href="#">New features</a>
-        <a class="blog-nav-item" href="#">Press</a>
-        <a class="blog-nav-item" href="#">New hires</a>
-        <a class="blog-nav-item" href="#">About</a>
-        <a class="blog-nav-item right-click" href="/class_project/jsp/login.jsp">登陆</a>
-        <a class="blog-nav-item right-click" href="/class_project/jsp/signup.jsp">注册</a>
-      </nav>
-    </div>
-  </div>
+  <jsp:include page="navjsp.jsp"></jsp:include>
   <div class="container">
 	<div class="row clearfix">
 		<div style="width:100px; height: 100px"><p id="blog"></p> </div>
@@ -54,9 +42,10 @@
 	</div>
   </div>
 </body>
-<style>
-textarea {
-	background-color: #ffffff;
-}
-</style>
+<script>
+	$(document).ready(function(){
+		$("a").eq(0).removeClass("active");
+		$("a").eq(1).addClass("active");
+	})
+</script>
 </html>

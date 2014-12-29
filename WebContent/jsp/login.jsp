@@ -18,7 +18,7 @@
 		<div class="col-md-12 column col-sm-offset-1">
 	        <div class="signup-place">
 			<h4><span class="icon"></span>用户登陆</h4>
-			<form class="form-horizontal" role="form" action="/class_project/loginUser" method="post">
+			<form class="form-horizontal" role="form" action="/class_project/loginUser.action" method="post">
 				<div class="form-group">
 					<label for="user.email" class="col-sm-3 control-label">邮箱</label>
 					<div class="col-sm-5">
@@ -61,7 +61,7 @@
                     <div class="col-sm-offset-3 col-sm-11">
                        <div class="checkbox">
                           <label>
-                             <input type="checkbox" name="remember"> 请记住我
+                             <input type="checkbox" name="autoLogin" value="1"> 请记住我2分钟
                           </label>
                        </div>
                     </div>

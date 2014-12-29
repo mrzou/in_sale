@@ -24,10 +24,12 @@ public class LoginSignupIntercepter extends AbstractInterceptor {
 		if(cookie != null){
 			for(int i=0; i<cookie.length; i++){
 				if(cookie[i].getName().equals("userId")){
+					System.out.println(cookie[i].getName());
 					userId = cookie[i].getValue();
 				}
 			}
 		}
+		invocation.invoke();
 		if(userId != null){
 			
 		}

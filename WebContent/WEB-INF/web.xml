@@ -12,7 +12,6 @@
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-    
   </filter>
   <filter-mapping>
     <filter-name>struts2</filter-name>
@@ -23,7 +22,8 @@
     <filter-class>class_project.zou.filter.FilterNotLogin</filter-class>
   </filter>
   <filter-mapping>
-  	<filter-name>FilterNotLogin</filter-name>
+  	<filter-name >FilterNotLogin</filter-name>
   	<url-pattern>/jsp/addBlog.jsp</url-pattern>
+  	<url-pattern>/jsp/personalBlog.jsp</url-pattern>
   </filter-mapping>
 </web-app>

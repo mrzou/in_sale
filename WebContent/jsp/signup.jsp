@@ -5,6 +5,7 @@
 <head>
 <link rel="icon" href="../images/favicon.jpg">
 <link rel="stylesheet" type="text/css" href="../css/signup.css">
+<link rel="stylesheet" type="text/css" href="../css/navcss.css">
 <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap.min.css">
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
@@ -12,17 +13,7 @@
 <title>注册信息</title>
 </head>
 <body class="signup-otherplace">
-    <div class="blog-masthead">
-      <div class="container">
-        <nav class="blog-nav">
-          <a class="blog-nav-item active" href="/class_project">Home</a>
-          <a class="blog-nav-item" href="#">New features</a>
-          <a class="blog-nav-item" href="#">Press</a>
-          <a class="blog-nav-item" href="#">New hires</a>
-          <a class="blog-nav-item" href="#">About</a>
-        </nav>
-      </div>
-    </div>
+    <jsp:include page="navjsp.jsp"></jsp:include>
 	<div id="error"></div>
 	<div class="container signup-location">
 	<div class="row clearfix">
