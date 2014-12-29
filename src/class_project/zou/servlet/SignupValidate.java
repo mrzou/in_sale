@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -92,5 +93,27 @@ public class SignupValidate implements ServletRequestAware{
 			e.printStackTrace();
 		}
 	}
-	
+	/*检查cookie中的用户是否存在*/
+	public void checkCookie(){
+		String userId = null;
+		Cookie[] cook = request.getCookies();
+		if(cook!=null){
+			for(int i=0;i<cook.length;i++){
+				if(cook[i].getName().equals("userId")){
+					userId = cook[i].getValue();
+				}
+			}
+		}
+		try {
+			PrintWriter ifExist = response.getWriter();
+			if(userId == null){
+				ifExist.print("notExist");
+			}else{
+				ifExist.print("exist");
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

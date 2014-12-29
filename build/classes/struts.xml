@@ -10,6 +10,8 @@
 			
 			<action name="signupValidate" class="class_project.zou.servlet.SignupValidate">
 			</action>
+			<action name="checkCookie" class="class_project.zou.servlet.SignupValidate" method="checkCookie">
+			</action>
 			<action name="getValidateCode" class="class_project.zou.servlet.SignupValidate" method="getValidateCode">
 			</action>
 			<action name="validateUniqueName" class="class_project.zou.servlet.SignupUser" method="validateUniqueName">

@@ -27,6 +27,9 @@ $(document).ready(function(){
 			getValidateCodeTo(this);
 		}
 	});
+	$("#loginButton").mousedown(function(){
+		window.close();
+	})
 	/*提交时的验证form标签的内容*/
 	$(".next-step").click(function(event){
 		$(".form-group .form-control").each(function(index, element){
@@ -41,13 +44,15 @@ $(document).ready(function(){
 					getValidateCodeTo(this);
 				}else{
 					dealOtherInput(data, this, event);
-					if($("input[name='check_code']").val().length<=0){
-						$(this).parent().siblings().eq(2).children().removeClass("inputRight").addClass("inputWrong").show();
-						$("#Validatespan").show();
-						event.preventDefault();
-					}else{
-						$("#Validatespan").hide();
-					}
+					if($("input[name='check_code']").val()!=null){
+						if($("input[name='check_code']").val().length<=0){
+							$(this).parent().siblings().eq(2).children().removeClass("inputRight").addClass("inputWrong").show();
+							$("#Validatespan").show();
+							event.preventDefault();
+						}else{
+							$("#Validatespan").hide();
+						}
+					}else{event.preventDefault();}
 				}
 			}
 		});

@@ -1,0 +1,97 @@
+* {
+    font-size:16x;
+    margin:1;
+    padding:0;
+}
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+}
+img.checkPic{
+	width: 17px;
+	height: 17px;
+	/* display: none; */
+}
+.error {
+	border: thin red solid;
+}
+.signup-otherplace {
+	background-color: #f8f8f8;
+}
+.signup-place{
+	background-color: #fefefe;
+	height: 340px;
+	width: 580px;
+	border: 1px solid #ddd;
+	padding: 23px 7px 59px 18px;
+	margin-top: 23px;
+	margin-left: 20px;
+}
+.next-step{
+	margin-top:20px;
+	width: 180px;
+	height: 38px;
+	font-size: 20px;
+}
+.icon {
+	display: inline-block;
+	background: url("../images/signup_019.png") no-repeat;
+	margin-right: 5px;
+	width: 16px;
+	height: 25px;
+	vertical-align: middle;
+}
+.name-tool-tip-info {
+	display: none;
+	position: absolute;
+	max-width: 174px;
+	height: 32px;
+	_width: 204px;
+	background-color: #fff;
+	border: 2px solid #ddd;
+	/* padding: 8px; */
+	color: #666;
+}
+.name-tool-tip-info .icon-border {
+	position: absolute;
+	border-style: solid;
+	border-width: 8px;
+	height: 0;
+	width: 0;
+	top: 8px;
+}
+.name-tool-tip-info .icon-border {
+	border-color: transparent #ddd transparent transparent;
+	left: -17px;
+}
+.name-tool-tip-info .state{
+	background-image: url("../images/wrong.png");
+	background-repeat: no-repeat;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: middle;
+	margin-left: -7px;
+	margin-top: 6px;
+}
+.name-tool-tip-info .alert-name {
+	margin-left:15px;
+	position: absolute;
+	top: 4px;
+	color: red;
+}
+.input-right {
+	display: none;
+	width: 16px;
+	height: 16px;
+	margin-left: -17px;
+	margin-top: 10px;
+	display: inline-block;
+	background: url("../images/tick-circle.png") no-repeat;
+	
+}
+.signup-link {
+	font-size: 15px;
+	margin-top: 31px;
+	margin-left: -30px;
+}

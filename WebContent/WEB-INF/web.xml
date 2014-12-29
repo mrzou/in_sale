@@ -24,6 +24,5 @@
   <filter-mapping>
   	<filter-name >FilterNotLogin</filter-name>
   	<url-pattern>/jsp/addBlog.jsp</url-pattern>
-  	<url-pattern>/jsp/personalBlog.jsp</url-pattern>
   </filter-mapping>
 </web-app>

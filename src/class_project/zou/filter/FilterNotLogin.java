@@ -50,9 +50,8 @@ public class FilterNotLogin implements Filter {
 		}
 		if(userId==null){
 			if (request instanceof HttpServletRequest) {
-				 String url = newRequest.getRequestURL().toString();
 				 String queryString = newRequest.getQueryString();
-				 System.out.println(url+"?"+queryString);
+				 System.out.println(queryString);
 			}
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 		}

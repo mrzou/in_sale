@@ -4,13 +4,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="../js/lib/layer/layer.min.js"></script>
 </head>
 <body>
 	<div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="/class_project">首页</a>
-          <a class="blog-nav-item" href="/class_project/jsp/personalBlog.jsp">个人博客</a>
+          <a class="blog-nav-item" id="personalBlog" href="/class_project/jsp/personalBlog.jsp">个人博客</a>
           <a class="blog-nav-item" href="/class_project/jsp/modifyPassword.jsp">密码修改</a>
           <a class="blog-nav-item" href="/class_project/jsp/blogComment.jsp">博客评论</a>
           <a class="blog-nav-item" href="/class_project/jsp/aboutBlog.jsp">关于博客</a>
@@ -21,4 +22,28 @@
       </div>
     </div>
 </body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var win_login = $("#personalBlog").click(function(event){
+			var ifExist = $.ajax({
+				url: "/class_project/checkCookie",
+				async: false,
+			});
+			if(ifExist.responseText=="notExist"){
+				var winLogin = $.layer({
+			        type: 2,
+			        title: '用户登陆',
+			        maxmin: true,
+			        shadeClose: true, //开启点击遮罩关闭层
+			        area : ['800px' , '460px'],
+				    offset : ['100px', ''],
+				    iframe: {src: 'win_login.jsp'},
+					success: function(layero){
+						event.preventDefault();
+					}
+				 });
+			}
+		});
+	});
+</script>
 </html>
