@@ -9,6 +9,7 @@
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/login_validate.js"></script>
+<script type="text/javascript" src="../js/lib/layer/layer.min.js"></script>
 <title>用户登陆</title>
 </head>
 <body class="signup-otherplace">
@@ -78,9 +79,4 @@
 	</div>
 </div>
 </body>
-<script>
-	$(document).ready(function(){
-		
-	})
-</script>
 </html>

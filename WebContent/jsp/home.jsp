@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap.min.css">
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/signup_validate.js"></script>
 <title>zz_blog首页</title>
 </head>
 <body>
