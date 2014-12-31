@@ -25,7 +25,7 @@
 			</action>
 			<action name="loginUser" class="class_project.zou.servlet.LoginUser" method="loginUser">
 				<result name="home" type="redirect">/jsp/home.jsp</result>
-				<result name="failLogin">/jsp/failLogin.jsp</result>
+				<result name="login" type="redirect">/jsp/login.jsp?redirect=yes</result>
 				<result name="mailNotConfirm">/jsp/notConfirm.jsp</result>
 				<result name="personalBlog" type="redirect">/navFolder/personalBlog.jsp</result>
 				<result name="modifyPassword" type="redirect">/navFolder/modifyPassword.jsp</result>

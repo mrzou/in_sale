@@ -71,17 +71,13 @@ $(document).ready(function(){
 		deferred.success(function () {
 			if(deferred.responseText!=null){
 				layer.alert("登陆成功!", "", function(){
-					$("#user_name").html(deferred.responseText);
 					var index = parent.layer.getFrameIndex(window.name);
 					parent.layer.close(index);
+					window.location.href = "/class_project/jsp/home.jsp"
 				});
 			}else{
-				layer.alert("登陆失败!", "", function(){
-					var index = parent.layer.getFrameIndex(window.name);
-					parent.layer.close(index);
-				});
+				layer.alert("登陆失败!");
 			}
-			
 	    });
 	});
 });

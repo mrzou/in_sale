@@ -52,19 +52,11 @@ public class LoginUser implements ServletRequestAware{
 		}
 	}
 	/*登陆的请求*/
-	public String loginUser(){
+	public String loginUser() throws IOException{
 		System.out.println(user.getEmail());
 		NewUser newUser = UserSignupDao.checkLoginUser(user.getEmail());
 		System.out.println(user.getPassword()+" "+newUser.getPassword());
-		PrintWriter out = null;
 		if(user.getPassword().equals(newUser.getPassword())){
-			try {
-				System.out.println("execute login");
-				out = response.getWriter();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			if(newUser.getValidate()==0){
 				return "mailNotConfirm";
 			}else{
@@ -77,7 +69,6 @@ public class LoginUser implements ServletRequestAware{
 					session.setAttribute("userId", newUser.getName());
 				}
 				session.setAttribute("userId", newUser.getName());
-				out.print(user.getName());
 				if(request.getParameter("location")!=""){
 					return request.getParameter("location");
 				}else{
@@ -85,7 +76,7 @@ public class LoginUser implements ServletRequestAware{
 				}
 			}
 		}else{
-			return "failLogin";
+			return "login";
 		}
 	}
 	public void userLogout(){

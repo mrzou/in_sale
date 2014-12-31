@@ -13,7 +13,8 @@ $(document).ready(function(){
 	        shadeClose: true, //开启点击遮罩关闭层
 	        area : ['800px' , '460px'],
 		    offset : ['100px', ''],
-		    iframe: {src: 'win_login.jsp'},
+		    iframe: {src: '/class_project/jsp/win_login.jsp'},
+		    end: function(){}
 		}); 
 	});
 	/*鼠标移动位置的提醒功能*/
@@ -40,6 +41,7 @@ $(document).ready(function(){
 						$("#user_name").html("游客");
 						$("#login").html("登陆");
 						layer.closeAll();
+						window.location.href = "/class_project/jsp/home.jsp"
 					});
 				}
 			});
@@ -54,7 +56,6 @@ $(document).ready(function(){
 				url: "/class_project/checkCookie",
 				async: false,
 			});
-			console.log(ifExist.responseText);
 			if(ifExist.responseText=="notExist"){
 				layer.confirm('您的操作必须登陆,是否登陆？',function(){
 					window.location.href = "/class_project/jsp/login.jsp?location="+urlName;

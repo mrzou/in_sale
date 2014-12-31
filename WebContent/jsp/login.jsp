@@ -9,6 +9,7 @@
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/login_validate.js"></script>
+<script type="text/javascript" src="../js/lib/layer/layer.min.js"></script>
 <title>用户登陆</title>
 </head>
 <body class="signup-otherplace">
@@ -74,6 +75,7 @@
 				</div>
 			</form>
 			<div style="display:none" id="requesturl"><%= request.getParameter("location") %></div>
+			<div style="display:none" id="redirect"><%= request.getParameter("redirect") %></div>
 			</div>
 		</div>
 	</div>
@@ -84,6 +86,9 @@ $(document).ready(function(){
 	if($("#requesturl").html()!="null"){
 		var action = $("form")[0].action;
 		$("form")[0].action = action + $("#requesturl").html();
+	}
+	if($("#redirect").html()!="null"){
+		layer.alert("登陆失败");
 	}
 })
 </script>
