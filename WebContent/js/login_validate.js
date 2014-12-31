@@ -60,10 +60,28 @@ $(document).ready(function(){
 		var email = $(this).find('input[name="user.email"]').val();
 		var password = $(this).find('input[name="user.password"]').val();
 		var ifLogin = $(this).find('input[name="autoLogin"]').val();
-		var deferred = $.post("/class_project/loginUser.action", { "user.email": email, "user.password": password,"autoLogin": ifLogin });
+		var deferred = $.post(
+				"/class_project/loginUser.action", 
+				{ 
+					"user.email": email, 
+					"user.password": password,
+					"autoLogin": ifLogin 
+				}
+		);
 		deferred.success(function () {
-			var index = parent.layer.getFrameIndex(window.name);
-			parent.layer.close(index);
+			if(deferred.responseText!=null){
+				layer.alert("登陆成功!", "", function(){
+					$("#user_name").html(deferred.responseText);
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.layer.close(index);
+				});
+			}else{
+				layer.alert("登陆失败!", "", function(){
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.layer.close(index);
+				});
+			}
+			
 	    });
 	});
 });
