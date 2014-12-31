@@ -14,7 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <jsp:include page="navjsp.jsp"></jsp:include>
+  <jsp:include page="/jsp/navjsp.jsp"></jsp:include>
   <div class="container">
 	<div class="row clearfix">
 		<div style="width:100px; height: 100px"><p id="blog"></p> </div>

@@ -143,7 +143,9 @@ public class SignupUser implements ServletRequestAware {
 		if(ifExist<=0){
 			return "error";
 		}else{
-			UserSignupDao.updateUserSignup(Integer.parseInt(request.getParameter("id")));
+			String userName = UserSignupDao.updateUserSignup(Integer.parseInt(request.getParameter("id")));
+			session.setAttribute("userId", userName);
+			request.setAttribute("ifSignup", "yes");
 			return "home";
 		}
 	}

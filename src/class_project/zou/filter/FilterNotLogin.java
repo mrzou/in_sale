@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet Filter implementation class FilterNotLogin
@@ -39,8 +40,11 @@ public class FilterNotLogin implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		HttpServletRequest newRequest=(HttpServletRequest)request;
+		HttpSession session = newRequest.getSession();
 		Cookie[] cook = newRequest.getCookies();
 		String userId = null;
+		userId = session.getAttribute("userId")==null? "":String.valueOf(session.getAttribute("userId"));
+		System.out.println("execute filter"+userId);
 		if(cook!=null){
 			for(int i=0;i<cook.length;i++){
 				if(cook[i].getName().equals("userId")){
@@ -48,11 +52,12 @@ public class FilterNotLogin implements Filter {
 				}
 			}
 		}
-		if(userId==null){
+		if(userId==""){
 			if (request instanceof HttpServletRequest) {
 				 String queryString = newRequest.getQueryString();
 				 System.out.println(queryString);
 			}
+			System.out.println("run to login");
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
 		}
 		// pass the request along the filter chain

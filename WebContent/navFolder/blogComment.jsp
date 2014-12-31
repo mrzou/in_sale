@@ -9,10 +9,11 @@
 <link rel="stylesheet" type="text/css" href="../css/navcss.css">
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/blogComment.js"></script>
 
 <title>个人博客主页</title>
 </head>
 <body>
-	<jsp:include page="navjsp.jsp"></jsp:include>
+	<jsp:include page="/jsp/navjsp.jsp"></jsp:include>
 </body>
 </html>

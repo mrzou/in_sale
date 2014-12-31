@@ -53,6 +53,7 @@
             <ul class="pager">
               <li><a href="#">Previous</a></li>
               <li><a href="#">Next</a></li>
+              <li style="display:none" id="ifSignup"><%= request.getParameter("ifSignup") %></li>
             </ul>
           </nav>
 
@@ -93,6 +94,12 @@
       </div><!-- /.row -->
 
     </div><!-- /.container -->
-
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+	if($("#ifSignup").html()=="yes"){
+		layer.alert("邮箱验证成功!");
+	}	
+})
+</script>
 </html>

@@ -4,46 +4,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="../js/lib/layer/layer.min.js"></script>
 </head>
 <body>
 	<div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
           <a class="blog-nav-item active" href="/class_project">首页</a>
-          <a class="blog-nav-item" id="personalBlog" href="/class_project/jsp/personalBlog.jsp">个人博客</a>
-          <a class="blog-nav-item" href="/class_project/jsp/modifyPassword.jsp">密码修改</a>
-          <a class="blog-nav-item" href="/class_project/jsp/blogComment.jsp">博客评论</a>
+          <a class="blog-nav-item" href="/class_project/navFolder/personalBlog.jsp">个人博客</a>
+          <a class="blog-nav-item" href="/class_project/navFolder/modifyPassword.jsp">密码修改</a>
+          <a class="blog-nav-item" href="/class_project/navFolder/blogComment.jsp">博客评论</a>
           <a class="blog-nav-item" href="/class_project/jsp/aboutBlog.jsp">关于博客</a>
-          <a class="blog-nav-item right-click" href="/class_project/jsp/signup.jsp">加入zz_blog</a>
-          <a class="blog-nav-item right-click" href="/class_project/jsp/login.jsp">登陆</a>
-          <span class="blog-nav-item right-click">当前访客身份为:&nbsp;&nbsp;<span style="color:#BE4">游客</span></span>
+          <a class="blog-nav-item right-click" href="/class_project/jsp/signup.jsp" id="signup">加入zz_blog</a>
+          <a class="blog-nav-item right-click" href="/class_project/jsp/login.jsp" id="login">登陆</a>
+          <a class="blog-nav-item right-click" id="identify">当前访客身份为:&nbsp;&nbsp;
+	      	  <span style="color:#BE4" id="user_name">
+	        	<% String name = String.valueOf(session.getAttribute("userId")); %>
+	        	<% name = name=="null"? "游客":name; %>
+	        	<%= name %>
+	          </span>
+          </a>
         </nav>
       </div>
     </div>
 </body>
-<script type="text/javascript">
-	$(document).ready(function(){
-		var win_login = $("#personalBlog").click(function(event){
-			var ifExist = $.ajax({
-				url: "/class_project/checkCookie",
-				async: false,
-			});
-			if(ifExist.responseText=="notExist"){
-				var winLogin = $.layer({
-			        type: 2,
-			        title: '用户登陆',
-			        maxmin: true,
-			        shadeClose: true, //开启点击遮罩关闭层
-			        area : ['800px' , '460px'],
-				    offset : ['100px', ''],
-				    iframe: {src: 'win_login.jsp'},
-					success: function(layero){
-						event.preventDefault();
-					}
-				 });
-			}
-		});
-	});
-</script>
+<script type="text/javascript" src="../js/lib/layer/layer.min.js"></script>
+<script type="text/javascript" src="../js/navjs.js"></script>
 </html>

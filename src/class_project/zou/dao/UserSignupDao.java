@@ -34,17 +34,19 @@ public class UserSignupDao {
 		System.out.println(user.size());
 		return user.size();
 	}
-	public static void updateUserSignup(int id){
+	public static String updateUserSignup(int id){
+		NewUser user;
 		try{
 			Session session = GetDelSession.getThreadLocalSession();
 			Transaction transaction = session.beginTransaction();
-			NewUser user = (NewUser) session.get(NewUser.class, id);
+			user = (NewUser) session.get(NewUser.class, id);
 			user.setValidate(1);
 			session.update(user);
 			transaction.commit();
 		}finally{
 			GetDelSession.closeSession();
 		}
+		return user.getName(); 
 	}
 	public static NewUser checkLoginUser(String userEmail){
 		Query exitUser;

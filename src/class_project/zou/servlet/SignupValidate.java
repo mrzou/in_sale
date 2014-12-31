@@ -96,20 +96,21 @@ public class SignupValidate implements ServletRequestAware{
 	/*检查cookie中的用户是否存在*/
 	public void checkCookie(){
 		String userId = null;
+		userId = session.getAttribute("userId")==null? "":String.valueOf(session.getAttribute("userId"));
 		Cookie[] cook = request.getCookies();
 		if(cook!=null){
 			for(int i=0;i<cook.length;i++){
 				if(cook[i].getName().equals("userId")){
-					userId = cook[i].getValue();
+					userId = cook[i].getValue().toString();
 				}
 			}
 		}
 		try {
 			PrintWriter ifExist = response.getWriter();
-			if(userId == null){
+			if(userId == ""){
 				ifExist.print("notExist");
 			}else{
-				ifExist.print("exist");
+				ifExist.print(userId);
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -52,22 +52,37 @@ public class LoginUser implements ServletRequestAware{
 	}
 	/*登陆的请求*/
 	public String loginUser(){
+		System.out.println(user.getEmail());
 		NewUser newUser = UserSignupDao.checkLoginUser(user.getEmail());
+		System.out.println(user.getPassword()+" "+newUser.getPassword());
 		if(user.getPassword().equals(newUser.getPassword())){
 			if(newUser.getValidate()==0){
 				return "mailNotConfirm";
 			}else{
-				if(request.getParameter("autoLogin").equals("1")){
+				System.out.println(request.getParameter("autoLogin"));
+				if(request.getParameter("autoLogin")!=null){
 					System.out.println("remember");
 					Cookie cook = new Cookie("userId", String.valueOf(newUser.getId()));
 					cook.setMaxAge(60*2);
 					response.addCookie(cook);
-					session.setAttribute("userId", newUser.getId());
+					session.setAttribute("userId", newUser.getName());
 				}
-				return "home";
+				session.setAttribute("userId", newUser.getName());
+				if(request.getParameter("location")!=""){
+					return request.getParameter("location");
+				}else{
+					return "home";
+				}
 			}
 		}else{
 			return "failLogin";
 		}
+	}
+	public void userLogout(){
+		System.out.println("delete cookie");
+		session.setAttribute("userId", null);
+		Cookie cookie = new Cookie("userId", null);
+		cookie.setMaxAge(0);
+		response.addCookie(cookie);
 	}
 }

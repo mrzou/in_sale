@@ -41,8 +41,8 @@ $(document).ready(function(){
 					getValidateCodeTo(this);
 				}else{
 					dealOtherInput(data, this, event);
-					if($("input[name='check_code']").val()!=null){
-						if($("input[name='check_code']").val().length<=0){
+					if($("input[name='validateCode']").val()!=null){
+						if($("input[name='validateCode']").val().length<=0){
 							$(this).parent().siblings().eq(2).children().removeClass("inputRight").addClass("inputWrong").show();
 							$("#Validatespan").show();
 							event.preventDefault();
@@ -53,6 +53,18 @@ $(document).ready(function(){
 				}
 			}
 		});
+	});
+	/*弹出窗口的登陆方式，发送一步请求到后台，并关闭窗口*/
+	$("#loginForm").submit(function(event) {
+		event.preventDefault();
+		var email = $(this).find('input[name="user.email"]').val();
+		var password = $(this).find('input[name="user.password"]').val();
+		var ifLogin = $(this).find('input[name="autoLogin"]').val();
+		var deferred = $.post("/class_project/loginUser.action", { "user.email": email, "user.password": password,"autoLogin": ifLogin });
+		deferred.success(function () {
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.layer.close(index);
+	    });
 	});
 });
 /*验证码的检查*/

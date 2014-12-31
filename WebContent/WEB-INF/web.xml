@@ -23,6 +23,6 @@
   </filter>
   <filter-mapping>
   	<filter-name >FilterNotLogin</filter-name>
-  	<url-pattern>/jsp/addBlog.jsp</url-pattern>
+  	<url-pattern>/navFolder/*</url-pattern>
   </filter-mapping>
 </web-app>

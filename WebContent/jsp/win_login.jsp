@@ -19,7 +19,7 @@
 		<div class="col-md-12 column col-sm-offset-1">
 	        <div class="signup-place">
 			<h4><span class="icon"></span>用户登陆</h4>
-			<form class="form-horizontal" role="form" action="/class_project/loginUser.action" method="post">
+			<form class="form-horizontal" id="loginForm" role="form" action="/class_project/loginUser.action" method="post">
 				<div class="form-group">
 					<label for="user.email" class="col-sm-3 control-label">邮箱</label>
 					<div class="col-sm-5">
@@ -62,7 +62,7 @@
                     <div class="col-sm-offset-3 col-sm-11">
                        <div class="checkbox">
                           <label>
-                             <input type="checkbox" name="autoLogin" value="1"> 请记住我2分钟
+                             <input type="checkbox" name="autoLogin"> 请记住我2分钟
                           </label>
                        </div>
                     </div>
@@ -71,7 +71,6 @@
 					<div class="col-sm-offset-3 col-sm-5">
 						 <button type="submit" class="btn btn-primary btn-lg next-step" id="loginButton">登陆</button>
 					</div>
-					<div class="col-sm-4 signup-link">还没注册?&nbsp;&nbsp;<a href="/class_project/jsp/signup.jsp">现在去注册</a></div>
 				</div>
 			</form>
 			</div>
