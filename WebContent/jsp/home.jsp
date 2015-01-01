@@ -98,7 +98,13 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	if($("#ifConfirm").html()=="yes"){
-		layer.alert("邮箱验证成功!");
+		layer.alert("邮箱验证成功!","",function(){
+			var stateObject = {};
+			var title = "Wow Title";
+			var newUrl = "/class_project/jsp/home.jsp";
+			history.pushState(stateObject,title,newUrl);
+			layer.closeAll();
+		});
 	}
 })
 </script>

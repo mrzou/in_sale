@@ -34,27 +34,10 @@ public class LoginUser implements ServletRequestAware{
 		this.session = request.getSession();
 		this.response = ServletActionContext.getResponse();
 	}
-	/*异步请求检查邮箱*/
-	public void checkValidateEmail(){
-		UserSignupDao userDao = new UserSignupDao();
-		int ifExist = userDao.ifExistUser("email",request.getParameter("email"));
-		try{
-			PrintWriter out = response.getWriter();
-			if(ifExist>=1 ){
-				System.out.println("exist");
-				out.print("exist");
-			}else{
-				System.out.println("unExist");
-				out.print("unExist");
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-	}
 	/*登陆的请求*/
 	public void winLoginUser() throws IOException{
 		System.out.println(user.getEmail());
-		NewUser newUser = UserSignupDao.checkLoginUser(user.getEmail());
+		NewUser newUser = UserSignupDao.checkLoginUser("email", user.getEmail());
 		System.out.println(user.getPassword()+" "+newUser.getPassword());
 		PrintWriter out = response.getWriter();
 		if(user.getPassword().equals(newUser.getPassword())){
@@ -64,12 +47,15 @@ public class LoginUser implements ServletRequestAware{
 				System.out.println(request.getParameter("autoLogin"));
 				if(request.getParameter("autoLogin")!=null){
 					System.out.println("remember");
-					Cookie cook = new Cookie("userId", String.valueOf(newUser.getId()));
-					cook.setMaxAge(60*2);
-					response.addCookie(cook);
-					session.setAttribute("userId", newUser.getName());
+					Cookie cook1 = new Cookie("userId", String.valueOf(newUser.getName()));
+					Cookie cook2 = new Cookie("user_id", String.valueOf(newUser.getId()));
+					cook1.setMaxAge(60*2);
+					cook2.setMaxAge(60*2);
+					response.addCookie(cook1);
+					response.addCookie(cook2);
 				}
 				session.setAttribute("userId", newUser.getName());
+				session.setAttribute("user_id", newUser.getId());
 				out.print("success");
 			}
 		}else{
@@ -83,5 +69,22 @@ public class LoginUser implements ServletRequestAware{
 		Cookie cookie = new Cookie("userId", null);
 		cookie.setMaxAge(0);
 		response.addCookie(cookie);
+	}
+	/*用户修改密码*/
+	public void modifyPassword() throws IOException{
+		System.out.println(session.getAttribute("user_id"));
+		int user_id = (Integer)(session.getAttribute("user_id"));
+		UserSignupDao userDao = new UserSignupDao();
+		NewUser newUser = userDao.getCurrentUser(user_id);
+		PrintWriter out = response.getWriter();
+		System.out.println(newUser.getPassword() + " "+user.getPassword());
+		if(newUser==null || !newUser.getPassword().equals(user.getPassword())){
+			out.print("error");
+		}else if(request.getParameter("new_password").equals(newUser.getPassword())){
+			out.print("same");
+		}{
+			UserSignupDao.updateUserPassword(user_id, request.getParameter("new_password"));
+			out.print("success");
+		}
 	}
 }

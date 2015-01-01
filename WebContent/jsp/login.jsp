@@ -18,7 +18,7 @@
 	<div class="row clearfix">
 		<div class="col-md-12 column col-sm-offset-1">
 	        <div class="signup-place">
-			<h4><span class="icon"></span>用户登陆</h4>
+			<h4><span class="icon"></span>用户登陆<a href="/class_project/jsp/home.jsp"><span class="blogLogo"></span>zz_blog</a></h4>
 			<form class="form-horizontal" role="form" id="loginForm" action="/class_project/winLoginUser.action?location=" method="post">
 				<div class="form-group">
 					<label for="user.email" class="col-sm-3 control-label">邮箱</label>

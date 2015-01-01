@@ -49,7 +49,15 @@ public class SignupUser implements ServletRequestAware {
 	
 	public String signupUser() {
 		UserSignupDao userDao = new UserSignupDao();
-		int userId = userDao.signupUser(getUser());
+		try{
+			if(user.getName()==null || user.getEmail()==null){
+				return "signup";
+			}
+			int userId = userDao.signupUser(getUser());
+			session.setAttribute("ifConfirm", "no");
+		}catch(Exception e){
+			return "signup";
+		}
 		sendEmailToConfirm(getUser());
 		session.setAttribute("email", user.getEmail());
 		return "validateEmail";
@@ -138,14 +146,28 @@ public class SignupUser implements ServletRequestAware {
 	/*确认用户注册的邮箱*/
 	public String confirmEmail(){
 		String validateEmail = request.getParameter("action");
+		int user_id = Integer.parseInt(request.getParameter("id"));
 		UserSignupDao userDao = new UserSignupDao();
 		int ifExist = userDao.ifExistUser("validateCode", validateEmail);
 		if(ifExist<=0){
 			return "error";
 		}else{
-			String userName = UserSignupDao.updateUserSignup(Integer.parseInt(request.getParameter("id")));
+			String userName = UserSignupDao.updateUserSignup(user_id);
+			session.setAttribute("ifConfirm", "yes");
 			session.setAttribute("userId", userName);
+			session.setAttribute("user_id", user_id);
 			return "home";
+		}
+	}
+	public void ifConfirm() throws IOException{
+		System.out.println("execute ifconfirm");
+		PrintWriter out = response.getWriter();
+		if(session.getAttribute("ifConfirm")=="yes"){
+			System.out.println("yes");
+			out.print("yes");
+		}else{
+			System.out.println("no");
+			out.print("no");
 		}
 	}
 }

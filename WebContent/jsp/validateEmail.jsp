@@ -18,7 +18,7 @@
 	<div class="container signup-location">
 	<div class="row clearfix">
 		<div class="col-md-12 column col-sm-offset-1">
-			<div class="sign-process register-progress clearfix hidden-xs hidden-sm">
+			<div class="sign-process register-progress clearfix hidden-xs hidden-sm" id="head-step">
 				<div class="sign-up-pross sign-up-ok"><span class="index">1</span>填写注册信息
 		            <div class="signup-pross-dir">
 			            <span class="outside"></span>
@@ -31,7 +31,7 @@
 		          		<span class="inside"></span>
 		          	</div>
 	          	</div>
-	          	<div class="sign-up-pross"><span class="index">3</span>注册成功</div>
+	          	<div class="sign-up-pross" id="success"><span class="index">3</span>注册成功</div>
 	        </div>
 	        <div class="signup-place">
 				<h4 style="border-bottom: 1px solid #C0C0C0"><span class="icon"></span>邮箱验证</h4>
@@ -47,8 +47,25 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
-	layer.alert("注册成功，请到邮箱验证!","")
+	checkIfConfirm();
+	if(!$("div#success").hasClass("sign-up-ok")){
+		layer.alert("注册成功，请到邮箱验证!","")
+	}
 })
+function checkIfConfirm(){
+	var interval = setInterval(checkIfConfirm,4000)
+	var ifConfirm = $.ajax({
+		url: "/class_project/ifConfirm",
+		async: false,
+	})
+	console.log(ifConfirm.responseText)
+	if(ifConfirm.responseText=="yes"){
+		$("#success").addClass("sign-up-ok");
+		$("div.signup-place").remove();
+		$("#head-step").append("<h1 style='margin:200px 100px; font-size: 100px'>邮箱验证成功</h1>")
+		window.clearInterval(interval);
+	}
+}
 </script>
 <style>
 .another-message {

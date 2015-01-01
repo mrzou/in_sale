@@ -80,6 +80,9 @@ $(document).ready(function(){
 				layer.alert("邮箱或密码错误!");
 			}
 	    });
+		deferred.error(function(msg){
+			alert(msg.responseText);
+		})
 	});
 });
 /*验证码的检查*/

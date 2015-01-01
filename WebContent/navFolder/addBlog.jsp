@@ -17,19 +17,18 @@
   <jsp:include page="/jsp/navjsp.jsp"></jsp:include>
   <div class="container">
 	<div class="row clearfix">
-		<div style="width:100px; height: 100px"><p id="blog"></p> </div>
 		<div class="col-md-12 column" style="margin-left: 150px">
 			<form method="post" action="/class_project/addBlog">
 				<div class="row"  style="margin-top:20px">
 					<div class="col-sm-10"><span>文章标题</span></div>
 				    <div class="col-sm-3">
-				    	<input name="title" class="form-control" type="text" placeholder="Title?" />
+				    	<input name="blog.title" class="form-control" type="text" placeholder="title?" />
 				    </div>
 				</div>
 				<div class="row"  style="margin-top:25px">
 					<div class="col-sm-10"><span>文章的内容</span></div>
 					<div class="col-sm-8">
-					    <textarea name="content" data-provide="markdown" rows="25"></textarea>
+					    <textarea name="blog.content" data-provide="markdown" rows="25"></textarea>
 					    <label class="checkbox" style="margin-left: 20px">
 					      <input name="publish" type="checkbox"> Publish
 					    </label>

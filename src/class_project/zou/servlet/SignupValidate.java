@@ -98,10 +98,14 @@ public class SignupValidate implements ServletRequestAware{
 		String userId = null;
 		userId = session.getAttribute("userId")==null? "":String.valueOf(session.getAttribute("userId"));
 		Cookie[] cook = request.getCookies();
-		if(cook!=null){
+		if(cook!=null && userId.equals("")){
 			for(int i=0;i<cook.length;i++){
 				if(cook[i].getName().equals("userId")){
-					userId = cook[i].getValue().toString();
+					userId = cook[i].getValue();
+					session.setAttribute("userId", userId);
+				}
+				if(cook[i].getName().equals("user_id")){
+					session.setAttribute("user_id", cook[i].getValue());
 				}
 			}
 		}
@@ -110,6 +114,7 @@ public class SignupValidate implements ServletRequestAware{
 			if(userId == ""){
 				ifExist.print("notExist");
 			}else{
+				session.setAttribute("userId", userId);
 				ifExist.print(userId);
 			}
 		} catch (IOException e) {

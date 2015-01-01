@@ -3,9 +3,16 @@ package class_project.zou.javabean;
 import java.sql.Date;
 
 public class Blog {
+	private int id;
 	private String title;
 	private String content;
 	private Date recordTime;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getTitle() {
 		return title;
 	}

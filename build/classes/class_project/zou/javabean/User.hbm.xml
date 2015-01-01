@@ -7,9 +7,9 @@
 		<id name="id">
 			<generator class="native"/>
 		</id>
-		<property name="name" unique="true"/>
-		<property name="email" unique="true"/>
-		<property name="password"/>
+		<property name="name" unique="true" not-null="true"/>
+		<property name="email" unique="true" not-null="true"/>
+		<property name="password" not-null="true"/>
 		<property name="validateCode"/>
 		<property name="validate" not-null="true"/>
 		<property name="recordTime" type="java.sql.Date"/>

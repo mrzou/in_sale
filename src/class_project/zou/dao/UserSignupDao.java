@@ -48,14 +48,14 @@ public class UserSignupDao {
 		}
 		return user.getName(); 
 	}
-	public static NewUser checkLoginUser(String userEmail){
+	public static NewUser checkLoginUser(String type, String value){
 		Query exitUser;
 		NewUser backUser;
 		Session session = GetDelSession.getThreadLocalSession();
-		String queryString = "FROM NewUser user where user.email=?";
+		String queryString = "FROM NewUser user where user."+type+"=?";
 		exitUser = session.createQuery(queryString);
 		@SuppressWarnings("unchecked")
-		List<NewUser> allUser = exitUser.setParameter(0, userEmail).list();
+		List<NewUser> allUser = exitUser.setParameter(0, value).list();
 		if(allUser.size()==0){
 			return null;
 		}else{
@@ -63,4 +63,32 @@ public class UserSignupDao {
 			return backUser;
 		}
 	}
+	public NewUser getCurrentUser(Integer user_id) {
+		// TODO Auto-generated method stub
+		NewUser user;
+		try{
+			Session session = GetDelSession.getThreadLocalSession();
+			Transaction transaction = session.beginTransaction();
+			user = (NewUser) session.get(NewUser.class, user_id);
+			transaction.commit();
+		}finally{
+			GetDelSession.closeSession();
+		}
+		return user;
+	}
+	public static void updateUserPassword(int user_id, String password) {
+		// TODO Auto-generated method stub
+		User user;
+		try{
+			Session session = GetDelSession.getThreadLocalSession();
+			Transaction transaction = session.beginTransaction();
+			user = (User) session.get(User.class, user_id);
+			user.setPassword(password);
+			session.update(user);
+			transaction.commit();
+		}finally{
+			GetDelSession.closeSession();
+		}
+	}
+	
 }

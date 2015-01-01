@@ -16,14 +16,18 @@
 			</action>
 			<action name="validateUniqueName" class="class_project.zou.servlet.SignupUser" method="validateUniqueName">
 			</action>
+			<!-- 用户注册 -->
 			<action name="signupUser" class="class_project.zou.servlet.SignupUser" method="signupUser">
+				<result name="signup" type="redirect">/jsp/signup.jsp?redirect=yes</result>
 				<result name="validateEmail" type="redirect">/jsp/validateEmail.jsp</result>
+			</action>
+			<action name="ifConfirm" class="class_project.zou.servlet.SignupUser" method="ifConfirm">
 			</action>
 			<action name="confirm_email" class="class_project.zou.servlet.SignupUser" method="confirmEmail">
 				<result name="home" type="redirect">/jsp/home.jsp?confirm_email=yes</result>
 				<result name="error">/jsp/error.jsp</result>
 			</action>
-			<action name="loginUser" class="class_project.zou.servlet.LoginUser" method="loginUser">
+			<action name="loginUser" class="class_project.zou.servlet.LoginUser" method="winLoginUser">
 				<result name="home" type="redirect">/jsp/home.jsp</result>
 				<result name="login" type="redirect">/jsp/login.jsp?redirect=yes</result>
 				<result name="emailNotConfirm" type="redirect">/jsp/login.jsp?emailConfirm=no</result>
@@ -34,11 +38,11 @@
 				<interceptor-ref name="defaultStack"/> -->
 			</action>
 			<action name="userLogout" class="class_project.zou.servlet.LoginUser" method="userLogout"></action>
+			<action name="modifyPassword" class="class_project.zou.servlet.LoginUser" method="modifyPassword"></action>
 			<action name="winLoginUser" class="class_project.zou.servlet.LoginUser" method="winLoginUser"></action>
-			<action name="checkValidateEmail" class="class_project.zou.servlet.LoginUser" method="checkValidateEmail">
-			</action>
 			<action name="addBlog" class="class_project.zou.servlet.BlogManager" method="addBlog">
 				<result name="blogList">/jsp/blogList.jsp</result>
+				<result name="error">/jsp/error.jsp</result>
 			</action>
 		</package>
 	</struts>

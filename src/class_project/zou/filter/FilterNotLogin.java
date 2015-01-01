@@ -45,10 +45,14 @@ public class FilterNotLogin implements Filter {
 		String userId = null;
 		userId = session.getAttribute("userId")==null? "":String.valueOf(session.getAttribute("userId"));
 		System.out.println("execute filter"+userId);
-		if(cook!=null){
+		if(cook!=null && userId.equals("")){
 			for(int i=0;i<cook.length;i++){
 				if(cook[i].getName().equals("userId")){
 					userId = cook[i].getValue();
+					session.setAttribute("userId", userId);
+				}
+				if(cook[i].getName().equals("user_id")){
+					session.setAttribute("user_id", cook[i].getValue());
 				}
 			}
 		}

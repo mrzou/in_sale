@@ -103,6 +103,7 @@
 						 <button type="submit" class="btn btn-primary btn-lg next-step">下一步</button>
 					</div>
 					<div class="col-sm-3 signup-link">已注册?&nbsp;&nbsp;<a href="/class_project/jsp/login.jsp">现在去登陆</a></div>
+					<div id="ifRedirect"><%= request.getParameter("redirect") %></div>
 				</div>
 			</form>
 			</div>
@@ -110,4 +111,17 @@
 	</div>
 </div>
 </body>
+<script>
+$(document).ready(function(){
+	if($("#ifRedirect").html()=="yes"){
+		layer.alert("注册失败!","",function(){
+			layer.closeAll();
+			var stateObject = {};
+			var title = "Wow Title";
+			var newUrl = "/class_project/jsp/signup.jsp";
+			history.pushState(stateObject,title,newUrl);
+		});
+	}
+})
+</script>
 </html>
