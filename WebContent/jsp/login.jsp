@@ -19,7 +19,7 @@
 		<div class="col-md-12 column col-sm-offset-1">
 	        <div class="signup-place">
 			<h4><span class="icon"></span>用户登陆</h4>
-			<form class="form-horizontal" role="form" action="/class_project/loginUser.action?location=" method="post">
+			<form class="form-horizontal" role="form" id="loginForm" action="/class_project/winLoginUser.action?location=" method="post">
 				<div class="form-group">
 					<label for="user.email" class="col-sm-3 control-label">邮箱</label>
 					<div class="col-sm-5">
@@ -75,7 +75,8 @@
 				</div>
 			</form>
 			<div style="display:none" id="requesturl"><%= request.getParameter("location") %></div>
-			<div style="display:none" id="redirect"><%= request.getParameter("redirect") %></div>
+			<%-- <div style="display:none" id="redirect"><%= request.getParameter("redirect") %></div>
+			<div style="display:none" id="emailConfirm"><%= request.getParameter("emailConfirm") %></div> --%>
 			</div>
 		</div>
 	</div>
@@ -86,9 +87,6 @@ $(document).ready(function(){
 	if($("#requesturl").html()!="null"){
 		var action = $("form")[0].action;
 		$("form")[0].action = action + $("#requesturl").html();
-	}
-	if($("#redirect").html()!="null"){
-		layer.alert("登陆失败");
 	}
 })
 </script>

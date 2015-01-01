@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<script src="../js/lib/layer/layer.min.js" type="text/javascript"></script>
+<title>wrong message</title>
 </head>
 <body>
-<h1>Something may be wrong</h1>
 </body>
+<script type="text/javascript">
+	layer.alert("邮箱验证错误!")
+</script>
 </html>

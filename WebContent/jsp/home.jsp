@@ -53,7 +53,7 @@
             <ul class="pager">
               <li><a href="#">Previous</a></li>
               <li><a href="#">Next</a></li>
-              <li style="display:none" id="ifSignup"><%= request.getParameter("ifSignup") %></li>
+              <li style="display:none" id="ifConfirm"><%= request.getParameter("confirm_email") %></li>
             </ul>
           </nav>
 
@@ -97,9 +97,9 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
-	if($("#ifSignup").html()=="yes"){
+	if($("#ifConfirm").html()=="yes"){
 		layer.alert("邮箱验证成功!");
-	}	
+	}
 })
 </script>
 </html>

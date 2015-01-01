@@ -56,7 +56,11 @@ public class UserSignupDao {
 		exitUser = session.createQuery(queryString);
 		@SuppressWarnings("unchecked")
 		List<NewUser> allUser = exitUser.setParameter(0, userEmail).list();
-		backUser = allUser.get(0);
-		return backUser;
+		if(allUser.size()==0){
+			return null;
+		}else{
+			backUser = allUser.get(0);
+			return backUser;
+		}
 	}
 }

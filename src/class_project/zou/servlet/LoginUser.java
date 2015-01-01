@@ -52,13 +52,14 @@ public class LoginUser implements ServletRequestAware{
 		}
 	}
 	/*登陆的请求*/
-	public String loginUser() throws IOException{
+	public void winLoginUser() throws IOException{
 		System.out.println(user.getEmail());
 		NewUser newUser = UserSignupDao.checkLoginUser(user.getEmail());
 		System.out.println(user.getPassword()+" "+newUser.getPassword());
+		PrintWriter out = response.getWriter();
 		if(user.getPassword().equals(newUser.getPassword())){
 			if(newUser.getValidate()==0){
-				return "mailNotConfirm";
+				out.print("mailNotConfrim");
 			}else{
 				System.out.println(request.getParameter("autoLogin"));
 				if(request.getParameter("autoLogin")!=null){
@@ -69,16 +70,13 @@ public class LoginUser implements ServletRequestAware{
 					session.setAttribute("userId", newUser.getName());
 				}
 				session.setAttribute("userId", newUser.getName());
-				if(request.getParameter("location")!=""){
-					return request.getParameter("location");
-				}else{
-					return "home";
-				}
+				out.print("success");
 			}
 		}else{
-			return "login";
+			out.print("error");
 		}
 	}
+	/*用户退出登陆*/
 	public void userLogout(){
 		System.out.println("delete cookie");
 		session.setAttribute("userId", null);

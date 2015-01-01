@@ -45,6 +45,11 @@
 	</div>
 </div>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+	layer.alert("注册成功，请到邮箱验证!","")
+})
+</script>
 <style>
 .another-message {
 	display: inline-block;

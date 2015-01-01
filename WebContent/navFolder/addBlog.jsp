@@ -44,7 +44,7 @@
 </body>
 <script>
 	$(document).ready(function(){
-		$("a").eq(0).removeClass("active");
+		$("a").removeClass("active");
 		$("a").eq(1).addClass("active");
 	})
 </script>

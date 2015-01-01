@@ -13,8 +13,15 @@ $(document).ready(function(){
 	        shadeClose: true, //开启点击遮罩关闭层
 	        area : ['800px' , '460px'],
 		    offset : ['100px', ''],
+		    shift: 'top',
 		    iframe: {src: '/class_project/jsp/win_login.jsp'},
-		    end: function(){}
+		    success: function(){
+		    	$("a").removeClass("active");
+				$("a").eq(6).addClass("active");
+		    },
+		    end: function(){
+		    	window.location.href = "/class_project/jsp/home.jsp"
+		    }
 		}); 
 	});
 	/*鼠标移动位置的提醒功能*/

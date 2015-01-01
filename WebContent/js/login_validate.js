@@ -61,7 +61,7 @@ $(document).ready(function(){
 		var password = $(this).find('input[name="user.password"]').val();
 		var ifLogin = $(this).find('input[name="autoLogin"]').val();
 		var deferred = $.post(
-				"/class_project/loginUser.action", 
+				this.action, 
 				{ 
 					"user.email": email, 
 					"user.password": password,
@@ -69,14 +69,15 @@ $(document).ready(function(){
 				}
 		);
 		deferred.success(function () {
-			if(deferred.responseText!=null){
+			if(deferred.responseText=="success"){
 				layer.alert("登陆成功!", "", function(){
 					var index = parent.layer.getFrameIndex(window.name);
 					parent.layer.close(index);
-					window.location.href = "/class_project/jsp/home.jsp"
 				});
+			}else if(deferred.responseText=="mailNotConfrim"){
+				layer.alert("邮件没有验证!");
 			}else{
-				layer.alert("登陆失败!");
+				layer.alert("邮箱或密码错误!");
 			}
 	    });
 	});

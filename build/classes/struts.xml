@@ -20,13 +20,13 @@
 				<result name="validateEmail" type="redirect">/jsp/validateEmail.jsp</result>
 			</action>
 			<action name="confirm_email" class="class_project.zou.servlet.SignupUser" method="confirmEmail">
-				<result name="home">/index.jsp</result>
+				<result name="home" type="redirect">/jsp/home.jsp?confirm_email=yes</result>
 				<result name="error">/jsp/error.jsp</result>
 			</action>
 			<action name="loginUser" class="class_project.zou.servlet.LoginUser" method="loginUser">
 				<result name="home" type="redirect">/jsp/home.jsp</result>
 				<result name="login" type="redirect">/jsp/login.jsp?redirect=yes</result>
-				<result name="mailNotConfirm">/jsp/notConfirm.jsp</result>
+				<result name="emailNotConfirm" type="redirect">/jsp/login.jsp?emailConfirm=no</result>
 				<result name="personalBlog" type="redirect">/navFolder/personalBlog.jsp</result>
 				<result name="modifyPassword" type="redirect">/navFolder/modifyPassword.jsp</result>
 				<result name="blogComment" type="redirect">/navFolder/blogComment.jsp</result>
@@ -34,6 +34,7 @@
 				<interceptor-ref name="defaultStack"/> -->
 			</action>
 			<action name="userLogout" class="class_project.zou.servlet.LoginUser" method="userLogout"></action>
+			<action name="winLoginUser" class="class_project.zou.servlet.LoginUser" method="winLoginUser"></action>
 			<action name="checkValidateEmail" class="class_project.zou.servlet.LoginUser" method="checkValidateEmail">
 			</action>
 			<action name="addBlog" class="class_project.zou.servlet.BlogManager" method="addBlog">

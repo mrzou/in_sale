@@ -57,6 +57,9 @@ $(document).ready(function(){
 	$("input[type='reset']").click(function(){
 		$("span.validate, div.inputWrong, div.inputRight").hide();
 	});
+	/*切换标题栏状态*/
+	$("a").eq(0).removeClass("active");
+	$("a").eq(5).addClass("active");
 	/*提交时的验证form标签的内容*/
 	$(".next-step").click(function(event){
 		$(".form-group .form-control").each(function(index, element){
