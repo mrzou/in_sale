@@ -56,7 +56,7 @@ public class LoginUser implements ServletRequestAware{
 				}
 				session.setAttribute("userId", newUser.getName());
 				session.setAttribute("user_id", newUser.getId());
-				out.print("success");
+				out.print(request.getParameter("location"));
 			}
 		}else{
 			out.print("error");

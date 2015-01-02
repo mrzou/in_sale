@@ -1,26 +1,35 @@
 $(document).ready(function(){
 	if($("#user_name").html().replace(/\s/g,   '') != "游客"){
+		$("#category").show();
 		$("#login").html("切换用户");
+	}else{
+		$("#category").hide();
 	};
+	$("#category").click(function(){
+		$("a").removeClass("active");
+		$("a").eq(4).addClass("active");
+	});
 	/*登陆弹出窗口*/
-	$("#login").click(function(event){
+	$("#login, #category").click(function(event){
 		event.preventDefault();
 		var winLogin = $.layer({
 	        type: 2,
 	        fadeIn: [300, true],
-	        title: '用户登陆',
+	        title: this.name,
 	        maxmin: true,
 	        shadeClose: true, //开启点击遮罩关闭层
 	        area : ['800px' , '460px'],
 		    offset : ['100px', ''],
 		    shift: 'top',
-		    iframe: {src: '/class_project/jsp/win_login.jsp'},
-		    success: function(){
+		    iframe: {src: this.href},
+		    /*success: function(){
 		    	$("a").removeClass("active");
 				$("a").eq(6).addClass("active");
-		    },
+		    },*/
 		    end: function(){
-		    	window.location.href = "/class_project/jsp/home.jsp"
+		    	if($("#user_name").html().replace(/\s/g,   '') == "游客"){
+		    		window.location.href = "/class_project/jsp/home.jsp";
+		    	}
 		    }
 		}); 
 	});
@@ -55,7 +64,7 @@ $(document).ready(function(){
 		}
 	});
 	/*添加检查是否已经登陆的页面*/
-	var win_login = $("a.blog-nav-item").slice(1, 4).each(function(){
+	var win_login = $("a.blog-nav-item").slice(1, 5).each(function(){
 		$(this).click(function(event){
 			var location = this.href.split("/");
 			var urlName = location[location.length-1].split(".")[0];

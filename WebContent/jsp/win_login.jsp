@@ -19,7 +19,7 @@
 		<div class="col-md-12 column col-sm-offset-1">
 	        <div class="signup-place">
 			<h4><span class="icon"></span>用户登陆</h4>
-			<form class="form-horizontal" id="loginForm" role="form" action="/class_project/loginUser.action" method="post">
+			<form class="form-horizontal" id="loginForm" role="form" action="/class_project/winLoginUser.action" method="post">
 				<div class="form-group">
 					<label for="user.email" class="col-sm-3 control-label">邮箱</label>
 					<div class="col-sm-5">

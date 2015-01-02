@@ -3,14 +3,24 @@
       "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
       "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
 <hibernate-mapping package="class_project.zou.javabean">
-	<class name="NewUser" table="user">
+	<class name="NewUser" table="user"  dynamic-update="true">
 		<id name="id">
 			<generator class="native"/>
 		</id>
+		<set name="category" cascade="all">
+	        <key column="user_id"/>
+	        <one-to-many class="Category"/>
+      	</set>
 		<property name="name"/>
 		<property name="email"/>
 		<property name="password"/>
 		<property name="validateCode"/>
 		<property name="validate" not-null="true"/>
 	</class>
+	<class name="Category" table="category"  dynamic-update="true">
+      <id name="id" type="int" column="id">
+         <generator class="native"/>
+      </id>
+      <property name="content" type="string" unique="true"/>
+   </class>
 </hibernate-mapping>

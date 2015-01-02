@@ -1,5 +1,7 @@
 package class_project.zou.javabean;
 
+import java.util.Set;
+
 public class NewUser {
 	private int id;
 	private String name;
@@ -7,6 +9,14 @@ public class NewUser {
 	private String password;
 	private String validateCode;
 	private int validate=0;
+	private Set<Category> category;
+	
+	public Set<Category> getCategory() {
+		return category;
+	}
+	public void setCategory(Set<Category> category) {
+		this.category = category;
+	}
 	public int getValidate() {
 		return validate;
 	}

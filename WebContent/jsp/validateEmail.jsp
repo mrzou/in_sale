@@ -46,14 +46,14 @@
 </div>
 </body>
 <script type="text/javascript">
+var interval = null;
 $(document).ready(function(){
-	checkIfConfirm();
+	interval = setInterval(checkIfConfirm,4000)
 	if(!$("div#success").hasClass("sign-up-ok")){
 		layer.alert("注册成功，请到邮箱验证!","")
 	}
 })
 function checkIfConfirm(){
-	var interval = setInterval(checkIfConfirm,4000)
 	var ifConfirm = $.ajax({
 		url: "/class_project/ifConfirm",
 		async: false,

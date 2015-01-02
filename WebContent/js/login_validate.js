@@ -54,7 +54,7 @@ $(document).ready(function(){
 			}
 		});
 	});
-	/*弹出窗口的登陆方式，发送一步请求到后台，并关闭窗口*/
+	/*弹出窗口的登陆方式，发送异步请求到后台，并关闭窗口*/
 	$("#loginForm").submit(function(event) {
 		event.preventDefault();
 		var email = $(this).find('input[name="user.email"]').val();
@@ -69,19 +69,21 @@ $(document).ready(function(){
 				}
 		);
 		deferred.success(function () {
-			if(deferred.responseText=="success"){
-				layer.alert("登陆成功!", "", function(){
-					var index = parent.layer.getFrameIndex(window.name);
-					parent.layer.close(index);
-				});
+			if(deferred.responseText=="error"){
+				layer.alert("邮箱或密码错误!");
 			}else if(deferred.responseText=="mailNotConfrim"){
 				layer.alert("邮件没有验证!");
 			}else{
-				layer.alert("邮箱或密码错误!");
+				layer.alert("登陆成功!", "", function(){
+					layer.closeAll();
+					var index = parent.layer.getFrameIndex(window.name);
+					parent.layer.close(index);
+					window.location.href = "/class_project/navFolder/"+deferred.responseText+".jsp";
+				});
 			}
 	    });
 		deferred.error(function(msg){
-			alert(msg.responseText);
+			layer.alert("登陆错误!");
 		})
 	});
 });
