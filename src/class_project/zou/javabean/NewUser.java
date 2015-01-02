@@ -10,7 +10,14 @@ public class NewUser {
 	private String validateCode;
 	private int validate=0;
 	private Set<Category> category;
+	private Set<Blog> blog;
 	
+	public Set<Blog> getBlog() {
+		return blog;
+	}
+	public void setBlog(Set<Blog> blog) {
+		this.blog = blog;
+	}
 	public Set<Category> getCategory() {
 		return category;
 	}

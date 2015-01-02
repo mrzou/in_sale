@@ -11,6 +11,10 @@
 	        <key column="user_id"/>
 	        <one-to-many class="Category"/>
       	</set>
+		<set name="blog" cascade="all">
+	        <key column="user_id"/>
+	        <one-to-many class="Blog"/>
+      	</set>
 		<property name="name"/>
 		<property name="email"/>
 		<property name="password"/>
