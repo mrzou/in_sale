@@ -1,0 +1,60 @@
+.signup-otherplace {
+	background-color: #f8f8f8;
+}
+.signup-place{
+	margin-top: 10px;
+	background-color: #fefefe;
+	width: 1155px;
+	border: 1px solid #ddd;
+	height: 500px;
+	margin-left: -88px;
+}
+.next-step{
+	margin-top:20px;
+	width: 150px;
+	height: 47px;
+	font-size: 20px;
+}
+div.form-group {
+	margin-top: 30px;
+}
+.icon {
+	display: inline-block;
+	background: url("../images/signup_019.png") no-repeat;
+	margin-left: 10px;
+	margin-right: 5px;
+	width: 16px;
+	height: 25px;
+	vertical-align: middle;
+}
+.contentNav {
+	height:73px;
+    float:left;
+    width:330px;
+}
+.contentNav ul{
+	margin-left: 250px;
+	margin-top: 20px;
+	float:left;
+    list-style-type:none;
+}
+.contentNav ul li{
+	height:35px;
+    line-height:35px;  /*  让内容垂直居中  */
+    display:inline;  /*  将li设置成内联元素就可以了  */
+}
+li a {
+	margin-left: 24px;
+	text-align: center;
+	font-size: 16px;
+}
+a.delete-category {
+	color: #f90;
+	text-decoration: none;
+}
+thead tr th, tbody tr td {
+	text-align: center;
+}
+.body-background {
+	background-color: #f8f8f8;
+}

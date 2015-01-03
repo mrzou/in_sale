@@ -11,19 +11,24 @@
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap-markdown.js"></script>
-<title>Insert title here</title>
+<title>添加博客</title>
 </head>
 <body>
   <jsp:include page="/jsp/navjsp.jsp"></jsp:include>
   <div class="container">
 	<div class="row clearfix">
-		<div class="col-md-12 column" style="margin-left: 150px">
+		<div class="col-md-11 column" style="margin-left: 150px">
 			<form method="post" action="/class_project/addBlog">
 				<div class="row"  style="margin-top:20px">
-					<div class="col-sm-10"><span>文章标题</span></div>
+					<div class="col-sm-1"><span>文章标题</span></div>
 				    <div class="col-sm-3">
 				    	<input name="blog.title" class="form-control" type="text" placeholder="title?" />
 				    </div>
+					<div class="col-sm-1"> <span>选择类别</span></div>
+					<div class="col-sm-2">
+					      <select class="form-control" id="allCategory" name="category">
+					      </select>
+					</div>
 				</div>
 				<div class="row"  style="margin-top:25px">
 					<div class="col-sm-10"><span>文章的内容</span></div>
@@ -33,7 +38,7 @@
 					      <input name="publish" type="checkbox"> Publish
 					    </label>
 					    <hr/>
-					    <button type="submit" class="btn" id="button">Submit</button>
+					    <button type="submit" class="btn btn-primary" id="button" style="margin-bottom: 10px">添加博客</button>
 				    </div>
 				</div>
 			</form>
@@ -45,6 +50,17 @@
 	$(document).ready(function(){
 		$("a").removeClass("active");
 		$("a").eq(1).addClass("active");
+		var allCategory = $.ajax({
+			url: "class_project/categoryIndex",
+			async: false,
+			success: function(data){
+				if(JSON.parse(data).records.length!=0){
+					JSON.parse(data).records.forEach(function(obj){
+						$("#allCategory").prepend("<option value="+obj.id+">"+ obj.content +"</option>");
+					})
+				}
+			}
+		});
 	})
 </script>
 </html>

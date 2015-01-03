@@ -1,8 +1,18 @@
 package class_project.zou.javabean;
 
+import java.util.Set;
+
 public class Category {
 	private int id;
 	private String content;
+	private Set<Blog> blog;
+
+	public Set<Blog> getBlog() {
+		return blog;
+	}
+	public void setBlog(Set<Blog> blog) {
+		this.blog = blog;
+	}
 	public int getId() {
 		return id;
 	}

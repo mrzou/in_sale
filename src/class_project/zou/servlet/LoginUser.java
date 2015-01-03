@@ -49,8 +49,8 @@ public class LoginUser implements ServletRequestAware{
 					System.out.println("remember");
 					Cookie cook1 = new Cookie("userId", String.valueOf(newUser.getName()));
 					Cookie cook2 = new Cookie("user_id", String.valueOf(newUser.getId()));
-					cook1.setMaxAge(60*2);
-					cook2.setMaxAge(60*2);
+					cook1.setMaxAge(60*60*24);
+					cook2.setMaxAge(60*60*24);
 					response.addCookie(cook1);
 					response.addCookie(cook2);
 				}

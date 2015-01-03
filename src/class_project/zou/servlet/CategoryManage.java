@@ -56,8 +56,10 @@ public class CategoryManage implements ServletRequestAware {
 		System.out.println("execute indexCategory");
 		int userId = (Integer) session.getAttribute("user_id");
 		ManageCategoryDao manageCate = new ManageCategoryDao();
+		System.out.println(userId);
 		@SuppressWarnings("unchecked")
 		String categoryJson = manageCate.categoryIndex(userId);
+		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		if(categoryJson==null){
 			out.print("null");
@@ -67,9 +69,6 @@ public class CategoryManage implements ServletRequestAware {
 	        out.close();
 		}
 	}
-	public void modifyCategory() throws IOException{
-		
-	}
 	public void deleteCategory() throws IOException{
 		System.out.println("execute modifyCategory");
 		int userId = Integer.valueOf(request.getParameter("id"));
@@ -77,6 +76,33 @@ public class CategoryManage implements ServletRequestAware {
 		PrintWriter out = response.getWriter();
 		try{
 			manageCate.categoryDelete(userId);
+			out.print("success");
+		}catch(Exception e){
+			out.print("error");
+		}
+	}
+	public void userIndex() throws IOException{
+		System.out.println("execute indexuser");
+		ManageCategoryDao manageCate = new ManageCategoryDao();
+		@SuppressWarnings("unchecked")
+		String categoryJson = manageCate.userIndex();
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(categoryJson==null){
+			out.print("null");
+		}else{
+			out.write(categoryJson);
+			out.flush();  
+	        out.close();
+		}
+	}
+	public void userDelete() throws IOException{
+		System.out.println("execute modifyCategory");
+		int userId = Integer.valueOf(request.getParameter("id"));
+		ManageCategoryDao manageCate = new ManageCategoryDao();
+		PrintWriter out = response.getWriter();
+		try{
+			manageCate.userDelete(userId);
 			out.print("success");
 		}catch(Exception e){
 			out.print("error");

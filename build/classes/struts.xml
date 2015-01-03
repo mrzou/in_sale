@@ -40,10 +40,20 @@
 			<action name="userLogout" class="class_project.zou.servlet.LoginUser" method="userLogout"></action>
 			<action name="modifyPassword" class="class_project.zou.servlet.LoginUser" method="modifyPassword"></action>
 			<action name="winLoginUser" class="class_project.zou.servlet.LoginUser" method="winLoginUser"></action>
-			<action name="addBlog" class="class_project.zou.servlet.BlogManager" method="addBlog"> </action>
+			<action name="addBlog" class="class_project.zou.servlet.BlogManager" method="addBlog">
+                <result name="blogIndex" type="redirect">/navFolder/personalBlog.jsp</result>
+				<result name="error">/jsp/error.jsp</result>
+			</action>
 			<action name="addCategory" class="class_project.zou.servlet.CategoryManage" method="addCategory"></action>
 			<action name="categoryIndex" class="class_project.zou.servlet.CategoryManage" method="categoryIndex"></action>
 			<action name="modifyCategory" class="class_project.zou.servlet.CategoryManage" method="modifyCategory"></action>
 			<action name="deleteCategory" class="class_project.zou.servlet.CategoryManage" method="deleteCategory"></action>
+			<action name="userIndex" class="class_project.zou.servlet.CategoryManage" method="userIndex">
+			</action>
+			<action name="userDelete" class="class_project.zou.servlet.CategoryManage" method="userDelete"></action>
+			<action name="blogIndex" class="class_project.zou.servlet.BlogManager" method="blogIndex">
+			</action>
+			<action name="blogDelete" class="class_project.zou.servlet.BlogManager" method="blogDelete"></action>
+			<action name="showBlog" class="class_project.zou.servlet.BlogManager" method="showBlog"></action>
 		</package>
 	</struts>

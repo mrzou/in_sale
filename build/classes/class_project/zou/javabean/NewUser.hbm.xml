@@ -25,6 +25,10 @@
       <id name="id" type="int" column="id">
          <generator class="native"/>
       </id>
+      <set name="blog" cascade="all">
+         <key column="category_id"/>
+         <one-to-many class="Blog"/>
+      </set>
       <property name="content" type="string" unique="true"/>
    </class>
 </hibernate-mapping>

@@ -12,7 +12,7 @@
           <a class="blog-nav-item active" href="/class_project">首页</a>
           <a class="blog-nav-item" href="/class_project/navFolder/personalBlog.jsp">个人博客</a>
           <a class="blog-nav-item" href="/class_project/navFolder/modifyPassword.jsp">密码修改</a>
-          <a class="blog-nav-item" href="/class_project/navFolder/blogComment.jsp">博客评论</a>
+          <a class="blog-nav-item" href="/class_project/navFolder/manageUser.jsp" id="manageUser">用户管理</a>
           <a class="blog-nav-item" href="/class_project/navFolder/manageCategory.jsp" id="category" name="类别管理">类别管理</a>
           <a class="blog-nav-item right-click" href="/class_project/jsp/signup.jsp" id="signup">加入zz_blog</a>
           <a class="blog-nav-item right-click" href="/class_project/jsp/win_login.jsp" id="login" name="用户登陆">登陆</a>

@@ -35,16 +35,59 @@ public class BlogManager implements ServletRequestAware{
 		this.blog = blog;
 	}
 	
-	public void addBlog() throws IOException{
+	public String addBlog() throws IOException{
 		System.out.println("execute addBlog");
 		int userId = (Integer) session.getAttribute("user_id");
+		int category = Integer.valueOf(request.getParameter("category"));
 		ManageBlogDao manageblog = new ManageBlogDao();
-		int i = manageblog.addBlog(userId, blog);
+		int i = manageblog.addBlog(userId, category, blog);
 		PrintWriter out = response.getWriter();
 		if(i<0){
-			out.print("error");
+			return "error";
 		}else{
+			return "blogIndex";
+		}
+	}
+	public void blogIndex() throws IOException{
+		System.out.println("execute indexuser");
+		ManageCategoryDao manageCate = new ManageCategoryDao();
+		int userId = (Integer) session.getAttribute("user_id");
+		@SuppressWarnings("unchecked")
+		String categoryJson = manageCate.blogIndex(userId);
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(categoryJson==null){
+			out.print("null");
+		}else{
+			out.write(categoryJson);
+			out.flush();  
+	        out.close();
+		}
+	}
+	public void blogDelete() throws IOException{
+		System.out.println("execute deleteBlog");
+		int blogId = Integer.valueOf(request.getParameter("id"));
+		ManageCategoryDao manageCate = new ManageCategoryDao();
+		PrintWriter out = response.getWriter();
+		try{
+			manageCate.blogDelete(blogId);
 			out.print("success");
+		}catch(Exception e){
+			out.print("error");
+		}
+	}
+	public void showBlog() throws IOException{
+		System.out.println("execute showblog");
+		int blogId = Integer.valueOf(request.getParameter("id"));
+		ManageCategoryDao manageCate = new ManageCategoryDao();
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		try{
+			Blog blog = manageCate.showBlog(blogId);
+			System.out.println(blog.getContent());
+			out.print(blog.getContent());
+		}catch(Exception e){
+			out.print("error");
 		}
 	}
 }

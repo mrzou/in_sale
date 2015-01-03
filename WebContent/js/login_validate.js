@@ -78,11 +78,16 @@ $(document).ready(function(){
 					layer.closeAll();
 					var index = parent.layer.getFrameIndex(window.name);
 					parent.layer.close(index);
-					window.location.href = "/class_project/navFolder/"+deferred.responseText+".jsp";
+					if(deferred.responseText==""){
+						window.location.href = "/class_project/jsp/home.jsp";
+					}else{
+						window.location.href = "/class_project/navFolder/"+deferred.responseText+".jsp";
+					}
 				});
 			}
 	    });
 		deferred.error(function(msg){
+			alert(msg.responseText)
 			layer.alert("登陆错误!");
 		})
 	});

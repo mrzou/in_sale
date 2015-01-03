@@ -27,10 +27,10 @@ public class UserSignupDao {
 	public int ifExistUser(String column, String userName){
 		Query exitUser;
 		Session session = GetDelSession.getThreadLocalSession();
-		String queryString = "FROM User user where user."+column+"=?";
+		String queryString = "FROM NewUser user where user."+column+"=?";
 		exitUser = session.createQuery(queryString);
 		@SuppressWarnings("unchecked")
-		List<User> user = exitUser.setParameter(0, userName).list();
+		List<NewUser> user = exitUser.setParameter(0, userName).list();
 		System.out.println(user.size());
 		return user.size();
 	}

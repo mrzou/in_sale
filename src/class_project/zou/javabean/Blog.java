@@ -31,8 +31,6 @@ public class Blog {
 		return sqlDate;
 	}
 	public void setRecordTime(Date recordTime) {
-		java.util.Date utilDate = new java.util.Date();
-	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		this.recordTime = sqlDate;
+		this.recordTime = recordTime;
 	}
 }

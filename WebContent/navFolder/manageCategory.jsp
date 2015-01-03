@@ -16,7 +16,7 @@
 <script src="../js/lib/footable.js" type="text/javascript"></script>
 <script src="../js/lib/footable.paginate.js" type="text/javascript"></script>
 <script src="../js/manageCategory.js" type="text/javascript"></script>
-<title>个人博客主页</title>
+<title>类别管理</title>
 </head>
 <body class="body-background">
 <div class="container">
@@ -59,6 +59,8 @@
 .contentNav ul{
 	float:left;
     list-style-type:none;
+    margin-left: 80px;
+	margin-top: 20px;
 }
 .contentNav ul li{
 	height:35px;

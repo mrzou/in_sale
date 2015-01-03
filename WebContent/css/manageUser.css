@@ -1,0 +1,45 @@
+.contentNav {
+	height:73px;
+    float:left;
+    width:330px;
+}
+.contentNav ul{
+	margin-left: 250px;
+	margin-top: 20px;
+	float:left;
+    list-style-type:none;
+}
+.contentNav ul li{
+	height:35px;
+    line-height:35px;  /*  让内容垂直居中  */
+    display:inline;  /*  将li设置成内联元素就可以了  */
+}
+li a {
+	margin-left: 24px;
+	text-align: center;
+	font-size: 16px;
+}
+a.delete-category {
+	color: #f90;
+	text-decoration: none;
+}
+.table-location {
+	margin-top: 30px;
+	margin-right: -15px;
+	margin-left: 200px;
+	width: 773px;
+	height: 468px;
+	border: 1px solid #ddd;
+	background-color: #fefefe
+}
+thead tr th, tbody tr td {
+	text-align: center;
+}
+.body-background {
+	background-color: #f8f8f8;
+}
+button[type="button"]{
+	position: fixed;
+	left: 590px;
+	top: 500px;
+}

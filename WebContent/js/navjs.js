@@ -5,6 +5,11 @@ $(document).ready(function(){
 	}else{
 		$("#category").hide();
 	};
+	if($("#user_name").html().replace(/\s/g,   '') == "admin"){
+		$("#manageUser").show();
+	}else{
+		$("#manageUser").hide();
+	}
 	$("#category").click(function(){
 		$("a").removeClass("active");
 		$("a").eq(4).addClass("active");

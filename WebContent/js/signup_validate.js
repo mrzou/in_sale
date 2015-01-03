@@ -13,8 +13,8 @@ $(document).ready(function(){
 	/*验证名字的唯一性*/
 	$("input[name='user.name']").blur(function(){
 		var userName = this.value;
-		if(userName.length<=4){
-			inputIfRight(this, "wrong", "用户名要长于5个字符");
+		if(userName.length<=2){
+			inputIfRight(this, "wrong", "用户名要长于3个字符");
 		}else{
 			validateNameAndEmail(this, "name", "名字");
 		}
