@@ -13,7 +13,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 
 import class_project.zou.javabean.NewUser;
 import class_project.zou.javabean.User;
-import class_project.zou.dao.UserSignupDao;
+import class_project.zou.dao.UserDao;
 public class LoginUser implements ServletRequestAware{
 	private User user;
 	public User getUser() {
@@ -37,7 +37,7 @@ public class LoginUser implements ServletRequestAware{
 	/*登陆的请求*/
 	public void winLoginUser() throws IOException{
 		System.out.println(user.getEmail());
-		NewUser newUser = UserSignupDao.checkLoginUser("email", user.getEmail());
+		NewUser newUser = UserDao.checkLoginUser("email", user.getEmail());
 		System.out.println(user.getPassword()+" "+newUser.getPassword());
 		PrintWriter out = response.getWriter();
 		if(user.getPassword().equals(newUser.getPassword())){
@@ -74,7 +74,7 @@ public class LoginUser implements ServletRequestAware{
 	public void modifyPassword() throws IOException{
 		System.out.println(session.getAttribute("user_id"));
 		int user_id = (Integer)(session.getAttribute("user_id"));
-		UserSignupDao userDao = new UserSignupDao();
+		UserDao userDao = new UserDao();
 		NewUser newUser = userDao.getCurrentUser(user_id);
 		PrintWriter out = response.getWriter();
 		System.out.println(newUser.getPassword() + " "+user.getPassword());
@@ -83,7 +83,7 @@ public class LoginUser implements ServletRequestAware{
 		}else if(user.getPassword().equals(newUser.getPassword())){
 			out.print("same");
 		}else{
-			UserSignupDao.updateUserPassword(user_id, request.getParameter("new_password"));
+			UserDao.updateUserPassword(user_id, request.getParameter("new_password"));
 			out.print("success");
 		}
 	}

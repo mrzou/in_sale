@@ -2,20 +2,15 @@ package class_project.zou.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.Set;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-import class_project.zou.dao.ManageCategoryDao;
+import class_project.zou.dao.CategoryDao;
+import class_project.zou.dao.UserDao;
 import class_project.zou.javabean.Category;
 
 public class CategoryManage implements ServletRequestAware {
@@ -43,7 +38,7 @@ public class CategoryManage implements ServletRequestAware {
 	public void addCategory() throws IOException{
 		System.out.println("execute addCategory");
 		int userId = (Integer) session.getAttribute("user_id");
-		ManageCategoryDao manageCate = new ManageCategoryDao();
+		CategoryDao manageCate = new CategoryDao();
 		int i = manageCate.addCategoryDao(userId, category);
 		PrintWriter out = response.getWriter();
 		if(i<0){
@@ -55,7 +50,7 @@ public class CategoryManage implements ServletRequestAware {
 	public void categoryIndex() throws IOException{
 		System.out.println("execute indexCategory");
 		int userId = (Integer) session.getAttribute("user_id");
-		ManageCategoryDao manageCate = new ManageCategoryDao();
+		CategoryDao manageCate = new CategoryDao();
 		System.out.println(userId);
 		@SuppressWarnings("unchecked")
 		String categoryJson = manageCate.categoryIndex(userId);
@@ -70,7 +65,7 @@ public class CategoryManage implements ServletRequestAware {
 	public void deleteCategory() throws IOException{
 		System.out.println("execute modifyCategory");
 		int userId = Integer.valueOf(request.getParameter("id"));
-		ManageCategoryDao manageCate = new ManageCategoryDao();
+		CategoryDao manageCate = new CategoryDao();
 		PrintWriter out = response.getWriter();
 		try{
 			manageCate.categoryDelete(userId);
@@ -81,9 +76,9 @@ public class CategoryManage implements ServletRequestAware {
 	}
 	public void userIndex() throws IOException{
 		System.out.println("execute indexuser");
-		ManageCategoryDao manageCate = new ManageCategoryDao();
+		UserDao userDao = new UserDao();
 		@SuppressWarnings("unchecked")
-		String categoryJson = manageCate.userIndex();
+		String categoryJson = userDao.userIndex();
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		if(categoryJson==null){
@@ -95,10 +90,10 @@ public class CategoryManage implements ServletRequestAware {
 	public void userDelete() throws IOException{
 		System.out.println("execute modifyCategory");
 		int userId = Integer.valueOf(request.getParameter("id"));
-		ManageCategoryDao manageCate = new ManageCategoryDao();
+		UserDao userDao = new UserDao();
 		PrintWriter out = response.getWriter();
 		try{
-			manageCate.userDelete(userId);
+			userDao.userDelete(userId);
 			out.print("success");
 		}catch(Exception e){
 			out.print("error");

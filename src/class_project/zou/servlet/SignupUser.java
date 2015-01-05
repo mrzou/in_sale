@@ -2,8 +2,6 @@ package class_project.zou.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -16,7 +14,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -25,7 +22,7 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import class_project.zou.javabean.User;
-import class_project.zou.dao.UserSignupDao;
+import class_project.zou.dao.UserDao;
 
 public class SignupUser implements ServletRequestAware {
 	private User user;
@@ -48,7 +45,7 @@ public class SignupUser implements ServletRequestAware {
 	}
 	
 	public String signupUser() {
-		UserSignupDao userDao = new UserSignupDao();
+		UserDao userDao = new UserDao();
 		try{
 			if(user.getName()==null || user.getEmail()==null){
 				return "signup";
@@ -128,7 +125,7 @@ public class SignupUser implements ServletRequestAware {
 	}
 	/*检查名字和邮箱的唯一性*/
 	public void validateUniqueName(){
-		UserSignupDao userDao = new UserSignupDao();
+		UserDao userDao = new UserDao();
 		int ifExist = userDao.ifExistUser(request.getParameter("type"), request.getParameter("name"));
 		try{
 			PrintWriter out = response.getWriter();
@@ -147,12 +144,12 @@ public class SignupUser implements ServletRequestAware {
 	public String confirmEmail(){
 		String validateEmail = request.getParameter("action");
 		int user_id = Integer.parseInt(request.getParameter("id"));
-		UserSignupDao userDao = new UserSignupDao();
+		UserDao userDao = new UserDao();
 		int ifExist = userDao.ifExistUser("validateCode", validateEmail);
 		if(ifExist<=0){
 			return "error";
 		}else{
-			String userName = UserSignupDao.updateUserSignup(user_id);
+			String userName = UserDao.updateUserSignup(user_id);
 			session.setAttribute("ifConfirm", "yes");
 			session.setAttribute("userId", userName);
 			session.setAttribute("user_id", user_id);

@@ -2,7 +2,10 @@ package class_project.zou.dao;
 
 import java.util.List;
 
-import org.apache.struts2.ServletActionContext;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONException;
+import net.sf.json.JSONObject;
+
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,7 +14,7 @@ import class_project.zou.javabean.GetDelSession;
 import class_project.zou.javabean.NewUser;
 import class_project.zou.javabean.User;
 
-public class UserSignupDao {
+public class UserDao {
 	public int signupUser(User user){
 		int i;
 		try{
@@ -85,6 +88,53 @@ public class UserSignupDao {
 			user = (User) session.get(User.class, user_id);
 			user.setPassword(password);
 			session.update(user);
+			transaction.commit();
+		}finally{
+			GetDelSession.closeSession();
+		}
+	}
+	public String userIndex() {
+		// TODO Auto-generated method stub
+		Query exitUser;
+		Session session = GetDelSession.getThreadLocalSession();
+		String queryString = "FROM NewUser";
+		exitUser = session.createQuery(queryString);
+		@SuppressWarnings("unchecked")
+		List<NewUser> allUser = exitUser.list();
+		return convertToJson(allUser);
+	}
+	public String convertToJson(List<NewUser> allUser){
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = null;
+        for (NewUser obj : allUser) {
+            jsonObject = new JSONObject();
+            jsonObject.put("id", obj.getId());
+            jsonObject.put("name", obj.getName());
+            jsonObject.put("email", obj.getEmail());
+            jsonArray.add(jsonObject);
+        }
+        // 转换数据格式
+        String json = jsonArray.toString();
+        // 拼接字符串
+        JSONObject jn = new JSONObject();
+        try {
+            jn.put("records", jsonArray);
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return jn.toString();
+	}
+
+	public void userDelete(int userId) {
+		// TODO Auto-generated method stub
+		int i;
+		try{
+			System.out.println("delete User");
+			Session session = GetDelSession.getThreadLocalSession();
+			Transaction transaction = session.beginTransaction();
+			NewUser user = (NewUser) session.get(NewUser.class, userId);
+			session.delete(user);
 			transaction.commit();
 		}finally{
 			GetDelSession.closeSession();

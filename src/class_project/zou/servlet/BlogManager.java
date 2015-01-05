@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-import class_project.zou.dao.ManageBlogDao;
-import class_project.zou.dao.ManageCategoryDao;
+import class_project.zou.dao.BlogDao;
+import class_project.zou.dao.CategoryDao;
 import class_project.zou.javabean.Blog;
 
 public class BlogManager implements ServletRequestAware{
@@ -39,7 +39,7 @@ public class BlogManager implements ServletRequestAware{
 		System.out.println("execute addBlog");
 		int userId = (Integer) session.getAttribute("user_id");
 		int category = Integer.valueOf(request.getParameter("category"));
-		ManageBlogDao manageblog = new ManageBlogDao();
+		BlogDao manageblog = new BlogDao();
 		System.out.println(blog.getContent());
 		int i = manageblog.addBlog(userId, category, blog);
 		PrintWriter out = response.getWriter();
@@ -51,10 +51,10 @@ public class BlogManager implements ServletRequestAware{
 	}
 	public void blogIndex() throws IOException{
 		System.out.println("execute indexuser");
-		ManageCategoryDao manageCate = new ManageCategoryDao();
+		BlogDao blogDao = new BlogDao();
 		int userId = (Integer) session.getAttribute("user_id");
 		@SuppressWarnings("unchecked")
-		String categoryJson = manageCate.blogIndex(userId);
+		String categoryJson = blogDao.blogIndex(userId);
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		if(categoryJson==null){
@@ -66,10 +66,10 @@ public class BlogManager implements ServletRequestAware{
 	public void blogDelete() throws IOException{
 		System.out.println("execute deleteBlog");
 		int blogId = Integer.valueOf(request.getParameter("id"));
-		ManageCategoryDao manageCate = new ManageCategoryDao();
+		BlogDao blogDao = new BlogDao();
 		PrintWriter out = response.getWriter();
 		try{
-			manageCate.blogDelete(blogId);
+			blogDao.blogDelete(blogId);
 			out.print("success");
 		}catch(Exception e){
 			out.print("error");
@@ -79,11 +79,11 @@ public class BlogManager implements ServletRequestAware{
 		System.out.println("execute showblog");
 		int blogId = Integer.valueOf(request.getParameter("id"));
 		System.out.println("blogId"+blogId);
-		ManageCategoryDao manageCate = new ManageCategoryDao();
+		BlogDao blogDao = new BlogDao();
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		try{
-			Blog blog = manageCate.showBlog(blogId);
+			Blog blog = blogDao.showBlog(blogId);
 			out.print(blog.getContent());
 		}catch(Exception e){
 			out.print(e);
