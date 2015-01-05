@@ -80,9 +80,9 @@ public class LoginUser implements ServletRequestAware{
 		System.out.println(newUser.getPassword() + " "+user.getPassword());
 		if(newUser==null || !newUser.getPassword().equals(user.getPassword())){
 			out.print("error");
-		}else if(request.getParameter("new_password").equals(newUser.getPassword())){
+		}else if(user.getPassword().equals(newUser.getPassword())){
 			out.print("same");
-		}{
+		}else{
 			UserSignupDao.updateUserPassword(user_id, request.getParameter("new_password"));
 			out.print("success");
 		}

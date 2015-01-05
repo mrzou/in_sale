@@ -37,8 +37,8 @@ $(document).ready(function(){
 				layer.alert("修改成功!","");
 			}else if(deferred.responseText=="same"){
 				layer.alert("新密码和旧密码一致!")
-			}{
-				layer.alert("旧密码密码输入错误!");
+			}else{
+				layer.alert("旧密码输入错误!");
 			}
 	    });
 	});

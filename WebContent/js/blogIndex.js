@@ -49,7 +49,7 @@ $(document).ready(function(){
 				async: false,
 				success: function(data){
 					$("#blogForm").remove();
-					$("h4").append("<p>"+data+"</p>")
+					$("h4").append(data);
 				},
 				error: function(msg){
 					$("#error").html(msg.responseText);

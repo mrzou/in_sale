@@ -12,9 +12,9 @@
 <link rel="stylesheet" type="text/css" href="../css/lib/footable-demos.css"/>
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/lib/footable.js"></script>
+<script type="text/javascript" src="../js/lib/footable.paginate.js"></script>
 <script type="text/javascript" src="../js/blogIndex.js"></script>
-<script src="../js/lib/footable.js" type="text/javascript"></script>
-<script src="../js/lib/footable.paginate.js" type="text/javascript"></script>
 
 <title>个人博客主页</title>
 </head>

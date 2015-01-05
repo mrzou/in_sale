@@ -7,6 +7,9 @@ $(document).ready(function(){
 	$(function () {
 	    $('.footable').footable();
 	});
+	$("#addUser").click(function(){
+		layer.alert("不好意思!暂时不支持");
+	})
 	/* 显示列表 */
 	var allCategory = $.ajax({
 		url: "/class_project/userIndex",
