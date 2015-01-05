@@ -58,3 +58,7 @@ thead tr th, tbody tr td {
 .body-background {
 	background-color: #f8f8f8;
 }
+th#blog-head, td#blog-title{
+	text-align: left;
+	margin-left: 100px
+}

@@ -7,11 +7,11 @@
 		<id name="id">
 			<generator class="native"/>
 		</id>
-		<set name="category" cascade="all">
+		<set name="category" cascade="all" lazy="false">
 	        <key column="user_id"/>
 	        <one-to-many class="Category"/>
       	</set>
-		<set name="blog" cascade="all">
+		<set name="blog" cascade="all" lazy="false">
 	        <key column="user_id"/>
 	        <one-to-many class="Blog"/>
       	</set>
@@ -21,7 +21,7 @@
 		<property name="validateCode"/>
 		<property name="validate" not-null="true"/>
 	</class>
-	<class name="Category" table="category"  dynamic-update="true">
+	<class name="Category" table="category" dynamic-update="true">
       <id name="id" type="int" column="id">
          <generator class="native"/>
       </id>

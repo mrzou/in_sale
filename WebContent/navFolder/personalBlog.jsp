@@ -30,7 +30,7 @@
 					<table class="footable">
 					  <thead>
 					    <tr>
-					      <th>博客</th>
+					      <th id="blog-head">博客</th>
 					      <th>时间</th>
 					      <th>操作</th>
 					      <th width=60px><a href="/class_project/navFolder/addBlog.jsp"class="btn btn-link">添加博客</a></th>

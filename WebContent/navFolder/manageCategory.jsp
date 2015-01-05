@@ -6,16 +6,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" href="../images/favicon.jpg">
 <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap.min.css">
-<link href="../css/lib/footable.core.css" rel="stylesheet" type="text/css" />
-<link href="../css/lib/footable-demos.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="../css/lib/footable.core.css"/>
+<link rel="stylesheet" type="text/css" href="../css/lib/footable-demos.css"/>
 <link rel="stylesheet" type="text/css" href="../css/navcss.css">
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
-<script src="../js/lib/bootstrap-tab.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/lib/bootstrap-tab.js" ></script>
 <script type="text/javascript" src="../js/lib/layer/layer.min.js"></script>
-<script src="../js/lib/footable.js" type="text/javascript"></script>
-<script src="../js/lib/footable.paginate.js" type="text/javascript"></script>
-<script src="../js/manageCategory.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/lib/footable.js"></script>
+<script type="text/javascript" src="../js/lib/footable.paginate.js"></script>
+<script type="text/javascript" src="../js/manageCategory.js"></script>
 <title>类别管理</title>
 </head>
 <body class="body-background">

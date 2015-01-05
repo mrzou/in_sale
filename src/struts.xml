@@ -41,8 +41,6 @@
 			<action name="modifyPassword" class="class_project.zou.servlet.LoginUser" method="modifyPassword"></action>
 			<action name="winLoginUser" class="class_project.zou.servlet.LoginUser" method="winLoginUser"></action>
 			<action name="addBlog" class="class_project.zou.servlet.BlogManager" method="addBlog">
-                <result name="blogIndex" type="redirect">/navFolder/personalBlog.jsp</result>
-				<result name="error">/jsp/error.jsp</result>
 			</action>
 			<action name="addCategory" class="class_project.zou.servlet.CategoryManage" method="addCategory"></action>
 			<action name="categoryIndex" class="class_project.zou.servlet.CategoryManage" method="categoryIndex"></action>

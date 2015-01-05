@@ -19,8 +19,9 @@ public class ManageBlogDao {
 			Category category = (Category) session.load(Category.class, categoryId);
 			category.getBlog().add(blog);
 			user.getBlog().add(blog);
+			session.save(category);
 			i = (Integer) session.save(user);
-			i = (Integer) session.save(category);
+			System.out.println("blogId  "+i);
 			transaction.commit();
 		}finally{
 			GetDelSession.closeSession();

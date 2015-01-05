@@ -2,6 +2,11 @@ $(document).ready(function(){
 	$("a").removeClass("active");
 	$("a").eq(1).addClass("active");
 	$(".signup-place").css("height",document.body.clientHeight+'px');
+	$('.footable').data('page-size', 20);
+	$('.footable').trigger('footable_initialized');
+	$(function () {
+	    $('.footable').footable();
+	});
 	/*获取博客列表*/
 	var allCategory = $.ajax({
 		url: "/class_project/blogIndex",
@@ -10,7 +15,7 @@ $(document).ready(function(){
 			if(JSON.parse(data).records.length!=0){
 				JSON.parse(data).records.forEach(function(obj){
 					$("#tbody").prepend("<tr>"+
-						      "<td><a href='/class_project/showBlog?id="+obj.id+"'>"+
+						      "<td id='blog-title'><a href='/class_project/showBlog?id="+obj.id+"'>"+
 						      obj.title+"</td>"+
 						      "</a><td>"+obj.time+"</td>"+
 						      "<td>"+
@@ -39,7 +44,7 @@ $(document).ready(function(){
 				$(this).parent().parent().remove();
 				layer.alert("删除成功!");
 			}else{
-				layer.alert("删除失败!");
+				layer.alert(state.responseText);
 			}
 		}else if(this.innerHTML=="修改"){
 			layer.alert("要修改请先删除再添加!");
@@ -49,7 +54,9 @@ $(document).ready(function(){
 				async: false,
 				success: function(data){
 					$("#blogForm").remove();
-					$("h4").append(data);
+					data.split("\\n").forEach(function(pdata){
+						$("div.signup-place").append("<div><p>" + pdata + "</p></div>");
+					})
 				},
 				error: function(msg){
 					$("#error").html(msg.responseText);

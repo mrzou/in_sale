@@ -131,11 +131,12 @@ public class ManageCategoryDao {
 	public String blogIndex(int userId) {
 		Session session = GetDelSession.getThreadLocalSession();
 		System.out.println(userId);
-		NewUser user = (NewUser) session.load(NewUser.class, userId);
+		NewUser user = (NewUser) session.get(NewUser.class, userId);
 		if(user.getCategory()==null){
 			return null;
 		}
 		Set<Blog> allBlog = (Set<Blog>) user.getBlog();
+		System.out.println(allBlog.size());
 		return BlogConvertToJson(allBlog);
 	}
 	public String BlogConvertToJson(Set<Blog> allBlog){

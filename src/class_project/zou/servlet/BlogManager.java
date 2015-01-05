@@ -35,17 +35,18 @@ public class BlogManager implements ServletRequestAware{
 		this.blog = blog;
 	}
 	
-	public String addBlog() throws IOException{
+	public void addBlog() throws IOException{
 		System.out.println("execute addBlog");
 		int userId = (Integer) session.getAttribute("user_id");
 		int category = Integer.valueOf(request.getParameter("category"));
 		ManageBlogDao manageblog = new ManageBlogDao();
+		System.out.println(blog.getContent());
 		int i = manageblog.addBlog(userId, category, blog);
 		PrintWriter out = response.getWriter();
 		if(i<0){
-			return "error";
+			out.print("error");
 		}else{
-			return "blogIndex";
+			out.print("success");
 		}
 	}
 	public void blogIndex() throws IOException{
@@ -60,8 +61,6 @@ public class BlogManager implements ServletRequestAware{
 			out.print("null");
 		}else{
 			out.write(categoryJson);
-			out.flush();  
-	        out.close();
 		}
 	}
 	public void blogDelete() throws IOException{
@@ -79,15 +78,15 @@ public class BlogManager implements ServletRequestAware{
 	public void showBlog() throws IOException{
 		System.out.println("execute showblog");
 		int blogId = Integer.valueOf(request.getParameter("id"));
+		System.out.println("blogId"+blogId);
 		ManageCategoryDao manageCate = new ManageCategoryDao();
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		try{
 			Blog blog = manageCate.showBlog(blogId);
-			System.out.println(blog.getContent());
 			out.print(blog.getContent());
 		}catch(Exception e){
-			out.print("error");
+			out.print(e);
 		}
 	}
 }

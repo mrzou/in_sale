@@ -18,7 +18,7 @@
   <div class="container">
 	<div class="row clearfix">
 		<div class="col-md-11 column" style="margin-left: 150px">
-			<form method="post" action="/class_project/addBlog">
+			<form method="post" action="/class_project/addBlog" id="blogForm">
 				<div class="row"  style="margin-top:20px">
 					<div class="col-sm-1"><span>文章标题</span></div>
 				    <div class="col-sm-3">
@@ -60,6 +60,28 @@
 					})
 				}
 			}
+		});
+		$("#blogForm").submit(function(event){
+			event.preventDefault();
+			var category =  $("#allCategory").val();
+			var title = $("input[name='blog.title']").val();
+			var content = $("textarea").val().replace(/\n/gi, "\\n");
+			var deferred = $.post(
+					this.action, 
+					{ 
+						"blog.title": title, 
+						"blog.content": content,
+						"category": category,
+					}
+			);
+			deferred.success(function () {
+				if(deferred.responseText=="success"){
+					window.location.href = "/class_project/navFolder/personalBlog.jsp"
+				}else{
+					window.location.href = "/class_project/jsp/error.jsp"
+					
+				}
+		    });
 		});
 	})
 </script>

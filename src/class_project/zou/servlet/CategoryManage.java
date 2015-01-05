@@ -65,8 +65,6 @@ public class CategoryManage implements ServletRequestAware {
 			out.print("null");
 		}else{
 			out.write(categoryJson);
-			out.flush();  
-	        out.close();
 		}
 	}
 	public void deleteCategory() throws IOException{
@@ -92,8 +90,6 @@ public class CategoryManage implements ServletRequestAware {
 			out.print("null");
 		}else{
 			out.write(categoryJson);
-			out.flush();  
-	        out.close();
 		}
 	}
 	public void userDelete() throws IOException{
