@@ -62,7 +62,7 @@
                     <div class="col-sm-offset-3 col-sm-11">
                        <div class="checkbox">
                           <label>
-                             <input type="checkbox" name="autoLogin"> 请记住我一天
+                             <input type="checkbox" name="autoLogin" value="1"> 请记住我一天
                           </label>
                        </div>
                     </div>

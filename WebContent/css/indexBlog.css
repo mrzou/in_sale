@@ -4,10 +4,10 @@
 .signup-place{
 	margin-top: 10px;
 	background-color: #fefefe;
-	width: 1155px;
+	width: 816px;
 	border: 1px solid #ddd;
 	height: 500px;
-	margin-left: -88px;
+	margin-left: 60px;
 }
 .next-step{
 	margin-top:20px;
@@ -61,4 +61,7 @@ thead tr th, tbody tr td {
 th#blog-head, td#blog-title{
 	text-align: left;
 	margin-left: 100px
+}
+div>p.article {
+	padding: 15px;
 }

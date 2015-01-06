@@ -1,11 +1,13 @@
 package class_project.zou.dao;
 
+import java.util.List;
 import java.util.Set;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -55,8 +57,7 @@ public class BlogDao {
             jsonObject.put("time", obj.getRecordTime().toString());
             jsonArray.add(jsonObject);
         }
-        // 转换数据格式
-        String json = jsonArray.toString();
+        jsonArray.toString();
         // 拼接字符串
         JSONObject jn = new JSONObject();
         try {
@@ -69,8 +70,6 @@ public class BlogDao {
 	}
 
 	public void blogDelete(int blogId) {
-		// TODO Auto-generated method stub
-		int i;
 		try{
 			Session session = GetDelSession.getThreadLocalSession();
 			Transaction transaction = session.beginTransaction();
@@ -94,5 +93,39 @@ public class BlogDao {
 			GetDelSession.closeSession();
 		}
 		return blog;
+	}
+	public String blogIndexAll() {
+		Query exitBlog;
+		Session session = GetDelSession.getThreadLocalSession();
+		String queryString = "FROM Blog";
+		exitBlog = session.createQuery(queryString);
+		@SuppressWarnings("unchecked")
+		List<Blog> allBlog = exitBlog.list();
+		return convertAllBlogToJson(allBlog);
+	}
+	private String convertAllBlogToJson(List<Blog> allBlog) {
+		// TODO Auto-generated method stub
+		JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = null;
+        String content = null;
+        for (Blog obj : allBlog) {
+        	content = (String) (obj.getContent().length()<150? obj.getContent():obj.getContent().subSequence(0, 150));
+            jsonObject = new JSONObject();
+            jsonObject.put("id", obj.getId());
+            jsonObject.put("title", obj.getTitle());
+            jsonObject.put("content", content);
+            jsonObject.put("time", obj.getRecordTime().toString());
+            jsonArray.add(jsonObject);
+        }
+        jsonArray.toString();
+        // 拼接字符串
+        JSONObject jn = new JSONObject();
+        try {
+            jn.put("records", jsonArray);
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return jn.toString();
 	}
 }

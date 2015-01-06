@@ -66,22 +66,26 @@
 			var category =  $("#allCategory").val();
 			var title = $("input[name='blog.title']").val();
 			var content = $("textarea").val().replace(/\n/gi, "\\n");
-			var deferred = $.post(
-					this.action, 
-					{ 
-						"blog.title": title, 
-						"blog.content": content,
-						"category": category,
+			if(category==null){
+				layer.alert("请先添加类别!");
+			}else{
+				var deferred = $.post(
+						this.action, 
+						{ 
+							"blog.title": title, 
+							"blog.content": content,
+							"category": category,
+						}
+				);
+				deferred.success(function () {
+					if(deferred.responseText=="success"){
+						window.location.href = "/class_project/navFolder/personalBlog.jsp"
+					}else{
+						window.location.href = "/class_project/jsp/error.jsp"
+						
 					}
-			);
-			deferred.success(function () {
-				if(deferred.responseText=="success"){
-					window.location.href = "/class_project/navFolder/personalBlog.jsp"
-				}else{
-					window.location.href = "/class_project/jsp/error.jsp"
-					
-				}
-		    });
+			    });
+			}
 		});
 	})
 </script>

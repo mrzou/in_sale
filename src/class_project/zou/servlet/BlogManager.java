@@ -11,7 +11,6 @@ import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
 import class_project.zou.dao.BlogDao;
-import class_project.zou.dao.CategoryDao;
 import class_project.zou.javabean.Blog;
 
 public class BlogManager implements ServletRequestAware{
@@ -49,11 +48,22 @@ public class BlogManager implements ServletRequestAware{
 			out.print("success");
 		}
 	}
+	public void blogIndexAll() throws IOException{
+		System.out.println("execute indexallblog");
+		BlogDao blogDao = new BlogDao();
+		String categoryJson = blogDao.blogIndexAll();
+		response.setContentType("text/html;charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		if(categoryJson==null){
+			out.print("null");
+		}else{
+			out.write(categoryJson);
+		}
+	}
 	public void blogIndex() throws IOException{
 		System.out.println("execute indexuser");
 		BlogDao blogDao = new BlogDao();
 		int userId = (Integer) session.getAttribute("user_id");
-		@SuppressWarnings("unchecked")
 		String categoryJson = blogDao.blogIndex(userId);
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();

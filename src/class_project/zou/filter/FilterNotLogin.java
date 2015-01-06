@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -40,6 +41,7 @@ public class FilterNotLogin implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		HttpServletRequest newRequest=(HttpServletRequest)request;
+		HttpServletResponse newResponse=(HttpServletResponse)response;
 		HttpSession session = newRequest.getSession();
 		Cookie[] cook = newRequest.getCookies();
 		String userId = null;
@@ -63,6 +65,10 @@ public class FilterNotLogin implements Filter {
 			}
 			System.out.println("run to login");
 			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+		}
+		if(newRequest.getRequestURI().equals("/class_project/navFolder/manageUser.jsp") && !userId.equals("admin")){
+			newResponse.setCharacterEncoding("utf-8");
+			newResponse.sendRedirect("/class_project/jsp/error.jsp?message='没有访问权限!'");
 		}
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

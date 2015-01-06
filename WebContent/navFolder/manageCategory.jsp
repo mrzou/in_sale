@@ -8,11 +8,9 @@
 <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="../css/lib/footable.core.css"/>
 <link rel="stylesheet" type="text/css" href="../css/lib/footable-demos.css"/>
-<link rel="stylesheet" type="text/css" href="../css/navcss.css">
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap-tab.js" ></script>
-<script type="text/javascript" src="../js/lib/layer/layer.min.js"></script>
 <script type="text/javascript" src="../js/lib/footable.js"></script>
 <script type="text/javascript" src="../js/lib/footable.paginate.js"></script>
 <script type="text/javascript" src="../js/manageCategory.js"></script>

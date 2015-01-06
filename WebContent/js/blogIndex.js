@@ -1,7 +1,6 @@
 $(document).ready(function(){
 	$("a").removeClass("active");
 	$("a").eq(1).addClass("active");
-	$(".signup-place").css("height",document.body.clientHeight+'px');
 	$('.footable').data('page-size', 20);
 	$('.footable').trigger('footable_initialized');
 	$(function () {
@@ -55,7 +54,8 @@ $(document).ready(function(){
 				success: function(data){
 					$("#blogForm").remove();
 					data.split("\\n").forEach(function(pdata){
-						$("div.signup-place").append("<div><p>" + pdata + "</p></div>");
+						$("div.signup-place").append("<div><p class='article'>" + pdata + "</p></div>");
+						$(".signup-place").css("height",$(document).height());
 					})
 				},
 				error: function(msg){

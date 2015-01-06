@@ -57,9 +57,14 @@ $(document).ready(function(){
 	/*弹出窗口的登陆方式，发送异步请求到后台，并关闭窗口*/
 	$("#loginForm").submit(function(event) {
 		event.preventDefault();
+		var ifLogin;
 		var email = $(this).find('input[name="user.email"]').val();
 		var password = $(this).find('input[name="user.password"]').val();
-		var ifLogin = $(this).find('input[name="autoLogin"]').val();
+		if($(this).find('input[name="autoLogin"]').is(':checked')){
+			ifLogin = "true";
+		}else{
+			ifLogin = "false";
+		}
 		var deferred = $.post(
 				this.action, 
 				{ 

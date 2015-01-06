@@ -40,8 +40,12 @@
 			<action name="userLogout" class="class_project.zou.servlet.LoginUser" method="userLogout"></action>
 			<action name="modifyPassword" class="class_project.zou.servlet.LoginUser" method="modifyPassword"></action>
 			<action name="winLoginUser" class="class_project.zou.servlet.LoginUser" method="winLoginUser"></action>
-			<action name="addBlog" class="class_project.zou.servlet.BlogManager" method="addBlog">
+			<action name="addBlog" class="class_project.zou.servlet.BlogManager" method="addBlog"></action>
+			<action name="blogIndexAll" class="class_project.zou.servlet.BlogManager" method="blogIndexAll"></action>
+			<action name="showOnBlog" class="class_project.zou.servlet.BlogManager" method="showOnBlog">
+				<result name="showBlog">/jsp/showBlog.jsp</result>
 			</action>
+			
 			<action name="addCategory" class="class_project.zou.servlet.CategoryManage" method="addCategory"></action>
 			<action name="categoryIndex" class="class_project.zou.servlet.CategoryManage" method="categoryIndex"></action>
 			<action name="modifyCategory" class="class_project.zou.servlet.CategoryManage" method="modifyCategory"></action>

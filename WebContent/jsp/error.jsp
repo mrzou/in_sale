@@ -4,12 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script src="../js/lib/layer/layer.min.js" type="text/javascript"></script>
-<title>wrong message</title>
+<title>出错了!</title>
 </head>
 <body>
 </body>
 <script type="text/javascript">
+$(document).ready(function(){
+	
 	layer.alert("邮箱验证错误!")
+});
 </script>
 </html>

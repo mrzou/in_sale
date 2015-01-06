@@ -5,13 +5,12 @@
 <head>
 <link rel="icon" href="../images/favicon.jpg">
 <link rel="stylesheet" type="text/css" href="../css/signup.css">
-<link rel="stylesheet" type="text/css" href="../css/navcss.css">
 <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap.min.css">
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="../js/signup_validate.js"></script>
 <title>注册信息</title>
-</head>
+</head >
 <body class="signup-otherplace">
     <jsp:include page="navjsp.jsp"></jsp:include>
 	<div id="error"></div>

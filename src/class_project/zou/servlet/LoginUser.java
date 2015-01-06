@@ -44,8 +44,8 @@ public class LoginUser implements ServletRequestAware{
 			if(newUser.getValidate()==0){
 				out.print("mailNotConfrim");
 			}else{
-				System.out.println(request.getParameter("autoLogin"));
-				if(request.getParameter("autoLogin")!=null){
+				System.out.println(request.getParameter("autoLogin")+"hello");
+				if(request.getParameter("autoLogin").equals("true")){
 					System.out.println("remember");
 					Cookie cook1 = new Cookie("userId", String.valueOf(newUser.getName()));
 					Cookie cook2 = new Cookie("user_id", String.valueOf(newUser.getId()));
@@ -66,9 +66,13 @@ public class LoginUser implements ServletRequestAware{
 	public void userLogout(){
 		System.out.println("delete cookie");
 		session.setAttribute("userId", null);
-		Cookie cookie = new Cookie("userId", null);
-		cookie.setMaxAge(0);
-		response.addCookie(cookie);
+		session.setAttribute("user_id", null);
+		Cookie cookie1 = new Cookie("userId", null);
+		Cookie cookie2 = new Cookie("user_id", null);
+		cookie1.setMaxAge(0);
+		cookie2.setMaxAge(0);
+		response.addCookie(cookie1);
+		response.addCookie(cookie2);
 	}
 	/*用户修改密码*/
 	public void modifyPassword() throws IOException{

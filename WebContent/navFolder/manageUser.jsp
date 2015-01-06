@@ -6,14 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="icon" href="../images/favicon.jpg">
 <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap.min.css">
-<link href="../css/lib/footable.core.css" rel="stylesheet" type="text/css" />
-<link href="../css/lib/footable-demos.css" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" type="text/css" href="../css/navcss.css">
+<link rel="stylesheet" type="text/css" href="../css/lib/footable.core.css"/>
+<link rel="stylesheet" type="text/css" href="../css/lib/footable-demos.css"/>
 <link rel="stylesheet" type="text/css" href="../css/manageUser.css">
 <script type="text/javascript" src="../js/lib/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="../js/lib/bootstrap.min.js"></script>
-<script src="../js/lib/footable.js" type="text/javascript"></script>
-<script src="../js/lib/footable.paginate.js" type="text/javascript"></script>
+<script type="text/javascript" src="../js/lib/footable.js"></script>
+<script type="text/javascript" src="../js/lib/footable.paginate.js"></script>
 <script type="text/javascript" src="../js/manageUser.js"></script>
 
 <title>用户管理</title>

@@ -53,7 +53,7 @@ h6, .h6 {
  */
 
 .blog-main {
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 1.5;
 }
 
@@ -117,5 +117,8 @@ h6, .h6 {
 }
 .blog-footer p:last-child {
     margin-bottom: 0;
+}
+h4>a {
+	font-size: 22px;
 }
 
