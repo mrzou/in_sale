@@ -35,11 +35,9 @@ public class BlogManager implements ServletRequestAware{
 	}
 	
 	public void addBlog() throws IOException{
-		System.out.println("execute addBlog");
 		int userId = (Integer) session.getAttribute("user_id");
 		int category = Integer.valueOf(request.getParameter("category"));
 		BlogDao manageblog = new BlogDao();
-		System.out.println(blog.getContent());
 		int i = manageblog.addBlog(userId, category, blog);
 		PrintWriter out = response.getWriter();
 		if(i<0){
@@ -49,7 +47,6 @@ public class BlogManager implements ServletRequestAware{
 		}
 	}
 	public void blogIndexAll() throws IOException{
-		System.out.println("execute indexallblog");
 		BlogDao blogDao = new BlogDao();
 		String categoryJson = blogDao.blogIndexAll();
 		response.setContentType("text/html;charset=UTF-8");
@@ -61,7 +58,6 @@ public class BlogManager implements ServletRequestAware{
 		}
 	}
 	public void blogIndex() throws IOException{
-		System.out.println("execute indexuser");
 		BlogDao blogDao = new BlogDao();
 		int userId = (Integer) session.getAttribute("user_id");
 		String categoryJson = blogDao.blogIndex(userId);
@@ -74,7 +70,6 @@ public class BlogManager implements ServletRequestAware{
 		}
 	}
 	public void blogDelete() throws IOException{
-		System.out.println("execute deleteBlog");
 		int blogId = Integer.valueOf(request.getParameter("id"));
 		BlogDao blogDao = new BlogDao();
 		PrintWriter out = response.getWriter();
@@ -86,15 +81,13 @@ public class BlogManager implements ServletRequestAware{
 		}
 	}
 	public void showBlog() throws IOException{
-		System.out.println("execute showblog");
 		int blogId = Integer.valueOf(request.getParameter("id"));
-		System.out.println("blogId"+blogId);
 		BlogDao blogDao = new BlogDao();
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		try{
-			Blog blog = blogDao.showBlog(blogId);
-			out.print(blog.getContent());
+			String blogJson = blogDao.showBlog(blogId);
+			out.print(blogJson);
 		}catch(Exception e){
 			out.print(e);
 		}

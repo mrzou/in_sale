@@ -35,10 +35,13 @@ $(document).ready(function(){
 		deferred.success(function () {
 			if(deferred.responseText=="success"){
 				layer.alert("修改成功!","");
+				$("#loginForm")[0].reset();
 			}else if(deferred.responseText=="same"){
 				layer.alert("新密码和旧密码一致!")
+				$("#loginForm")[0].reset();
 			}else{
 				layer.alert("旧密码输入错误!");
+				$("#loginForm")[0].reset();
 			}
 	    });
 	});

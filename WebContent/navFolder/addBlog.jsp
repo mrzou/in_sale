@@ -50,6 +50,10 @@
 	$(document).ready(function(){
 		$("a").removeClass("active");
 		$("a").eq(1).addClass("active");
+		var param = location.search.substr(1, location.search.length-1);
+		if(param!=null){
+			addDataToForm(param);
+		}
 		var allCategory = $.ajax({
 			url: "class_project/categoryIndex",
 			async: false,
@@ -87,6 +91,24 @@
 			    });
 			}
 		});
-	})
+	});
+	function addDataToForm(id){
+		var allCategory = $.ajax({
+			url: "/class_project/showBlog?"+id,
+			async: false,
+			success: function(data){
+				var allData = "";
+				var jsonData = JSON.parse(data);
+				jsonData.content.split("\\n").forEach(function(pdata){
+					allData+=pdata+"\n";
+				});
+				$("textarea[name='blog.content']").html(allData);
+				$("input[name='blog.title']").val(jsonData.title);
+			},
+			error: function(msg){
+				$("#error").html(msg.responseText);
+			}
+		});
+	}
 </script>
 </html>

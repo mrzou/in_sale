@@ -36,17 +36,13 @@ public class LoginUser implements ServletRequestAware{
 	}
 	/*登陆的请求*/
 	public void winLoginUser() throws IOException{
-		System.out.println(user.getEmail());
 		NewUser newUser = UserDao.checkLoginUser("email", user.getEmail());
-		System.out.println(user.getPassword()+" "+newUser.getPassword());
 		PrintWriter out = response.getWriter();
 		if(user.getPassword().equals(newUser.getPassword())){
 			if(newUser.getValidate()==0){
 				out.print("mailNotConfrim");
 			}else{
-				System.out.println(request.getParameter("autoLogin")+"hello");
 				if(request.getParameter("autoLogin").equals("true")){
-					System.out.println("remember");
 					Cookie cook1 = new Cookie("userId", String.valueOf(newUser.getName()));
 					Cookie cook2 = new Cookie("user_id", String.valueOf(newUser.getId()));
 					cook1.setMaxAge(60*60*24);
@@ -64,7 +60,6 @@ public class LoginUser implements ServletRequestAware{
 	}
 	/*用户退出登陆*/
 	public void userLogout(){
-		System.out.println("delete cookie");
 		session.setAttribute("userId", null);
 		session.setAttribute("user_id", null);
 		Cookie cookie1 = new Cookie("userId", null);
@@ -76,19 +71,20 @@ public class LoginUser implements ServletRequestAware{
 	}
 	/*用户修改密码*/
 	public void modifyPassword() throws IOException{
-		System.out.println(session.getAttribute("user_id"));
 		int user_id = (Integer)(session.getAttribute("user_id"));
 		UserDao userDao = new UserDao();
 		NewUser newUser = userDao.getCurrentUser(user_id);
 		PrintWriter out = response.getWriter();
-		System.out.println(newUser.getPassword() + " "+user.getPassword());
-		if(newUser==null || !newUser.getPassword().equals(user.getPassword())){
-			out.print("error");
-		}else if(user.getPassword().equals(newUser.getPassword())){
-			out.print("same");
+		if(newUser!=null && newUser.getPassword().equals(user.getPassword())){
+			user.setPassword(request.getParameter("new_password"));
+			if(user.getPassword().equals(newUser.getPassword())){
+				out.print("same");
+			}else{
+				UserDao.updateUserPassword(user_id, request.getParameter("new_password"));
+				out.print("success");
+			}
 		}else{
-			UserDao.updateUserPassword(user_id, request.getParameter("new_password"));
-			out.print("success");
+			out.print("error");
 		}
 	}
 }

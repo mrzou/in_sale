@@ -9,11 +9,18 @@
 <title>出错了!</title>
 </head>
 <body>
+<div style="display: none" id="message">
+	<%= request.getParameter("message") %>
+</div>
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
-	
-	layer.alert("邮箱验证错误!")
+	var message = $("#message").html().replace(/\s/g,   '');
+	if(message=="withoutPermit"){
+		layer.alert("该用户没有权限!")
+	}else{
+		layer.alert("邮箱验证错误!")
+	}
 });
 </script>
 </html>

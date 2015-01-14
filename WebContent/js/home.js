@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var pageCount = null;
+	var allBlog = null;
 	var pageSize = null;
 	var allCategory = $.ajax({
 		url: "/class_project/blogIndexAll",
@@ -19,6 +19,8 @@ $(document).ready(function(){
 			}
 			$("#next").data("pageCount", 1);
 			$("#previous").data("pageCount", 0);
+			$("#previous").removeAttr("href");
+			$("#previous").removeAttr("onclick");
 		},
 		error: function(msg){
 			alert(msg.responseText);

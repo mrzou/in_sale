@@ -68,7 +68,7 @@ public class FilterNotLogin implements Filter {
 		}
 		if(newRequest.getRequestURI().equals("/class_project/navFolder/manageUser.jsp") && !userId.equals("admin")){
 			newResponse.setCharacterEncoding("utf-8");
-			newResponse.sendRedirect("/class_project/jsp/error.jsp?message='没有访问权限!'");
+			newResponse.sendRedirect("/class_project/jsp/error.jsp?message=withoutPermit");
 		}
 		// pass the request along the filter chain
 		chain.doFilter(request, response);

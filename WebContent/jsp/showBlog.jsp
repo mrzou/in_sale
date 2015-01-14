@@ -14,9 +14,9 @@
 </head>
 <body>
 <jsp:include page="/jsp/navjsp.jsp"></jsp:include>
-<div class="container signup-location">
+<div class="container">
 	<div class="row clearfix">
-		<div class="col-md-12 column col-sm-offset-1">
+		<div class="col-md-11 column col-sm-offset-1">
 			<div class="sign-process register-progress clearfix hidden-xs hidden-sm">      
 				<div class="signup-place">
 				<h4 style="border-bottom: 1px solid #C0C0C0"><span class="icon"></span>用户博客</h4>
@@ -36,8 +36,9 @@ $(document).ready(function(){
 			$("#blogForm").remove();
 			data.split("\\n").forEach(function(pdata){
 				$("div.signup-place").append("<div><p class='article'>" + pdata + "</p></div>");
-				$(".signup-place").css("height",$(document).height());
+				/* $(".signup-place").css("height",$(document).height()); */
 			})
+			$("div.signup-place").append("<button type='button' class='btn btn-primary btn-xs addBlog'>添加评论</button>");
 		},
 		error: function(msg){
 			$("#error").html(msg.responseText);

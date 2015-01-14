@@ -6,7 +6,6 @@
 	background-color: #fefefe;
 	width: 816px;
 	border: 1px solid #ddd;
-	height: 500px;
 	margin-left: 60px;
 }
 .next-step{
@@ -64,4 +63,11 @@ th#blog-head, td#blog-title{
 }
 div>p.article {
 	padding: 15px;
+}
+button.addBlog {
+	width: 150px;
+	height: 25px;
+	position: relative;
+	top: -15px;
+	left: 300px;
 }

@@ -46,16 +46,17 @@ $(document).ready(function(){
 				layer.alert(state.responseText);
 			}
 		}else if(this.innerHTML=="修改"){
-			layer.alert("要修改请先删除再添加!");
+			var id = this.href.split("?")[1];
+			window.location.href = "/class_project/navFolder/addBlog.jsp?"+id;
 		}else{
 			var allCategory = $.ajax({
 				url: this.href,
 				async: false,
 				success: function(data){
 					$("#blogForm").remove();
-					data.split("\\n").forEach(function(pdata){
+					JSON.parse(data).content.split("\\n").forEach(function(pdata){
 						$("div.signup-place").append("<div><p class='article'>" + pdata + "</p></div>");
-						$(".signup-place").css("height",$(document).height());
+						/*$(".signup-place").css("height",$(document).height());*/
 					})
 				},
 				error: function(msg){

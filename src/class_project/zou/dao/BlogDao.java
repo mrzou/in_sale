@@ -81,7 +81,7 @@ public class BlogDao {
 		}
 	}
 
-	public Blog showBlog(int blogId) {
+	public String showBlog(int blogId) {
 		// TODO Auto-generated method stub
 		Blog blog=null;
 		try{
@@ -92,7 +92,15 @@ public class BlogDao {
 		}finally{
 			GetDelSession.closeSession();
 		}
-		return blog;
+		return convertOneBlogToJson(blog);
+	}
+	private String convertOneBlogToJson(Blog blog) {
+		// TODO Auto-generated method stub
+        JSONObject jsonObject = null;
+        jsonObject = new JSONObject();
+        jsonObject.put("title", blog.getTitle());
+        jsonObject.put("content", blog.getContent());
+        return jsonObject.toString();
 	}
 	public String blogIndexAll() {
 		Query exitBlog;
