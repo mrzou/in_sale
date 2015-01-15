@@ -34,7 +34,7 @@ $(document).ready(function(){
 		async: false,
 		success: function(data){
 			$("#blogForm").remove();
-			data.split("\\n").forEach(function(pdata){
+			JSON.parse(data).content.split("\\n").forEach(function(pdata){
 				$("div.signup-place").append("<div><p class='article'>" + pdata + "</p></div>");
 				/* $(".signup-place").css("height",$(document).height()); */
 			})
