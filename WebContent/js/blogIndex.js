@@ -34,17 +34,19 @@ $(document).ready(function(){
 	/*添加删除修改用户的事件*/
 	$("tbody td a").click(function(event){
 		event.preventDefault();
+		var action = this.href;
 		if(this.innerHTML=="删除"){
-			var state = $.ajax({
-				url: this.href,
-				async: false,
+			layer.confirm("确定删除?",function(){
+				var state = $.ajax({
+					url: action,
+					async: false,
+				});
+				if(state.responseText=="success"){
+					location.reload();
+				}else{
+					layer.alert("错误!");
+				}
 			});
-			if(state.responseText=="success"){
-				$(this).parent().parent().remove();
-				layer.alert("删除成功!");
-			}else{
-				layer.alert(state.responseText);
-			}
 		}else if(this.innerHTML=="修改"){
 			var id = this.href.split("?")[1];
 			window.location.href = "/class_project/navFolder/addBlog.jsp?"+id;

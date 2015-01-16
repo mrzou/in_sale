@@ -92,4 +92,12 @@ public class BlogManager implements ServletRequestAware{
 			out.print(e);
 		}
 	}
+	public void updateBlog() throws IOException, NumberFormatException {
+		int blogId = Integer.valueOf(request.getParameter("id"));
+		int category = Integer.valueOf(request.getParameter("category"));
+		BlogDao manageblog = new BlogDao();
+		manageblog.updateBlog(blogId, category, blog);
+		PrintWriter out = response.getWriter();
+        out.print("success");
+	}
 }

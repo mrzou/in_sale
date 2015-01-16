@@ -19,7 +19,7 @@
 		<div class="col-md-11 column col-sm-offset-1">
 			<div class="sign-process register-progress clearfix hidden-xs hidden-sm">      
 				<div class="signup-place">
-				<h4 style="border-bottom: 1px solid #C0C0C0"><span class="icon"></span>用户博客</h4>
+				
 				</div>
 			</div>
 		</div>
@@ -34,6 +34,9 @@ $(document).ready(function(){
 		async: false,
 		success: function(data){
 			$("#blogForm").remove();
+			$("div.signup-place").html("<h4 style='border-bottom: 1px solid #C0C0C0'>"+
+					"<span class='icon'></span>"+JSON.parse(data).title+
+					"</h4>")
 			JSON.parse(data).content.split("\\n").forEach(function(pdata){
 				$("div.signup-place").append("<div><p class='article'>" + pdata + "</p></div>");
 				/* $(".signup-place").css("height",$(document).height()); */

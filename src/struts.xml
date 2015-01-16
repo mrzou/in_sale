@@ -57,5 +57,6 @@
 			</action>
 			<action name="blogDelete" class="class_project.zou.servlet.BlogManager" method="blogDelete"></action>
 			<action name="showBlog" class="class_project.zou.servlet.BlogManager" method="showBlog"></action>
+			<action name="updateBlog" class="class_project.zou.servlet.BlogManager" method="updateBlog"></action>
 		</package>
 	</struts>

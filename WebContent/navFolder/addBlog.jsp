@@ -51,8 +51,9 @@
 		$("a").removeClass("active");
 		$("a").eq(1).addClass("active");
 		var param = location.search.substr(1, location.search.length-1);
-		if(param!=null){
+		if(param!=""){
 			addDataToForm(param);
+			$("button[type='submit']").text("修改博客");
 		}
 		var allCategory = $.ajax({
 			url: "class_project/categoryIndex",
@@ -74,7 +75,7 @@
 				layer.alert("请先添加类别!");
 			}else{
 				var deferred = $.post(
-						this.action, 
+						param==""? this.action:"/class_project/updateBlog?"+param, 
 						{ 
 							"blog.title": title, 
 							"blog.content": content,

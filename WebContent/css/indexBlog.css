@@ -4,8 +4,8 @@
 .signup-place{
 	margin-top: 10px;
 	background-color: #fefefe;
-	width: 816px;
-	border: 1px solid #ddd;
+	width: 700px;
+	border: solid 1px #80DFEA;
 	margin-left: 60px;
 }
 .next-step{
@@ -69,5 +69,5 @@ button.addBlog {
 	height: 25px;
 	position: relative;
 	top: -15px;
-	left: 300px;
+	left: 250px;
 }

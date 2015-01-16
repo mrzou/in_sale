@@ -8,13 +8,15 @@ $(document).ready(function(){
 			allBlog = JSON.parse(data).records;
 			pageSize = allBlog%5;
 			if(allBlog.length!=0){
+				var blog = "";
 				for(var i=0; i<5; i++){
 					$("div.blog-post").append("<h4 class='blog-post-title'><a href='/class_project/jsp/showBlog.jsp?id="+allBlog[i].id+
 					"\'>" + allBlog[i].title + "</a></h4>");
 					
 					allBlog[i].content.split("\\n").forEach(function(pdata){
-						$("div.blog-post").append("<p>" + pdata + "</p>");
+						blog = blog + pdata;
 					})
+					$("div.blog-post").append("<p>" + blog + "......" + "</p>");
 				}
 			}
 			$("#next").data("pageCount", 1);

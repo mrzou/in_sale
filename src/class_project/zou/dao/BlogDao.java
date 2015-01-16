@@ -20,7 +20,6 @@ public class BlogDao {
 	public int addBlog(int userId, int categoryId, Blog blog){
 		int i;
 		try{
-			System.out.println(categoryId);
 			Session session = GetDelSession.getThreadLocalSession();
 			Transaction transaction = session.beginTransaction();
 			NewUser user = (NewUser) session.load(NewUser.class, userId);
@@ -38,13 +37,12 @@ public class BlogDao {
 	}
 	public String blogIndex(int userId) {
 		Session session = GetDelSession.getThreadLocalSession();
-		System.out.println(userId);
 		NewUser user = (NewUser) session.get(NewUser.class, userId);
+		GetDelSession.closeSession();
 		if(user.getCategory()==null){
 			return null;
 		}
 		Set<Blog> allBlog = (Set<Blog>) user.getBlog();
-		System.out.println(allBlog.size());
 		return BlogConvertToJson(allBlog);
 	}
 	public String BlogConvertToJson(Set<Blog> allBlog){
@@ -117,7 +115,7 @@ public class BlogDao {
         JSONObject jsonObject = null;
         String content = null;
         for (Blog obj : allBlog) {
-        	content = (String) (obj.getContent().length()<150? obj.getContent():obj.getContent().subSequence(0, 150));
+        	content = (String) (obj.getContent().length()<100? obj.getContent():obj.getContent().subSequence(0, 100));
             jsonObject = new JSONObject();
             jsonObject.put("id", obj.getId());
             jsonObject.put("title", obj.getTitle());
@@ -135,5 +133,21 @@ public class BlogDao {
             e.printStackTrace();
         }
         return jn.toString();
+	}
+	public void updateBlog(int blogId, int categoryId, Blog blog) {
+		// TODO Auto-generated method stub
+		System.out.println("execute updateBlog");
+		try{
+			Session session = GetDelSession.getThreadLocalSession();
+			Transaction transaction = session.beginTransaction();
+			Blog newBlog = (Blog) session.get(Blog.class, blogId);
+			Category category = (Category) session.get(Category.class, categoryId);
+			newBlog.setTitle(blog.getTitle());
+			newBlog.setContent(blog.getContent());
+			session.update(newBlog);
+			transaction.commit();
+		}finally{
+			GetDelSession.closeSession();
+		}
 	}
 }
